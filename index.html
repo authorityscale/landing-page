@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Brand — Guided Business Growth</title>
+  <meta name="description" content="A clean-room, Mastermind-inspired landing page template you can paste into a custom HTML block and tailor to your offer." />
+  <style>
+    /* ====== Design tokens (edit these first) ====== */
+    :root{
+      --bg:#0b1020;           /* page background */
+      --panel:#0f162d;        /* card/section panels */
+      --text:#e8ecf8;         /* primary text */
+      --muted:#b7c0dd;        /* secondary text */
+      --brand:#7cc4ff;        /* accent / CTA */
+      --brand-2:#88ffcc;      /* secondary accent */
+      --stroke:#223053;       /* subtle borders */
+      --shadow: 0 10px 30px rgba(3,8,20,.5);
+      --radius: 16px;
+      --maxw: 1200px;
+    }
+
+    /* ====== Base ====== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% -10%, #142046 0%, transparent 60%),
+                  radial-gradient(900px 500px at 90% -20%, #0d2a3f 0%, transparent 60%), var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin-inline:auto; padding: clamp(16px, 3vw, 28px)}
+    .pill{display:inline-flex; gap:.5rem; align-items:center; border:1px solid var(--stroke); padding:.35rem .75rem; border-radius:999px; font-weight:600; color:var(--muted)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; background:linear-gradient(180deg, var(--brand), #4ea9ff); color:#04111f; font-weight:800; border:none; padding:14px 18px; border-radius:12px; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{background:transparent; color:var(--text); border:1px solid var(--stroke); box-shadow:none}
+    .grid{display:grid; gap: clamp(16px, 2vw, 24px)}
+    .grid.cols-3{grid-template-columns:repeat(1,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(1,1fr)}
+    @media (min-width: 840px){
+      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+      .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    }
+
+    /* ====== Top Nav ====== */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(11,16,32,.85), rgba(11,16,32,.55)); border-bottom:1px solid rgba(255,255,255,.04)}
+    .nav{display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex; align-items:center; gap:.75rem}
+    .brand-logo{width:36px; height:36px; border-radius:9px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow)}
+    nav a{color:var(--muted); font-weight:600; padding:.75rem 1rem; border-radius:10px}
+    nav a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    .nav-cta{display:flex; align-items:center; gap:.5rem}
+    .hamburger{display:inline-flex; flex-direction:column; gap:4px; cursor:pointer}
+    .hamburger span{display:block; width:22px; height:2px; background:var(--text)}
+    #mobileMenu{display:none}
+    @media (max-width: 900px){
+      nav{display:none}
+      #mobileMenu{display:block}
+    }
+
+    /* ====== Hero ====== */
+    .hero{position:relative; overflow:hidden}
+    .hero .inner{display:grid; gap:28px; align-items:center}
+    @media(min-width:980px){
+      .hero .inner{grid-template-columns: 1.15fr .85fr}
+    }
+    .kicker{margin-top:8px}
+    h1{font-size: clamp(32px, 6vw, 58px); line-height:1.05; margin:10px 0 6px}
+    .sub{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted); max-width: 60ch}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px)}
+    .trust{display:flex; align-items:center; gap:18px; flex-wrap:wrap; opacity:.9}
+    .trust img{height:26px; opacity:.8; filter:grayscale(1);}
+
+    /* ====== Feature cards ====== */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px)}
+    .eyebrow{letter-spacing:.15em; text-transform:uppercase; color:var(--brand-2); font-weight:800; font-size:.78rem}
+    h2{font-size: clamp(24px, 4vw, 36px); line-height:1.12; margin:0 0 10px}
+    h3{font-size: clamp(18px, 2.6vw, 22px); margin:0 0 6px}
+    p{margin:0 0 10px}
+    .check{display:flex; gap:.75rem; align-items:flex-start}
+    .check i{margin-top:.25rem; width:18px; height:18px; border-radius:4px; background:linear-gradient(180deg, var(--brand-2), #b7ffd9)}
+
+    /* ====== Testimonial ====== */
+    .testimonial{display:grid; gap:20px; align-items:center}
+    @media(min-width:900px){.testimonial{grid-template-columns: .9fr 1.1fr}}
+    blockquote{margin:0; padding:0; font-size: clamp(18px, 2.4vw, 22px); color:var(--text)}
+    .quote-card{border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
+
+    /* ====== Pricing/CTA ====== */
+    .pricing{display:grid; gap:24px}
+    @media(min-width:900px){.pricing{grid-template-columns: 1.2fr .8fr}}
+    .price{font-size: clamp(28px, 4.5vw, 42px); font-weight:900}
+    .plan{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .plan + .plan{margin-top:10px}
+
+    /* ====== FAQ ====== */
+    details{border:1px solid var(--stroke); border-radius:12px; padding:14px 16px; background:rgba(255,255,255,.02)}
+    details + details{margin-top:10px}
+    summary{cursor:pointer; font-weight:700}
+
+    /* ====== Footer ====== */
+    footer{border-top:1px solid rgba(255,255,255,.07); margin-top:40px}
+    .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted)}
+    .fineprint{font-size:.9rem; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- ====== Top Navigation ====== -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <strong>Your Brand</strong>
+      </a>
+      <nav aria-label="primary">
+        <a href="#learn">Learn</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn secondary" href="#login">Sign in</a>
+        <a class="btn" href="#start">Start Free Trial</a>
+        <button id="mobileMenu" class="hamburger" aria-label="Open Menu" aria-controls="drawer" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero">
+    <div class="container inner">
+      <div>
+        <span class="pill kicker">Guided Growth • Courses • Community</span>
+        <h1>Build, launch & scale what you know — with less complexity.</h1>
+        <p class="sub">Turn your expertise into a thriving program using a simple, step‑by‑step plan, weekly support, and tools that remove tech overwhelm.</p>
+        <div style="display:flex; gap:10px; margin-top:14px">
+          <a class="btn" href="#start">Start Free Trial</a>
+          <a class="btn secondary" href="#learn">See How It Works</a>
+        </div>
+        <div class="trust" style="margin-top:20px">
+          <span class="fineprint">Trusted by creators and coaches worldwide</span>
+          <!-- Replace with your monochrome partner logos -->
+          <img src="https://placehold.co/100x26/svg" alt="Partner 1" />
+          <img src="https://placehold.co/100x26/svg" alt="Partner 2" />
+          <img src="https://placehold.co/100x26/svg" alt="Partner 3" />
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <!-- Replace this image with your dashboard/course builder mockup -->
+        <img src="https://placehold.co/900x560/png" alt="Product preview" />
+        <div class="fineprint" style="margin-top:8px">No credit card required. Cancel anytime.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== The 4 Pillars / Feature Blocks ====== -->
+  <section id="features" class="container" style="margin-top:30px">
+    <div style="text-align:center; margin-bottom:12px">
+      <div class="eyebrow">Your Path</div>
+      <h2>4 Pillars to turn knowledge into revenue</h2>
+      <p class="sub" style="margin-inline:auto">Everything you need to go from idea → income: clear education, weekly accountability, simple implementation, and community momentum.</p>
+    </div>
+
+    <div class="grid cols-2">
+      <article class="card">
+        <h3>Education</h3>
+        <p>Short, practical lessons with worksheets so you take action, not notes.</p>
+        <div class="check"><i></i><p>Launch blueprint: pick a niche, craft your offer, set pricing.</p></div>
+        <div class="check"><i></i><p>Workshop & course templates you can customize in minutes.</p></div>
+      </article>
+
+      <article class="card">
+        <h3>Accountability</h3>
+        <p>Never build alone. Join weekly live calls and sprint with peers.</p>
+        <div class="check"><i></i><p>Weekly coaching + Q&A to keep momentum high.</p></div>
+        <div class="check"><i></i><p>Private community for feedback and wins.</p></div>
+      </article>
+
+      <article class="card">
+        <h3>Implementation</h3>
+        <p>Built‑in tools handle pages, checkout, email, and automations.</p>
+        <div class="check"><i></i><p>Drag‑and‑drop pages & funnels with proven layouts.</p></div>
+        <div class="check"><i></i><p>Payment + email integrated so nothing falls through the cracks.</p></div>
+      </article>
+
+      <article class="card">
+        <h3>Community</h3>
+        <p>Connect with experienced operators who’ve been where you are.</p>
+        <div class="check"><i></i><p>Member directory to find partners and beta customers.</p></div>
+        <div class="check"><i></i><p>Monthly challenges to ship, sell, and scale.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ====== Testimonial / Social Proof ====== -->
+  <section class="container testimonial" style="margin-top:26px">
+    <div>
+      <img src="https://placehold.co/720x520/jpg" alt="Student success collage" />
+    </div>
+    <div class="quote-card">
+      <div class="eyebrow">Member Story</div>
+      <blockquote>
+        “I stalled for a year trying to pick a niche and make the tech work. This system broke it into simple steps and the live calls kept me moving. Launched in 30 days and closed my first 12 clients.”
+      </blockquote>
+      <p class="fineprint">— Alex R., designer turned course creator</p>
+    </div>
+  </section>
+
+  <!-- ====== Pricing / CTA ====== -->
+  <section id="pricing" class="container pricing" style="margin-top:26px">
+    <div class="card">
+      <div class="eyebrow">Simple Pricing</div>
+      <h2>Start free. Upgrade when you’re ready.</h2>
+      <div class="plan">
+        <div>
+          <h3>Starter</h3>
+          <p class="fineprint">Everything to launch your first offer</p>
+        </div>
+        <div class="price">$47<span class="fineprint">/mo</span></div>
+      </div>
+      <ul>
+        <li>Page & funnel builder</li>
+        <li>Email & checkout basics</li>
+        <li>Weekly community call</li>
+      </ul>
+      <div style="height:10px"></div>
+      <div class="plan">
+        <div>
+          <h3>Pro</h3>
+          <p class="fineprint">Scale with advanced automations</p>
+        </div>
+        <div class="price">$97<span class="fineprint">/mo</span></div>
+      </div>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>Advanced automations & segments</li>
+        <li>VIP coaching & templates</li>
+      </ul>
+      <div style="display:flex; gap:10px; margin-top:14px">
+        <a class="btn" id="start" href="#checkout">Start Free Trial</a>
+        <a class="btn secondary" href="#compare">Compare plans</a>
+      </div>
+      <p class="fineprint" style="margin-top:8px">14‑day free trial. Cancel anytime.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">What’s inside</div>
+      <h3>Here’s what you get</h3>
+      <div class="check"><i></i><p>Step‑by‑step launch blueprint</p></div>
+      <div class="check"><i></i><p>Proven page & webinar templates</p></div>
+      <div class="check"><i></i><p>Payments, email & automations built‑in</p></div>
+      <div class="check"><i></i><p>Weekly live calls & private community</p></div>
+      <div class="check"><i></i><p>Analytics that track progress, not vanity</p></div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <section id="faq" class="container" style="margin-top:26px">
+    <div style="text-align:center; margin-bottom:12px">
+      <div class="eyebrow">FAQ</div>
+      <h2>Answers to common questions</h2>
+    </div>
+    <details>
+      <summary>Can I paste this into my platform’s custom HTML block?</summary>
+      <p>Yes. This page is a single HTML file with inline CSS/JS. Replace placeholder text, images, and links. If your platform sanitizes code, avoid adding external scripts.</p>
+    </details>
+    <details>
+      <summary>How do I replace images?</summary>
+      <p>Upload your assets to your platform’s media manager. Copy each file URL and update the <code>src</code> attributes where you see <code>placehold.co</code>.</p>
+    </details>
+    <details>
+      <summary>Is this affiliated with any brand?</summary>
+      <p>No. This is an original, clean‑room template. Do not use third‑party logos, trademarks, or copyrighted copy. Swap all content for your own brand voice.</p>
+    </details>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <div class="container foot">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <strong>Your Brand</strong>
+      </div>
+      <p class="fineprint">© <span id="year"></span> Your Brand. All rights reserved.</p>
+      <div class="fineprint"><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Contact</a></div>
+    </div>
+  </footer>
+
+  <!-- ====== Minimal JS (menu + year) ====== -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.getElementById('mobileMenu');
+    if(btn){
+      btn.addEventListener('click', () => {
+        const exists = document.getElementById('drawer');
+        if(exists){ exists.remove(); btn.setAttribute('aria-expanded','false'); return; }
+        const nav = document.createElement('div');
+        nav.id='drawer';
+        nav.style.position='fixed';
+        nav.style.inset='70px 16px auto 16px';
+        nav.style.background='rgba(17,24,39,.98)';
+        nav.style.border='1px solid var(--stroke)';
+        nav.style.borderRadius='14px';
+        nav.style.padding='10px';
+        nav.style.boxShadow='var(--shadow)';
+        nav.innerHTML = `
+          <a href="#learn" style="display:block; padding:12px 10px; border-radius:10px">Learn</a>
+          <a href="#features" style="display:block; padding:12px 10px; border-radius:10px">Features</a>
+          <a href="#pricing" style="display:block; padding:12px 10px; border-radius:10px">Pricing</a>
+          <a href="#faq" style="display:block; padding:12px 10px; border-radius:10px">FAQ</a>
+        `;
+        document.body.appendChild(nav);
+        btn.setAttribute('aria-expanded','true');
+      });
+    }
+  </script>
+</body>
+</html>
