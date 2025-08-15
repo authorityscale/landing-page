@@ -3,306 +3,362 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Brand — Guided Business Growth</title>
-  <meta name="description" content="A clean-room, Mastermind-inspired landing page template you can paste into a custom HTML block and tailor to your offer." />
+  <title>Authority Scale — Become the Category Leader</title>
+  <meta name="description" content="Authority Scale helps service brands become undeniable: luxury positioning, AI content engines, and back‑end automation that turns demand into revenue." />
+  <link rel="preconnect" href="https://assets.calendly.com" />
   <style>
-    /* ====== Design tokens (edit these first) ====== */
+    /* =============================
+       DESIGN TOKENS — Authority Scale
+       ============================= */
     :root{
-      --bg:#0b1020;           /* page background */
-      --panel:#0f162d;        /* card/section panels */
-      --text:#e8ecf8;         /* primary text */
-      --muted:#b7c0dd;        /* secondary text */
-      --brand:#7cc4ff;        /* accent / CTA */
-      --brand-2:#88ffcc;      /* secondary accent */
-      --stroke:#223053;       /* subtle borders */
-      --shadow: 0 10px 30px rgba(3,8,20,.5);
-      --radius: 16px;
-      --maxw: 1200px;
+      --black:#000000;
+      --white:#FFFFFF;
+      --gold:#C1A35F;         /* Rolex Champagne Gold */
+      --ink:#0A0A0A;          /* near-black for panels */
+      --muted:#B8B8B8;
+      --stroke:rgba(255,255,255,.08);
+      --maxw:1200px;
+      --radius:16px;
+      --shadow:0 18px 48px rgba(0,0,0,.5);
     }
 
-    /* ====== Base ====== */
+    /* Base */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 10% -10%, #142046 0%, transparent 60%),
-                  radial-gradient(900px 500px at 90% -20%, #0d2a3f 0%, transparent 60%), var(--bg);
-      color:var(--text);
+      margin:0; color:var(--white); background: var(--black);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, Ubuntu, "Noto Sans", sans-serif;
       line-height:1.6;
     }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
-    .container{max-width:var(--maxw); margin-inline:auto; padding: clamp(16px, 3vw, 28px)}
-    .pill{display:inline-flex; gap:.5rem; align-items:center; border:1px solid var(--stroke); padding:.35rem .75rem; border-radius:999px; font-weight:600; color:var(--muted)}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; background:linear-gradient(180deg, var(--brand), #4ea9ff); color:#04111f; font-weight:800; border:none; padding:14px 18px; border-radius:12px; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.secondary{background:transparent; color:var(--text); border:1px solid var(--stroke); box-shadow:none}
-    .grid{display:grid; gap: clamp(16px, 2vw, 24px)}
+    .container{max-width:var(--maxw); margin-inline:auto; padding: clamp(16px,3vw,28px)}
+
+    /* Luxury background aura */
+    body::before{
+      content:""; position:fixed; inset:-10% -10% auto -10%; height:70vh; z-index:-1;
+      background: radial-gradient(900px 500px at 10% -10%, rgba(193,163,95,.25), transparent 60%),
+                  radial-gradient(800px 400px at 90% -20%, rgba(193,163,95,.18), transparent 60%);
+      filter: blur(2px);
+    }
+
+    /* Utilities */
+    .pill{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .75rem; border:1px solid var(--stroke); border-radius:999px; color:var(--muted); font-weight:600; letter-spacing:.03em}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; border:none; cursor:pointer; padding:14px 18px; border-radius:12px; font-weight:800; letter-spacing:.02em; transition:transform .15s ease, box-shadow .15s ease}
+    .btn.primary{background:linear-gradient(180deg, var(--gold), #9b7f45); color:#0b0b0b; box-shadow:var(--shadow)}
+    .btn.primary:hover{transform:translateY(-1px)}
+    .btn.ghost{background:transparent; color:var(--white); border:1px solid var(--stroke)}
+
+    .grid{display:grid; gap:clamp(16px,2vw,24px)}
     .grid.cols-3{grid-template-columns:repeat(1,1fr)}
     .grid.cols-2{grid-template-columns:repeat(1,1fr)}
-    @media (min-width: 840px){
+    @media (min-width: 900px){
       .grid.cols-3{grid-template-columns:repeat(3,1fr)}
       .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     }
 
-    /* ====== Top Nav ====== */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(11,16,32,.85), rgba(11,16,32,.55)); border-bottom:1px solid rgba(255,255,255,.04)}
+    h1{font-size: clamp(34px, 6.2vw, 64px); line-height:1.05; margin:10px 0 8px; letter-spacing:.01em}
+    h2{font-size: clamp(24px, 4.2vw, 40px); line-height:1.12; margin:0 0 10px}
+    h3{font-size: clamp(18px, 2.6vw, 22px); margin:0 0 6px}
+    p{margin:0 0 10px}
+    .sub{color:var(--muted); max-width:70ch}
+
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(0,0,0,.82), rgba(0,0,0,.52)); border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex; align-items:center; justify-content:space-between}
     .brand{display:flex; align-items:center; gap:.75rem}
-    .brand-logo{width:36px; height:36px; border-radius:9px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow)}
+    .brand svg{width:36px; height:36px; border-radius:9px; box-shadow:var(--shadow)}
     nav a{color:var(--muted); font-weight:600; padding:.75rem 1rem; border-radius:10px}
-    nav a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    nav a:hover{background:rgba(255,255,255,.04); color:var(--white)}
     .nav-cta{display:flex; align-items:center; gap:.5rem}
-    .hamburger{display:inline-flex; flex-direction:column; gap:4px; cursor:pointer}
-    .hamburger span{display:block; width:22px; height:2px; background:var(--text)}
-    #mobileMenu{display:none}
-    @media (max-width: 900px){
-      nav{display:none}
-      #mobileMenu{display:block}
-    }
+    .hamburger{display:none}
+    @media (max-width: 900px){nav{display:none}.hamburger{display:inline-flex; flex-direction:column; gap:4px; cursor:pointer}.hamburger span{width:22px; height:2px; background:var(--white)}}
 
-    /* ====== Hero ====== */
+    /* Surface Cards */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 24px)}
+    .eyebrow{letter-spacing:.15em; text-transform:uppercase; color:var(--gold); font-weight:800; font-size:.78rem}
+
+    /* Hero */
     .hero{position:relative; overflow:hidden}
     .hero .inner{display:grid; gap:28px; align-items:center}
-    @media(min-width:980px){
-      .hero .inner{grid-template-columns: 1.15fr .85fr}
-    }
-    .kicker{margin-top:8px}
-    h1{font-size: clamp(32px, 6vw, 58px); line-height:1.05; margin:10px 0 6px}
-    .sub{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted); max-width: 60ch}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px)}
-    .trust{display:flex; align-items:center; gap:18px; flex-wrap:wrap; opacity:.9}
-    .trust img{height:26px; opacity:.8; filter:grayscale(1);}
+    @media(min-width:980px){.hero .inner{grid-template-columns: 1.15fr .85fr}}
+    .hero-media{border:1px solid var(--stroke); border-radius:var(--radius); background:linear-gradient(135deg, rgba(193,163,95,.18), rgba(255,255,255,.04)); padding:8px}
+    .hero-shot{height: 520px; border-radius:12px; background:
+      radial-gradient(1200px 600px at -10% -10%, rgba(193,163,95,.25), transparent 60%),
+      url('data:image/svg+xml;utf8,\
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">\
+        <defs>\
+          <linearGradient id="g" x1="0" x2="1">\
+            <stop offset="0%" stop-color="%23000"/>\
+            <stop offset="100%" stop-color="%23111111"/>\
+          </linearGradient>\
+        </defs>\
+        <rect width="1200" height="800" fill="url(%23g)"/>\
+        <g opacity="0.45">\
+          <circle cx="980" cy="160" r="120" fill="%23C1A35F"/>\
+          <rect x="120" y="540" width="960" height="3" fill="%23C1A35F"/>\
+          <rect x="120" y="560" width="760" height="3" fill="%23C1A35F"/>\
+        </g>\
+        <text x="120" y="220" fill="%23ffffff" font-size="44" font-family="Helvetica, Arial" opacity="0.9">Luxury Authority × AI Precision</text>\
+      </svg>');
+      background-size: cover; background-position:center; box-shadow:var(--shadow)}
 
-    /* ====== Feature cards ====== */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px)}
-    .eyebrow{letter-spacing:.15em; text-transform:uppercase; color:var(--brand-2); font-weight:800; font-size:.78rem}
-    h2{font-size: clamp(24px, 4vw, 36px); line-height:1.12; margin:0 0 10px}
-    h3{font-size: clamp(18px, 2.6vw, 22px); margin:0 0 6px}
-    p{margin:0 0 10px}
+    /* Icon list */
     .check{display:flex; gap:.75rem; align-items:flex-start}
-    .check i{margin-top:.25rem; width:18px; height:18px; border-radius:4px; background:linear-gradient(180deg, var(--brand-2), #b7ffd9)}
+    .check i{margin-top:.25rem; width:18px; height:18px; border-radius:4px; background:linear-gradient(180deg, var(--gold), #e7cf8d)}
 
-    /* ====== Testimonial ====== */
-    .testimonial{display:grid; gap:20px; align-items:center}
-    @media(min-width:900px){.testimonial{grid-template-columns: .9fr 1.1fr}}
-    blockquote{margin:0; padding:0; font-size: clamp(18px, 2.4vw, 22px); color:var(--text)}
-    .quote-card{border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
+    /* Industries badges */
+    .badge{border:1px solid var(--stroke); border-radius:999px; padding:.5rem .9rem; color:var(--muted); font-weight:700; letter-spacing:.02em}
 
-    /* ====== Pricing/CTA ====== */
-    .pricing{display:grid; gap:24px}
-    @media(min-width:900px){.pricing{grid-template-columns: 1.2fr .8fr}}
-    .price{font-size: clamp(28px, 4.5vw, 42px); font-weight:900}
-    .plan{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .plan + .plan{margin-top:10px}
+    /* Testimonial */
+    blockquote{margin:0; padding:0; font-size: clamp(18px, 2.4vw, 22px); color:var(--white)}
 
-    /* ====== FAQ ====== */
-    details{border:1px solid var(--stroke); border-radius:12px; padding:14px 16px; background:rgba(255,255,255,.02)}
-    details + details{margin-top:10px}
-    summary{cursor:pointer; font-weight:700}
-
-    /* ====== Footer ====== */
+    /* Footer */
     footer{border-top:1px solid rgba(255,255,255,.07); margin-top:40px}
     .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted)}
-    .fineprint{font-size:.9rem; color:var(--muted)}
+    .fineprint{font-size:.95rem; color:var(--muted)}
+
+    /* Subtle fades */
+    .reveal{opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease}
+    .reveal.show{opacity:1; transform:none}
   </style>
 </head>
 <body>
-  <!-- ====== Top Navigation ====== -->
+  <!-- =============================
+       HEADER / NAV
+       ============================= -->
   <header>
     <div class="container nav">
       <a class="brand" href="#">
-        <span class="brand-logo" aria-hidden="true"></span>
-        <strong>Your Brand</strong>
+        <!-- Inline SVG LOGO (wordmark + mark) -->
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="goldGrad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#C1A35F"/>
+              <stop offset="100%" stop-color="#9b7f45"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="48" height="48" rx="10" fill="url(#goldGrad)"/>
+          <path d="M12 30 L24 12 L36 30" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
+          <path d="M18 28 L24 20 L30 28" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <strong>Authority&nbsp;Scale</strong>
       </a>
       <nav aria-label="primary">
-        <a href="#learn">Learn</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+        <a href="#how">Process</a>
+        <a href="#industries">Industries</a>
+        <a href="#proof">Proof</a>
+        <a href="#book">Book</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn secondary" href="#login">Sign in</a>
-        <a class="btn" href="#start">Start Free Trial</a>
-        <button id="mobileMenu" class="hamburger" aria-label="Open Menu" aria-controls="drawer" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+        <a class="btn ghost" href="#proof">Results</a>
+        <a class="btn primary" href="#book">Book a Consult</a>
       </div>
+      <button class="hamburger" id="mobileMenu" aria-label="Open Menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- ====== Hero ====== -->
+  <!-- =============================
+       HERO
+       ============================= -->
   <section class="hero">
     <div class="container inner">
       <div>
-        <span class="pill kicker">Guided Growth • Courses • Community</span>
-        <h1>Build, launch & scale what you know — with less complexity.</h1>
-        <p class="sub">Turn your expertise into a thriving program using a simple, step‑by‑step plan, weekly support, and tools that remove tech overwhelm.</p>
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <a class="btn" href="#start">Start Free Trial</a>
-          <a class="btn secondary" href="#learn">See How It Works</a>
+        <span class="pill">Luxury Positioning • AI Engine • Revenue Systems</span>
+        <h1>Become Undeniable.<br/>Command Your Market. Convert on Demand.</h1>
+        <p class="sub">We combine heritage‑level luxury branding with AI precision and back‑end automation. The outcome: authority that compounds and a pipeline that never sleeps.</p>
+        <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
+          <a class="btn primary" href="#book">Book a Consult</a>
+          <a class="btn ghost" href="#apply">Apply for Access</a>
         </div>
-        <div class="trust" style="margin-top:20px">
-          <span class="fineprint">Trusted by creators and coaches worldwide</span>
-          <!-- Replace with your monochrome partner logos -->
-          <img src="https://placehold.co/100x26/svg" alt="Partner 1" />
-          <img src="https://placehold.co/100x26/svg" alt="Partner 2" />
-          <img src="https://placehold.co/100x26/svg" alt="Partner 3" />
-        </div>
+        <div class="fineprint" style="margin-top:10px">High‑ticket operators only • Coaches • Consultants • Law • Real Estate • Med Spas • Plastic Surgeons • Home Improvement</div>
       </div>
-
-      <div class="hero-card">
-        <!-- Replace this image with your dashboard/course builder mockup -->
-        <img src="https://placehold.co/900x560/png" alt="Product preview" />
-        <div class="fineprint" style="margin-top:8px">No credit card required. Cancel anytime.</div>
+      <div class="hero-media reveal">
+        <div class="hero-shot" role="img" aria-label="Luxury black marble with gold lines and AI interface overlay"></div>
+        <div class="fineprint" style="margin-top:8px">Luxury Authority × AI Precision</div>
       </div>
     </div>
   </section>
 
-  <!-- ====== The 4 Pillars / Feature Blocks ====== -->
-  <section id="features" class="container" style="margin-top:30px">
-    <div style="text-align:center; margin-bottom:12px">
-      <div class="eyebrow">Your Path</div>
-      <h2>4 Pillars to turn knowledge into revenue</h2>
-      <p class="sub" style="margin-inline:auto">Everything you need to go from idea → income: clear education, weekly accountability, simple implementation, and community momentum.</p>
+  <!-- =============================
+       TRANSFORMATION / USP
+       ============================= -->
+  <section class="container" id="learn" style="margin-top:30px">
+    <div class="grid cols-3">
+      <article class="card reveal">
+        <div class="eyebrow">Luxury Positioning Engine</div>
+        <h3>From credible to <em>undeniable</em>.</h3>
+        <p>Elevate brand, message, and presence to category leadership. Command premium pricing and curate your client roster.</p>
+      </article>
+      <article class="card reveal">
+        <div class="eyebrow">AI Content Authority</div>
+        <h3>Publish like a media company.</h3>
+        <p>Top‑tier content system that multiplies your ideas into elite long‑form, shorts, carousels, and thought leadership — without diluting your voice.</p>
+      </article>
+      <article class="card reveal">
+        <div class="eyebrow">Revenue Systems</div>
+        <h3>Leads → Sales Calls → Clients.</h3>
+        <p>Back‑end automations, nurture, and offer architecture that turn attention into demand — and demand into revenue.</p>
+      </article>
     </div>
+  </section>
 
+  <!-- =============================
+       INDUSTRIES
+       ============================= -->
+  <section class="container card" id="industries" style="margin-top:26px">
+    <div class="eyebrow">Who We Elevate</div>
+    <h2>Built for elite service brands</h2>
+    <p class="sub">Coaches • Consultants • Real Estate • Law • Med Spas • Plastic Surgeons • Home Improvement</p>
+    <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:8px">
+      <span class="badge">Coaches</span>
+      <span class="badge">Consultants</span>
+      <span class="badge">Real Estate</span>
+      <span class="badge">Law</span>
+      <span class="badge">Med Spas</span>
+      <span class="badge">Plastic Surgeons</span>
+      <span class="badge">Home Improvement</span>
+    </div>
+  </section>
+
+  <!-- =============================
+       PROCESS
+       ============================= -->
+  <section class="container" id="how" style="margin-top:26px">
+    <div style="text-align:center; margin-bottom:12px">
+      <div class="eyebrow">The Authority Scale Method</div>
+      <h2>3 Phases to dominate your market</h2>
+      <p class="sub" style="margin-inline:auto">A precise roadmap that blends luxury brand strategy, AI leverage, and revenue automation.</p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card reveal">
+        <h3>1) Authority Ascension</h3>
+        <div class="check"><i></i><p>Positioning, visual identity, and messaging that signal leadership.</p></div>
+        <div class="check"><i></i><p>Signature POV & editorial pillars for magnetic relevance.</p></div>
+        <div class="check"><i></i><p>Premium offer architecture & pricing power.</p></div>
+      </article>
+      <article class="card reveal">
+        <h3>2) Market Domination</h3>
+        <div class="check"><i></i><p>AI‑assisted content engine (long‑form, shorts, articles, carousels).</p></div>
+        <div class="check"><i></i><p>Distribution flywheel across owned + social channels.</p></div>
+        <div class="check"><i></i><p>Thought‑leadership campaigns that create category demand.</p></div>
+      </article>
+      <article class="card reveal">
+        <h3>3) Revenue Automation</h3>
+        <div class="check"><i></i><p>CRM, nurture, and booking automation that converts at scale.</p></div>
+        <div class="check"><i></i><p>Analytics for signal, not vanity — iterate to compound ROI.</p></div>
+        <div class="check"><i></i><p>Team enablement & SOPs for durable growth.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- =============================
+       PROOF & PRESTIGE (Placeholders)
+       ============================= -->
+  <section class="container" id="proof" style="margin-top:26px">
     <div class="grid cols-2">
-      <article class="card">
-        <h3>Education</h3>
-        <p>Short, practical lessons with worksheets so you take action, not notes.</p>
-        <div class="check"><i></i><p>Launch blueprint: pick a niche, craft your offer, set pricing.</p></div>
-        <div class="check"><i></i><p>Workshop & course templates you can customize in minutes.</p></div>
+      <article class="card reveal">
+        <div class="eyebrow">Member Stories</div>
+        <blockquote>“We went from overlooked to overbooked in 45 days. The brand elevation alone paid for the engagement — the automation turned it into a machine.”</blockquote>
+        <p class="fineprint">— Placeholder Client, Managing Partner (Law)</p>
+        <div style="height:10px"></div>
+        <blockquote>“Content went from sporadic to surgical. We closed 7 high‑ticket retainers off the first campaign.”</blockquote>
+        <p class="fineprint">— Placeholder Client, Principal (Consulting)</p>
       </article>
-
-      <article class="card">
-        <h3>Accountability</h3>
-        <p>Never build alone. Join weekly live calls and sprint with peers.</p>
-        <div class="check"><i></i><p>Weekly coaching + Q&A to keep momentum high.</p></div>
-        <div class="check"><i></i><p>Private community for feedback and wins.</p></div>
-      </article>
-
-      <article class="card">
-        <h3>Implementation</h3>
-        <p>Built‑in tools handle pages, checkout, email, and automations.</p>
-        <div class="check"><i></i><p>Drag‑and‑drop pages & funnels with proven layouts.</p></div>
-        <div class="check"><i></i><p>Payment + email integrated so nothing falls through the cracks.</p></div>
-      </article>
-
-      <article class="card">
-        <h3>Community</h3>
-        <p>Connect with experienced operators who’ve been where you are.</p>
-        <div class="check"><i></i><p>Member directory to find partners and beta customers.</p></div>
-        <div class="check"><i></i><p>Monthly challenges to ship, sell, and scale.</p></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ====== Testimonial / Social Proof ====== -->
-  <section class="container testimonial" style="margin-top:26px">
-    <div>
-      <img src="https://placehold.co/720x520/jpg" alt="Student success collage" />
-    </div>
-    <div class="quote-card">
-      <div class="eyebrow">Member Story</div>
-      <blockquote>
-        “I stalled for a year trying to pick a niche and make the tech work. This system broke it into simple steps and the live calls kept me moving. Launched in 30 days and closed my first 12 clients.”
-      </blockquote>
-      <p class="fineprint">— Alex R., designer turned course creator</p>
-    </div>
-  </section>
-
-  <!-- ====== Pricing / CTA ====== -->
-  <section id="pricing" class="container pricing" style="margin-top:26px">
-    <div class="card">
-      <div class="eyebrow">Simple Pricing</div>
-      <h2>Start free. Upgrade when you’re ready.</h2>
-      <div class="plan">
-        <div>
-          <h3>Starter</h3>
-          <p class="fineprint">Everything to launch your first offer</p>
+      <article class="card reveal">
+        <div class="eyebrow">Featured In</div>
+        <p class="sub">Placeholder logos — replace with media, awards, or partner marks.</p>
+        <div class="grid cols-3" style="margin-top:10px">
+          <div class="card" style="text-align:center; padding:18px"><span style="opacity:.8">MEDIA 1</span></div>
+          <div class="card" style="text-align:center; padding:18px"><span style="opacity:.8">MEDIA 2</span></div>
+          <div class="card" style="text-align:center; padding:18px"><span style="opacity:.8">MEDIA 3</span></div>
         </div>
-        <div class="price">$47<span class="fineprint">/mo</span></div>
-      </div>
-      <ul>
-        <li>Page & funnel builder</li>
-        <li>Email & checkout basics</li>
-        <li>Weekly community call</li>
-      </ul>
-      <div style="height:10px"></div>
-      <div class="plan">
-        <div>
-          <h3>Pro</h3>
-          <p class="fineprint">Scale with advanced automations</p>
+        <div class="fineprint" style="margin-top:8px">Swap these with your brand/press logos in SVG for a crisp luxury feel.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- =============================
+       AI × LUXURY VISUAL (Decorative placeholder)
+       ============================= -->
+  <section class="container" style="margin-top:26px">
+    <div class="card reveal" style="display:grid; gap:18px; align-items:center">
+      <div class="eyebrow">AI × Luxury</div>
+      <h2>Heritage cues. Future performance.</h2>
+      <p class="sub">Black marble, champagne gold, and minimal typography — fused with AI‑assisted creation and revenue intelligence. This is what category leadership looks like.</p>
+      <div style="height:14px"></div>
+      <div style="height:320px; border-radius:12px; border:1px solid var(--stroke); background:
+        linear-gradient(135deg, rgba(193,163,95,.12), rgba(255,255,255,.03)),
+        url('data:image/svg+xml;utf8,\
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">\
+            <rect width="1200" height="600" fill="%23000000"/>\
+            <g opacity="0.65">\
+              <path d="M120 420 C300 280, 520 520, 760 360 S 1080 280, 1140 340" stroke="%23C1A35F" stroke-width="3" fill="none"/>\
+              <circle cx="280" cy="220" r="90" fill="none" stroke="%23C1A35F" stroke-width="2"/>\
+              <rect x="860" y="160" width="200" height="120" fill="none" stroke="%23C1A35F" stroke-width="2" rx="10"/>\
+            </g>\
+            <text x="140" y="160" fill="%23ffffff" font-size="40" font-family="Helvetica, Arial" opacity="0.9">AI‑Assisted Thought Leadership</text>\
+          </svg>'); background-size:cover; background-position:center"></div>
+    </div>
+  </section>
+
+  <!-- =============================
+       BOOKING (Embedded calendar) + APPLY (Google Form)
+       ============================= -->
+  <section class="container" id="book" style="margin-top:26px">
+    <div class="grid cols-2">
+      <article class="card reveal">
+        <div class="eyebrow">Book a Consult</div>
+        <h2>Private strategy session</h2>
+        <p class="sub">Choose a time below. After booking, you’ll be directed to complete a brief application so we can prepare a tailored strategy.</p>
+        <!-- Calendly Inline Widget: Replace data-url with your event link
+             Example: https://calendly.com/your-handle/strategy-call?hide_event_type_details=1&primary_color=C1A35F
+             For post-booking redirect to Google Form, set it inside Calendly (Confirmation Page -> Redirect URL). -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/your-handle/strategy-call?hide_event_type_details=1&primary_color=C1A35F" style="min-width:320px;height:700px;"></div>
+      </article>
+      <article class="card reveal" id="apply">
+        <div class="eyebrow">Apply for Access</div>
+        <h2>High‑ticket engagement</h2>
+        <p class="sub">Prefer to apply first? Share a few details and we’ll follow up with next steps.</p>
+        <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
+          <!-- Replace the href with your Google Form URL -->
+          <a class="btn primary" href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener noreferrer">Open Application</a>
+          <a class="btn ghost" href="#">Download One‑Pager</a>
         </div>
-        <div class="price">$97<span class="fineprint">/mo</span></div>
-      </div>
-      <ul>
-        <li>Everything in Starter</li>
-        <li>Advanced automations & segments</li>
-        <li>VIP coaching & templates</li>
-      </ul>
-      <div style="display:flex; gap:10px; margin-top:14px">
-        <a class="btn" id="start" href="#checkout">Start Free Trial</a>
-        <a class="btn secondary" href="#compare">Compare plans</a>
-      </div>
-      <p class="fineprint" style="margin-top:8px">14‑day free trial. Cancel anytime.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">What’s inside</div>
-      <h3>Here’s what you get</h3>
-      <div class="check"><i></i><p>Step‑by‑step launch blueprint</p></div>
-      <div class="check"><i></i><p>Proven page & webinar templates</p></div>
-      <div class="check"><i></i><p>Payments, email & automations built‑in</p></div>
-      <div class="check"><i></i><p>Weekly live calls & private community</p></div>
-      <div class="check"><i></i><p>Analytics that track progress, not vanity</p></div>
-    </div>
-  </section> 
-
-   <!-- ====== Lead Capture Section ====== -->
-  <section id="lead-capture" class="container" style="margin-top:40px;">
-    <div style="text-align:center;">
-      <h2>Join Our Community</h2>
-      <p>Sign up to get updates, resources, and exclusive content.</p>
-      <!-- Replace YOUR_FORM_ID with your actual Google Form ID -->
-      <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <p class="fineprint" style="margin-top:10px">Tip: keep your answers concise and outcome‑focused.</p>
+      </article>
     </div>
   </section>
-  <!-- ====== FAQ ====== -->
-  <section id="faq" class="container" style="margin-top:26px">
-    <div style="text-align:center; margin-bottom:12px">
-      <div class="eyebrow">FAQ</div>
-      <h2>Answers to common questions</h2>
-    </div>
-    <details>
-      <summary>Can I paste this into my platform’s custom HTML block?</summary>
-      <p>Yes. This page is a single HTML file with inline CSS/JS. Replace placeholder text, images, and links. If your platform sanitizes code, avoid adding external scripts.</p>
-    </details>
-    <details>
-      <summary>How do I replace images?</summary>
-      <p>Upload your assets to your platform’s media manager. Copy each file URL and update the <code>src</code> attributes where you see <code>placehold.co</code>.</p>
-    </details>
-    <details>
-      <summary>Is this affiliated with any brand?</summary>
-      <p>No. This is an original, clean‑room template. Do not use third‑party logos, trademarks, or copyrighted copy. Swap all content for your own brand voice.</p>
-    </details>
-  </section>
 
-  <!-- ====== Footer ====== -->
+  <!-- =============================
+       FOOTER
+       ============================= -->
   <footer>
     <div class="container foot">
       <div class="brand">
-        <span class="brand-logo" aria-hidden="true"></span>
-        <strong>Your Brand</strong>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="goldGrad2" x1="0" x2="1"><stop offset="0%" stop-color="#C1A35F"/><stop offset="100%" stop-color="#9b7f45"/></linearGradient></defs><rect x="0" y="0" width="48" height="48" rx="10" fill="url(#goldGrad2)"/><path d="M12 30 L24 12 L36 30" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/><path d="M18 28 L24 20 L30 28" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/></svg>
+        <strong>Authority&nbsp;Scale</strong>
       </div>
-      <p class="fineprint">© <span id="year"></span> Your Brand. All rights reserved.</p>
+      <p class="fineprint">© <span id="year"></span> Authority Scale. All rights reserved.</p>
       <div class="fineprint"><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Contact</a></div>
     </div>
   </footer>
 
-  <!-- ====== Minimal JS (menu + year) ====== -->
+  <!-- =============================
+       JS — tiny, fast
+       ============================= -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } })
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Mobile drawer
     const btn = document.getElementById('mobileMenu');
     if(btn){
       btn.addEventListener('click', () => {
@@ -310,18 +366,12 @@
         if(exists){ exists.remove(); btn.setAttribute('aria-expanded','false'); return; }
         const nav = document.createElement('div');
         nav.id='drawer';
-        nav.style.position='fixed';
-        nav.style.inset='70px 16px auto 16px';
-        nav.style.background='rgba(17,24,39,.98)';
-        nav.style.border='1px solid var(--stroke)';
-        nav.style.borderRadius='14px';
-        nav.style.padding='10px';
-        nav.style.boxShadow='var(--shadow)';
+        Object.assign(nav.style, {position:'fixed', inset:'70px 16px auto 16px', background:'rgba(0,0,0,.96)', border:'1px solid var(--stroke)', borderRadius:'14px', padding:'10px', boxShadow:'var(--shadow)', zIndex:60});
         nav.innerHTML = `
-          <a href="#learn" style="display:block; padding:12px 10px; border-radius:10px">Learn</a>
-          <a href="#features" style="display:block; padding:12px 10px; border-radius:10px">Features</a>
-          <a href="#pricing" style="display:block; padding:12px 10px; border-radius:10px">Pricing</a>
-          <a href="#faq" style="display:block; padding:12px 10px; border-radius:10px">FAQ</a>
+          <a href="#how" style="display:block; padding:12px 10px; border-radius:10px">Process</a>
+          <a href="#industries" style="display:block; padding:12px 10px; border-radius:10px">Industries</a>
+          <a href="#proof" style="display:block; padding:12px 10px; border-radius:10px">Proof</a>
+          <a href="#book" style="display:block; padding:12px 10px; border-radius:10px">Book</a>
         `;
         document.body.appendChild(nav);
         btn.setAttribute('aria-expanded','true');
@@ -331,276 +381,3 @@
 </body>
 </html>
 
-      nav{display:none}
-      #mobileMenu{display:block}
-    }
-
-    /* ====== Hero ====== */
-    .hero{position:relative; overflow:hidden}
-    .hero .inner{display:grid; gap:28px; align-items:center}
-    @media(min-width:980px){
-      .hero .inner{grid-template-columns: 1.15fr .85fr}
-    }
-    .kicker{margin-top:8px}
-    h1{font-size: clamp(32px, 6vw, 58px); line-height:1.05; margin:10px 0 6px}
-    .sub{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted); max-width: 60ch}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px)}
-    .trust{display:flex; align-items:center; gap:18px; flex-wrap:wrap; opacity:.9}
-    .trust img{height:26px; opacity:.8; filter:grayscale(1);}
-
-    /* ====== Feature cards ====== */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px)}
-    .eyebrow{letter-spacing:.15em; text-transform:uppercase; color:var(--brand-2); font-weight:800; font-size:.78rem}
-    h2{font-size: clamp(24px, 4vw, 36px); line-height:1.12; margin:0 0 10px}
-    h3{font-size: clamp(18px, 2.6vw, 22px); margin:0 0 6px}
-    p{margin:0 0 10px}
-    .check{display:flex; gap:.75rem; align-items:flex-start}
-    .check i{margin-top:.25rem; width:18px; height:18px; border-radius:4px; background:linear-gradient(180deg, var(--brand-2), #b7ffd9)}
-
-    /* ====== Testimonial ====== */
-    .testimonial{display:grid; gap:20px; align-items:center}
-    @media(min-width:900px){.testimonial{grid-template-columns: .9fr 1.1fr}}
-    blockquote{margin:0; padding:0; font-size: clamp(18px, 2.4vw, 22px); color:var(--text)}
-    .quote-card{border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 22px); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02))}
-
-    /* ====== Pricing/CTA ====== */
-    .pricing{display:grid; gap:24px}
-    @media(min-width:900px){.pricing{grid-template-columns: 1.2fr .8fr}}
-    .price{font-size: clamp(28px, 4.5vw, 42px); font-weight:900}
-    .plan{display:flex; align-items:center; justify-content:space-between; gap:16px}
-    .plan + .plan{margin-top:10px}
-
-    /* ====== FAQ ====== */
-    details{border:1px solid var(--stroke); border-radius:12px; padding:14px 16px; background:rgba(255,255,255,.02)}
-    details + details{margin-top:10px}
-    summary{cursor:pointer; font-weight:700}
-
-    /* ====== Footer ====== */
-    footer{border-top:1px solid rgba(255,255,255,.07); margin-top:40px}
-    .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted)}
-    .fineprint{font-size:.9rem; color:var(--muted)}
-  </style>
-</head>
-<body>
-  <!-- ====== Top Navigation ====== -->
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#">
-        <span class="brand-logo" aria-hidden="true"></span>
-        <strong>Your Brand</strong>
-      </a>
-      <nav aria-label="primary">
-        <a href="#learn">Learn</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn secondary" href="#login">Sign in</a>
-        <a class="btn" href="#start">Start Free Trial</a>
-        <button id="mobileMenu" class="hamburger" aria-label="Open Menu" aria-controls="drawer" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ====== Hero ====== -->
-  <section class="hero">
-    <div class="container inner">
-      <div>
-        <span class="pill kicker">Guided Growth • Courses • Community</span>
-        <h1>Build, launch & scale what you know — with less complexity.</h1>
-        <p class="sub">Turn your expertise into a thriving program using a simple, step‑by‑step plan, weekly support, and tools that remove tech overwhelm.</p>
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <a class="btn" href="#start">Start Free Trial</a>
-          <a class="btn secondary" href="#learn">See How It Works</a>
-        </div>
-        <div class="trust" style="margin-top:20px">
-          <span class="fineprint">Trusted by creators and coaches worldwide</span>
-          <!-- Replace with your monochrome partner logos -->
-          <img src="https://placehold.co/100x26/svg" alt="Partner 1" />
-          <img src="https://placehold.co/100x26/svg" alt="Partner 2" />
-          <img src="https://placehold.co/100x26/svg" alt="Partner 3" />
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <!-- Replace this image with your dashboard/course builder mockup -->
-        <img src="https://placehold.co/900x560/png" alt="Product preview" />
-        <div class="fineprint" style="margin-top:8px">No credit card required. Cancel anytime.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== The 4 Pillars / Feature Blocks ====== -->
-  <section id="features" class="container" style="margin-top:30px">
-    <div style="text-align:center; margin-bottom:12px">
-      <div class="eyebrow">Your Path</div>
-      <h2>4 Pillars to turn knowledge into revenue</h2>
-      <p class="sub" style="margin-inline:auto">Everything you need to go from idea → income: clear education, weekly accountability, simple implementation, and community momentum.</p>
-    </div>
-
-    <div class="grid cols-2">
-      <article class="card">
-        <h3>Education</h3>
-        <p>Short, practical lessons with worksheets so you take action, not notes.</p>
-        <div class="check"><i></i><p>Launch blueprint: pick a niche, craft your offer, set pricing.</p></div>
-        <div class="check"><i></i><p>Workshop & course templates you can customize in minutes.</p></div>
-      </article>
-
-      <article class="card">
-        <h3>Accountability</h3>
-        <p>Never build alone. Join weekly live calls and sprint with peers.</p>
-        <div class="check"><i></i><p>Weekly coaching + Q&A to keep momentum high.</p></div>
-        <div class="check"><i></i><p>Private community for feedback and wins.</p></div>
-      </article>
-
-      <article class="card">
-        <h3>Implementation</h3>
-        <p>Built‑in tools handle pages, checkout, email, and automations.</p>
-        <div class="check"><i></i><p>Drag‑and‑drop pages & funnels with proven layouts.</p></div>
-        <div class="check"><i></i><p>Payment + email integrated so nothing falls through the cracks.</p></div>
-      </article>
-
-      <article class="card">
-        <h3>Community</h3>
-        <p>Connect with experienced operators who’ve been where you are.</p>
-        <div class="check"><i></i><p>Member directory to find partners and beta customers.</p></div>
-        <div class="check"><i></i><p>Monthly challenges to ship, sell, and scale.</p></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ====== Testimonial / Social Proof ====== -->
-  <section class="container testimonial" style="margin-top:26px">
-    <div>
-      <img src="https://placehold.co/720x520/jpg" alt="Student success collage" />
-    </div>
-    <div class="quote-card">
-      <div class="eyebrow">Member Story</div>
-      <blockquote>
-        “I stalled for a year trying to pick a niche and make the tech work. This system broke it into simple steps and the live calls kept me moving. Launched in 30 days and closed my first 12 clients.”
-      </blockquote>
-      <p class="fineprint">— Alex R., designer turned course creator</p>
-    </div>
-  </section>
-
-  <!-- ====== Pricing / CTA ====== -->
-  <section id="pricing" class="container pricing" style="margin-top:26px">
-    <div class="card">
-      <div class="eyebrow">Simple Pricing</div>
-      <h2>Start free. Upgrade when you’re ready.</h2>
-      <div class="plan">
-        <div>
-          <h3>Starter</h3>
-          <p class="fineprint">Everything to launch your first offer</p>
-        </div>
-        <div class="price">$47<span class="fineprint">/mo</span></div>
-      </div>
-      <ul>
-        <li>Page & funnel builder</li>
-        <li>Email & checkout basics</li>
-        <li>Weekly community call</li>
-      </ul>
-      <div style="height:10px"></div>
-      <div class="plan">
-        <div>
-          <h3>Pro</h3>
-          <p class="fineprint">Scale with advanced automations</p>
-        </div>
-        <div class="price">$97<span class="fineprint">/mo</span></div>
-      </div>
-      <ul>
-        <li>Everything in Starter</li>
-        <li>Advanced automations & segments</li>
-        <li>VIP coaching & templates</li>
-      </ul>
-      <div style="display:flex; gap:10px; margin-top:14px">
-        <a class="btn" id="start" href="#checkout">Start Free Trial</a>
-        <a class="btn secondary" href="#compare">Compare plans</a>
-      </div>
-      <p class="fineprint" style="margin-top:8px">14‑day free trial. Cancel anytime.</p>
-    </div>
-    <div class="card">
-      <div class="eyebrow">What’s inside</div>
-      <h3>Here’s what you get</h3>
-      <div class="check"><i></i><p>Step‑by‑step launch blueprint</p></div>
-      <div class="check"><i></i><p>Proven page & webinar templates</p></div>
-      <div class="check"><i></i><p>Payments, email & automations built‑in</p></div>
-      <div class="check"><i></i><p>Weekly live calls & private community</p></div>
-      <div class="check"><i></i><p>Analytics that track progress, not vanity</p></div>
-    </div>
-  </section> 
-
-   <!-- ====== Lead Capture Section ====== -->
-  <section id="lead-capture" class="container" style="margin-top:40px;">
-    <div style="text-align:center;">
-      <h2>Join Our Community</h2>
-      <p>Sign up to get updates, resources, and exclusive content.</p>
-      <!-- Replace YOUR_FORM_ID with your actual Google Form ID -->
-      <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
-  </section>
-  <!-- ====== FAQ ====== -->
-  <section id="faq" class="container" style="margin-top:26px">
-    <div style="text-align:center; margin-bottom:12px">
-      <div class="eyebrow">FAQ</div>
-      <h2>Answers to common questions</h2>
-    </div>
-    <details>
-      <summary>Can I paste this into my platform’s custom HTML block?</summary>
-      <p>Yes. This page is a single HTML file with inline CSS/JS. Replace placeholder text, images, and links. If your platform sanitizes code, avoid adding external scripts.</p>
-    </details>
-    <details>
-      <summary>How do I replace images?</summary>
-      <p>Upload your assets to your platform’s media manager. Copy each file URL and update the <code>src</code> attributes where you see <code>placehold.co</code>.</p>
-    </details>
-    <details>
-      <summary>Is this affiliated with any brand?</summary>
-      <p>No. This is an original, clean‑room template. Do not use third‑party logos, trademarks, or copyrighted copy. Swap all content for your own brand voice.</p>
-    </details>
-  </section>
-
-  <!-- ====== Footer ====== -->
-  <footer>
-    <div class="container foot">
-      <div class="brand">
-        <span class="brand-logo" aria-hidden="true"></span>
-        <strong>Your Brand</strong>
-      </div>
-      <p class="fineprint">© <span id="year"></span> Your Brand. All rights reserved.</p>
-      <div class="fineprint"><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Contact</a></div>
-    </div>
-  </footer>
-
-  <!-- ====== Minimal JS (menu + year) ====== -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const btn = document.getElementById('mobileMenu');
-    if(btn){
-      btn.addEventListener('click', () => {
-        const exists = document.getElementById('drawer');
-        if(exists){ exists.remove(); btn.setAttribute('aria-expanded','false'); return; }
-        const nav = document.createElement('div');
-        nav.id='drawer';
-        nav.style.position='fixed';
-        nav.style.inset='70px 16px auto 16px';
-        nav.style.background='rgba(17,24,39,.98)';
-        nav.style.border='1px solid var(--stroke)';
-        nav.style.borderRadius='14px';
-        nav.style.padding='10px';
-        nav.style.boxShadow='var(--shadow)';
-        nav.innerHTML = `
-          <a href="#learn" style="display:block; padding:12px 10px; border-radius:10px">Learn</a>
-          <a href="#features" style="display:block; padding:12px 10px; border-radius:10px">Features</a>
-          <a href="#pricing" style="display:block; padding:12px 10px; border-radius:10px">Pricing</a>
-          <a href="#faq" style="display:block; padding:12px 10px; border-radius:10px">FAQ</a>
-        `;
-        document.body.appendChild(nav);
-        btn.setAttribute('aria-expanded','true');
-      });
-    }
-  </script>
-</body>
-</html>
