@@ -3,381 +3,932 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Authority Scale — Command the Market</title>
-  <meta name="description" content="Authority Scale installs a private client growth system that elevates your presence, saturates your market, and turns attention into booked revenue — without adding complexity or headcount." />
-  <link rel="preconnect" href="https://assets.calendly.com" />
+  <title>Authority Scale™ — Executive Authority & Market Command</title>
+  <meta name="description" content="Authority Scale™ architects visibility systems for leaders operating where stakes are high and invisibility isn’t an option." />
+  <meta name="theme-color" content="#0b0b0e" />
+  <!-- OpenGraph / Twitter for shareability -->
+  <meta property="og:title" content="Authority Scale™ — Executive Authority & Strategic Influence"/>
+  <meta property="og:description" content="Authority Scale™ architects visibility systems for leaders who operate at the highest tier—where perception drives power."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23000000'/%3E%3Ccircle cx='600' cy='315' r='200' fill='none' stroke='%23FFD700' stroke-width='12'/%3E%3Cpath d='M480 450L600 180l120 270m-50-120H530' fill='none' stroke='%23FFD700' stroke-width='18' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ctext x='600' y='540' text-anchor='middle' font-family='Inter,Arial' font-size='42' fill='%23FFFFFF'%3EAuthority Scale%E2%84%A2%3C/text%3E%3C/svg%3E"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://your-domain.example/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000000'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23FFD700' stroke-width='3'/%3E%3Cpath d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='%23FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <style>
-    /* =============================
-       DESIGN TOKENS — Authority Scale
-       ============================= */
     :root{
-      --black:#000000;
-      --white:#FFFFFF;
-      --gold:#C1A35F;         /* Champagne Gold */
-      --ink:#0A0A0A;          /* near-black for panels */
-      --muted:#B8B8B8;
-      --stroke:rgba(255,255,255,.08);
-      --maxw:1200px;
-      --radius:16px;
-      --shadow:0 18px 48px rgba(0,0,0,.5);
+      --bg: #0b0b0e;             /* near-black */
+      --ink: #e8e8ea;            /* soft white */
+      --muted: #9ea0a6;          /* soft gray */
+      --graphite: #1a1b1f;       /* panels */
+      --charcoal: #121317;       /* base */
+      --emerald: #0e3b32;        /* deep green accent */
+      --emerald-glow: #1f6f5d;   /* subtle glow */
+      --brass: #FFD700;          /* gold */
+      --brass-deep: #B8860B;     /* dark gold */     /* deeper gold */
+      --marble: #0f0f12;         /* subtle texture base */
+      --maxw: 1200px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
     }
-
-    /* Base */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; color:var(--white); background: var(--black);
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Segoe UI", Roboto, Ubuntu, "Noto Sans", sans-serif;
-      line-height:1.6;
+      margin:0; color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(31,111,93,.22), transparent 60%),
+        radial-gradient(900px 500px at 10% 10%, rgba(212,175,55,.10), transparent 50%),
+        linear-gradient(180deg, var(--charcoal), var(--bg));
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.55; letter-spacing:.2px;
     }
+    h1,h2,h3{font-family:'Spectral', ui-serif, Georgia, serif; font-weight:700}
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
-    .container{max-width:var(--maxw); margin-inline:auto; padding: clamp(16px,3vw,28px)}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
 
-    /* Background aura */
-    body::before{
-      content:""; position:fixed; inset:-10% -10% auto -10%; height:70vh; z-index:-1;
-      background: radial-gradient(900px 500px at 10% -10%, rgba(193,163,95,.25), transparent 60%),
-                  radial-gradient(800px 400px at 90% -20%, rgba(193,163,95,.18), transparent 60%);
-      filter: blur(2px);
+    /* Top Nav */
+    .nav{position:fixed; inset:0 0 auto 0; display:flex; justify-content:center; z-index:50;}
+    .nav .bar{display:flex; align-items:center; gap:28px; background:rgba(18,19,23,.6); backdrop-filter: blur(10px); border:1px solid rgba(212,175,55,.18); box-shadow:var(--shadow);
+      margin:14px; padding:10px 16px; border-radius:14px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.8px}
+    .brand .logo{width:32px; height:32px; border-radius:8px; display:grid; place-items:center; background:transparent; border:1px solid rgba(255,215,0,.35)}
+    .brand .logo svg{width:26px; height:26px}
+    .nav a{opacity:.9}
+    .nav a.active{opacity:1}
+    .cta{margin-left:auto;}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; background:linear-gradient(180deg, #1d1e24, #14151a); border:1px solid rgba(212,175,55,.28); box-shadow:var(--shadow); color:var(--ink); font-weight:600}
+    .btn.primary{background:linear-gradient(180deg, #2a2b31, #16171c); border-color:rgba(212,175,55,.45)}
+    .btn span.small{font-size:12px; opacity:.7}
+
+    .accent{color:var(--brass)}
+    .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag-row .tag{border-color:rgba(212,175,55,.28)}
+
+    /* Media placeholders */
+    .ph{border:1px dashed rgba(212,175,55,.35); background:linear-gradient(180deg,#0f1015,#12131a); display:grid; place-items:center; color:var(--muted); border-radius:var(--radius); text-align:center}
+    .hero-media{height:260px; margin-bottom:16px}
+    .media-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .media-grid .ph{height:180px}
+    .book-cover{width:100%; height:260px; border-radius:12px; margin-bottom:12px}
+    .founder-media{width:100%; height:240px; border-radius:12px; margin-bottom:12px}
+    .btn:focus-visible{outline:2px solid var(--brass); outline-offset:2px}
+
+    /* Sticky CTA (mobile) */
+    .cta-float{position:fixed; inset:auto 16px 16px auto; z-index:60; display:none}
+    @media (max-width: 720px){ .cta-float{display:inline-flex;} }
+
+    /* Header */
+    .hero{position:relative; padding:160px 0 110px; overflow:hidden}
+    .hero::before{content:""; position:absolute; inset:-20% -20% auto -20%; height:120%; background:
+      radial-gradient(800px 400px at 70% 0%, rgba(31,111,93,.18), transparent 60%),
+      radial-gradient(700px 380px at 10% 20%, rgba(212,175,55,.12), transparent 55%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); pointer-events:none; filter:saturate(1.05)}
+    .hero-grid{display:grid; grid-template-columns: 1.25fr .75fr; gap:48px; align-items:center}
+    .kicker{color:var(--brass); text-transform:uppercase; font-size:12px; letter-spacing:2.2px; font-weight:700}
+    h1{font-size: clamp(36px, 5vw, 64px); line-height:1.02; margin:14px 0 18px; font-weight:800}
+    .lead{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted)}
+    .hero-actions{display:flex; gap:14px; margin-top:22px}
+
+    .hero-card{border-radius:20px; background:linear-gradient(145deg, #0e0f13, #17181f); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); padding:22px}
+    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
+    .stat{background:linear-gradient(180deg, #12131a, #0e0f13); border:1px solid rgba(212,175,55,.18); padding:16px; border-radius:14px}
+    .stat strong{font-size:22px}
+    .stat span{display:block; font-size:12px; color:var(--muted)}
+
+    /* Pillars */
+    .pillars{padding:40px 0 0}
+    .pillars-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start}
+    .pillar{display:grid; place-items:center; width:clamp(140px,30vw,220px); height:clamp(140px,30vw,220px); margin:0 auto; border-radius:9999px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); text-align:center; padding:18px}
+    .pillar h3{margin:0 0 6px; font-size:18px}
+    .pillar p{margin:0; color:var(--muted); font-size:14px}
+
+    /* Sections */
+    section{padding:92px 0; position:relative}
+    .section-title{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px}
+    h2{font-size: clamp(28px, 3.6vw, 42px); line-height:1.06; margin:0}
+    .eyebrow{color:var(--brass); text-transform:uppercase; letter-spacing:1.8px; font-size:12px; font-weight:700}
+    .muted{color:var(--muted)}
+
+    /* Cards & grids */
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.2); border-radius:18px; padding:22px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 10px}
+    .tag{display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); padding:4px 8px; border:1px solid rgba(212,175,55,.18); border-radius:999px}
+
+    /* Offers */
+    .offers{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+    .offer{position:relative; overflow:hidden}
+    .offer .tone{position:absolute; inset:auto -40% -40% auto; width:80%; height:80%; background: radial-gradient(closest-side, rgba(212,175,55,.12), transparent 70%)}
+    .offer h3{font-size:22px}
+    .offer ul{margin:10px 0 0 18px}
+
+    /* Sequence */
+    .timeline{border-left:1px solid rgba(212,175,55,.25); padding-left:18px; margin:14px 0}
+    .beat{margin:18px 0}
+    .beat h4{margin:0 0 6px; font-size:18px}
+
+    /* Indicators */
+    .logos{display:grid; grid-template-columns:repeat(6,1fr); gap:18px; opacity:.9}
+    .logo-tile{height:58px; border-radius:14px; border:1px dashed rgba(212,175,55,.22); display:grid; place-items:center; font-size:13px; color:var(--muted); background:linear-gradient(180deg,#0f1015,#12131a)}
+    .quotes{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:18px}
+    .quote{padding:20px; border-radius:16px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.18)}
+
+    /* CTA */
+    .cta-panel{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center}
+    form{display:grid; gap:12px}
+    input, textarea{background:#0e0f13; color:var(--ink); border:1px solid rgba(212,175,55,.25); border-radius:12px; padding:12px 14px; font:inherit}
+    textarea{min-height:120px}
+
+    footer{padding:60px 0 80px; color:var(--muted); border-top:1px solid rgba(212,175,55,.18)}
+    .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:24px}
+    .mini{font-size:12px}
+
+    .hero .subhead{font-size:clamp(18px,2.4vw,28px); font-weight:700; letter-spacing:2px; margin-top:8px; opacity:0; text-transform:uppercase}
+    .animate{animation:fadeInUp 1.2s ease forwards; animation-delay:.8s}
+    @keyframes fadeInUp{0%{opacity:0; transform:translateY(18px)}100%{opacity:1; transform:translateY(0)}}
+
+    /* Reveal animations */
+    [data-reveal]{opacity:0; transform:translateY(12px); transition: opacity .6s ease, transform .6s ease}
+    [data-reveal].in{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .hero-grid, .cta-panel{grid-template-columns:1fr}
+      .offers{grid-template-columns:1fr 1fr}
+      .logos{grid-template-columns:repeat(3,1fr)}
+      .quotes{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .offers, .grid-3{grid-template-columns:1fr}
+      .nav .bar{gap:16px}
+      .hero{padding-top:140px}
+      .quotes{grid-template-columns:1fr}
     }
 
-    /* Utilities */
-    .pill{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .75rem; border:1px solid var(--stroke); border-radius:999px; color:var(--muted); font-weight:600; letter-spacing:.03em}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; border:none; cursor:pointer; padding:14px 18px; border-radius:12px; font-weight:800; letter-spacing:.02em; transition:transform .15s ease, box-shadow .15s ease}
-    .btn.primary{background:linear-gradient(180deg, var(--gold), #9b7f45); color:#0b0b0b; box-shadow:var(--shadow)}
-    .btn.primary:hover{transform:translateY(-1px)}
-    .btn.ghost{background:transparent; color:var(--white); border:1px solid var(--stroke)}
-
-    .grid{display:grid; gap:clamp(16px,2vw,24px)}
-    .grid.cols-3{grid-template-columns:repeat(1,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(1,1fr)}
-    @media (min-width: 900px){
-      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-      .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      [data-reveal]{transition:none}
     }
+  .ticker{padding:18px 0; border-top:1px solid rgba(212,175,55,.12); border-bottom:1px solid rgba(212,175,55,.12); background:linear-gradient(180deg,#0e0f13,#0b0b0e)}
+    .ticker-track{display:flex; gap:48px; white-space:nowrap; overflow:hidden; mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);}
+    .ticker-track span{display:inline-block; padding:6px 0; opacity:.75; letter-spacing:.8px}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
+    .ticker-track{animation:marquee 66s linear infinite}
+    @media (max-width: 720px){ .ticker-track{animation-duration: 90s} }
+    @media (min-width: 1025px){ .ticker-track{animation-duration: 66s} }
 
-    h1{font-size: clamp(34px, 6.2vw, 64px); line-height:1.05; margin:10px 0 8px; letter-spacing:.01em}
-    h2{font-size: clamp(24px, 4.2vw, 40px); line-height:1.12; margin:0 0 10px}
-    h3{font-size: clamp(18px, 2.6vw, 22px); margin:0 0 6px}
-    p{margin:0 0 10px}
-    .sub{color:var(--muted); max-width:70ch}
+    /* Case Studies */
+    #cases .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    #cases .metric{padding:22px; border-radius:16px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.18)}
+    #cases .metric strong{font-size:28px}
 
-    /* Header / Nav */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(0,0,0,.82), rgba(0,0,0,.52)); border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; align-items:center; gap:.75rem}
-    .brand svg{width:36px; height:36px; border-radius:9px; box-shadow:var(--shadow)}
-    nav a{color:var(--muted); font-weight:600; padding:.75rem 1rem; border-radius:10px}
-    nav a:hover{background:rgba(255,255,255,.04); color:var(--white)}
-    .nav-cta{display:flex; align-items:center; gap:.5rem}
-    .hamburger{display:none}
-    @media (max-width: 900px){nav{display:none}.hamburger{display:inline-flex; flex-direction:column; gap:4px; cursor:pointer}.hamburger span{width:22px; height:2px; background:var(--white)}}
-
-    /* Surface Cards */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:var(--radius); padding: clamp(16px, 2.5vw, 24px)}
-    .eyebrow{letter-spacing:.15em; text-transform:uppercase; color:var(--gold); font-weight:800; font-size:.78rem}
-
-    /* Hero */
-    .hero{position:relative; overflow:hidden}
-    .hero .inner{display:grid; gap:28px; align-items:center}
-    @media(min-width:980px){.hero .inner{grid-template-columns: 1.15fr .85fr}}
-    .hero-media{border:1px solid var(--stroke); border-radius:var(--radius); background:linear-gradient(135deg, rgba(193,163,95,.18), rgba(255,255,255,.04)); padding:8px}
-    .hero-shot{height: 520px; border-radius:12px; background:
-      radial-gradient(1200px 600px at -10% -10%, rgba(193,163,95,.25), transparent 60%),
-      url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">\
-        <defs>\
-          <linearGradient id="g" x1="0" x2="1">\
-            <stop offset="0%" stop-color="%23000"/>\
-            <stop offset="100%" stop-color="%23111111"/>\
-          </linearGradient>\
-        </defs>\
-        <rect width="1200" height="800" fill="url(%23g)"/>\
-        <g opacity="0.45">\
-          <circle cx="980" cy="160" r="120" fill="%23C1A35F"/>\
-          <rect x="120" y="540" width="960" height="3" fill="%23C1A35F"/>\
-          <rect x="120" y="560" width="760" height="3" fill="%23C1A35F"/>\
-        </g>\
-        <text x="120" y="220" fill="%23ffffff" font-size="44" font-family="Helvetica, Arial" opacity="0.9">Presence that Sells Itself</text>\
-      </svg>');
-      background-size: cover; background-position:center; box-shadow:var(--shadow)}
-
-    /* Icon list */
-    .check{display:flex; gap:.75rem; align-items:flex-start}
-    .check i{margin-top:.25rem; width:18px; height:18px; border-radius:4px; background:linear-gradient(180deg, var(--gold), #e7cf8d)}
-
-    /* Industries badges */
-    .badge{border:1px solid var(--stroke); border-radius:999px; padding:.5rem .9rem; color:var(--muted); font-weight:700; letter-spacing:.02em}
-
-    /* Testimonial */
-    blockquote{margin:0; padding:0; font-size: clamp(18px, 2.4vw, 22px); color:var(--white)}
-
-    /* Footer */
-    footer{border-top:1px solid rgba(255,255,255,.07); margin-top:40px}
-    .foot{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--muted)}
-    .fineprint{font-size:.95rem; color:var(--muted)}
-
-    /* Subtle fades */
-    .reveal{opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease}
-    .reveal.show{opacity:1; transform:none}
   </style>
+  <!-- Structured Data -->
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Authority Scale",
+    "url":"https://your-domain.example/",
+    "logo":"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23FFD700' stroke-width='3'/%3E%3Cpath d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='%23FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E',
+    "sameAs":[]
+  }</script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Dixie Briseno",
+    "jobTitle":"Founder",
+    "worksFor":{"@type":"Organization","name":"Authority Scale"}
+  }</script>
+  <!-- Premium font stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Spectral:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What changes in the first 30–90 days?","acceptedAnswer":{"@type":"Answer","text":"Positioning lock, channel cadence, authority assets in market, and first indicators: qualified inbound, press interest, partner lanes."}},
+      {"@type":"Question","name":"Who is a fit?","acceptedAnswer":{"@type":"Answer","text":"Leaders with clear economics and conviction: tech/SaaS, sales orgs, consultants/coaches, C‑suite, law, plastics & medspa, biotech, premium services, and capital partners."}},
+      {"@type":"Question","name":"How is engagement structured?","acceptedAnswer":{"@type":"Answer","text":"Three tracks: The Board (1:1 advisory), The Network (collective), The Platform (full deployment). Minimum term 90 days."}},
+      {"@type":"Question","name":"Do you handle media & placement?","acceptedAnswer":{"@type":"Answer","text":"Yes. Editorial, platforms, and amplification are orchestrated as part of the authority engine."}},
+      {"@type":"Question","name":"Is this confidential?","acceptedAnswer":{"@type":"Answer","text":"Always. Results are prioritized; relationships remain discreet."}},
+      {"@type":"Question","name":"What does success look like?","acceptedAnswer":{"@type":"Answer","text":"You become the obvious choice. Demand concentrates, pricing holds, and rooms open that previously didn’t."}}
+    ]
+  }</script>
 </head>
 <body>
-  <!-- =============================
-       HEADER / NAV
-       ============================= -->
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#">
-        <!-- Inline SVG LOGO (wordmark + mark) -->
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <defs>
-            <linearGradient id="goldGrad" x1="0" x2="1">
-              <stop offset="0%" stop-color="#C1A35F"/>
-              <stop offset="100%" stop-color="#9b7f45"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="48" height="48" rx="10" fill="url(#goldGrad)"/>
-          <path d="M12 30 L24 12 L36 30" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
-          <path d="M18 28 L24 20 L30 28" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <strong>Authority&nbsp;Scale</strong>
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <div class="bar wrap">
+      <a class="brand" href="#top" aria-label="Authority Scale home">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Authority Scale logo">
+            <circle cx="32" cy="32" r="23" fill="none" stroke="#FFD700" stroke-width="3"/>
+            <path d="M18 46L32 14l14 32m-6-14H24" fill="none" stroke="#FFD700" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Authority Scale™</span>
       </a>
-      <nav aria-label="primary">
-        <a href="#how">Framework</a>
-        <a href="#industries">Industries</a>
-        <a href="#proof">Proof</a>
-        <a href="#book">Book</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn ghost" href="#proof">Results</a>
-        <a class="btn primary" href="#book">Book a Consult</a>
+      <a href="#principles">Principles</a>
+      <a href="#offers">Programs</a>
+      <a href="#who">Who</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#sequence">Sequence</a>
+      <a href="#proofs">Indicators</a>
+      <a href="#faq">FAQ</a>
+      <a href="#access" class="btn primary cta">Request Access</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div data-reveal>
+        <div class="kicker">Executive Authority & Strategic Influence</div>
+        <h1>Authority isn’t given. It’s <span class="accent">Engineered</span>.</h1>
+        <h2 class="subhead animate">Authority. Positioning. Power.</h2>
+        <p class="lead">Step into the room as the inevitable choice. Command attention. Own your positioning. Keep your pipeline full.</p>
+        <div class="hero-actions">
+          <a href="#access" class="btn primary">Request Private Entry</a>
+          <a href="#outcomes" class="btn" aria-label="See outcomes">See Outcomes</a>
+        </div>
       </div>
-      <button class="hamburger" id="mobileMenu" aria-label="Open Menu" aria-controls="drawer" aria-expanded="false"><span></span><span></span><span></span></button>
+      <aside data-reveal>
+        <figure class="hero-media ph" aria-label="hero media placeholder">Hero Image / Video Placeholder</figure>
+        <div class="hero-card" aria-label="identity">
+          <div class="tag">Decision Maker • Category Leader</div>
+          <div class="stats">
+            <div class="stat"><strong>Identity</strong><span>Precision • Command</span></div>
+            <div class="stat"><strong>Focus</strong><span>Authority • Reach • Revenue</span></div>
+            <div class="stat"><strong>Standard</strong><span>Category‑Defining Delivery</span></div>
+          </div>
+        </div>
+      </aside>
     </div>
   </header>
 
-  <!-- =============================
-       HERO
-       ============================= -->
-  <section class="hero">
-    <div class="container inner">
-      <div>
-        <span class="pill">Private Client Growth System™</span>
-        <h1>Command the Market.<br/>Capture the Mindshare.</h1>
-        <p class="sub">We build the kind of presence that turns your name into the obvious choice — everywhere it matters, without adding hours to your day.</p>
-        <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
-          <a class="btn primary" href="#book">Book a Consult</a>
-          <a class="btn ghost" href="#apply">Apply for Access</a>
+  <!-- AS SEEN IN TICKER -->
+  <section class="ticker" aria-label="as seen in">
+    <div class="wrap">
+      <div class="ticker-track">
+        <span>As seen in</span>
+        <span>Forbes</span>
+        <span>Rolling Stone</span>
+        <span>The Guardian</span>
+        <span>Harvard Business Review</span>
+        <span>USA Today</span>
+        <span>Bloomberg</span>
+        <span>TechCrunch</span>
+        <span>WSJ</span>
+        <span>Fast Company</span>
+        <span>As seen in</span>
+        <span>Forbes</span>
+        <span>Rolling Stone</span>
+        <span>The Guardian</span>
+        <span>Harvard Business Review</span>
+        <span>USA Today</span>
+        <span>Bloomberg</span>
+        <span>TechCrunch</span>
+        <span>WSJ</span>
+        <span>Fast Company</span>
+      <p class="mini muted" style="margin-top:6px">*Features shown reflect actual client placements; publications do not endorse this program.*</p>
+    </div>
+  </section>
+
+  <!-- PILLARS: Presence • Positioning • Pipeline -->
+  <section id="pillars" class="pillars">
+    <div class="wrap">
+      <div class="pillars-grid">
+        <div class="pillar" data-reveal>
+          <div>
+            <h3>Presence</h3>
+            <p>Omnipresent in the feeds that matter.</p>
+          </div>
         </div>
-        <div class="fineprint" style="margin-top:10px">For discerning founders, expert advisors, and premium service brands ready to set the standard.</div>
+        <div class="pillar" data-reveal>
+          <div>
+            <h3>Positioning</h3>
+            <p>The inevitable choice in your market.</p>
+          </div>
+        </div>
+        <div class="pillar" data-reveal>
+          <div>
+            <h3>Pipeline</h3>
+            <p>Qualified clients flowing—ready to buy or book.</p>
+          </div>
+        </div>
       </div>
-      <div class="hero-media reveal">
-        <div class="hero-shot" role="img" aria-label="Black marble and gold vector with market presence overlay"></div>
-        <div class="fineprint" style="margin-top:8px">Authority Scale — Presence, Perception, Revenue</div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section id="principles">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Principles</div>
+          <h2>Discipline. Precision. Command.</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Authority is engineered. Every signal—visual, verbal, operational—compounds into durable advantage.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card" data-reveal>
+          <h3>Market Authority Architecture™</h3>
+          <p>Category design, positioning, and narrative control. From credible to <em>inevitable</em>.</p>
+          <div class="tag">Architecture • Position</div>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Omnipresence Publishing Protocol™</h3>
+          <p>Signal‑dense systems that dominate mindshare across channels. Disciplined. Compounding. Unmistakable.</p>
+          <div class="tag">Signals • Scale</div>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Revenue Command System™</h3>
+          <p>Offer design, pipeline control, conversion rituals. Quiet power. Clear results.</p>
+          <div class="tag">Monetization • Control</div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- =============================
-       TRANSFORMATION / USP
-       ============================= -->
-  <section class="container" id="learn" style="margin-top:30px">
-    <div class="grid cols-3">
-      <article class="card reveal">
-        <div class="eyebrow">Market Authority Architecture™</div>
-        <h3>From credible to <em>the obvious choice</em>.</h3>
-        <p>Own your space with a market identity that makes competitors irrelevant and keeps you top‑of‑mind for the right audience.</p>
-      </article>
-      <article class="card reveal">
-        <div class="eyebrow">Omnipresence Publishing Protocol™</div>
-        <h3>Be seen. Be remembered. Be selected.</h3>
-        <p>Multiply your message into a steady stream of high‑impact touchpoints that saturate your market and cement your presence.</p>
-      </article>
-      <article class="card reveal">
-        <div class="eyebrow">Revenue Command System™</div>
-        <h3>Attention → Appointments → Clients.</h3>
-        <p>A precision‑built acquisition engine that moves opportunities seamlessly from first touch to closed deal.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- =============================
-       INDUSTRIES
-       ============================= -->
-  <section class="container card" id="industries" style="margin-top:26px">
-    <div class="eyebrow">Who We Elevate</div>
-    <h2>Built for those who set the standard</h2>
-    <p class="sub">If you operate in a competitive space and aspire to be the definitive choice, this is your growth architecture.</p>
-    <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:8px">
-      <span class="badge">Coaches</span>
-      <span class="badge">Consultants</span>
-      <span class="badge">Real Estate</span>
-      <span class="badge">Law</span>
-      <span class="badge">Med Spas</span>
-      <span class="badge">Plastic Surgeons</span>
-      <span class="badge">Home Improvement</span>
-    </div>
-  </section>
-
-  <!-- =============================
-       PROCESS (Framework)
-       ============================= -->
-  <section class="container" id="how" style="margin-top:26px">
-    <div style="text-align:center; margin-bottom:12px">
-      <div class="eyebrow">The Authority Scale Framework</div>
-      <h2>Your next‑level market presence in 3 phases</h2>
-      <p class="sub" style="margin-inline:auto">A bespoke, results‑driven system that shapes perception, expands reach, and translates attention into consistent revenue.</p>
-    </div>
-    <div class="grid cols-3">
-      <article class="card reveal">
-        <h3>1) Architect Your Market Identity</h3>
-        <div class="check"><i></i><p>Define your position with precision and clarity.</p></div>
-        <div class="check"><i></i><p>Craft the narrative and proof assets that amplify trust and desire.</p></div>
-        <div class="check"><i></i><p>Frame your offer to attract the highest‑value opportunities.</p></div>
-      </article>
-      <article class="card reveal">
-        <h3>2) Saturate with Strategic Visibility</h3>
-        <div class="check"><i></i><p>Deploy a multi‑platform presence without daily content labor.</p></div>
-        <div class="check"><i></i><p>Build a consistent flow of high‑signal market touchpoints.</p></div>
-        <div class="check"><i></i><p>Shape perception at scale while preserving your time.</p></div>
-      </article>
-      <article class="card reveal">
-        <h3>3) Command the Revenue Flow</h3>
-        <div class="check"><i></i><p>Turn attention into qualified demand with seamless journeys.</p></div>
-        <div class="check"><i></i><p>Guide prospects from first contact to confident decision.</p></div>
-        <div class="check"><i></i><p>Optimize for predictable, compounding growth.</p></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- =============================
-       PROOF & PRESTIGE (Placeholders)
-       ============================= -->
-  <section class="container" id="proof" style="margin-top:26px">
-    <div class="grid cols-2">
-      <article class="card reveal">
-        <div class="eyebrow">Member Stories</div>
-        <blockquote>“We became the name in our market in record time. Prospects now tell us we’re the obvious choice.”</blockquote>
-        <p class="fineprint">— Placeholder Client, Managing Partner (Law)</p>
-        <div style="height:10px"></div>
-        <blockquote>“Our presence feels inevitable. Pipeline is consistent and qualified — without adding headcount.”</blockquote>
-        <p class="fineprint">— Placeholder Client, Principal (Consulting)</p>
-      </article>
-      <article class="card reveal">
-        <div class="eyebrow">Featured In</div>
-        <p class="sub">Placeholder logos — replace with media, awards, or partner marks.</p>
-        <div class="grid cols-3" style="margin-top:10px">
-          <div class="card" style="text-align:center; padding:18px"><span style="opacity:.8">MEDIA 1</span></div>
-          <div class="card" style="text-align:center; padding:18px"><span style="opacity:.8">MEDIA 2</span></div>
-          <div class="card" style="text-align:center; padding:18px"><span style="opacity:.8">MEDIA 3</span></div>
+  <!-- AUTHORITY DELIVERY / POSITIONING -->
+  <section id="authority">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Positioning</div>
+          <h2>Authority Delivery</h2>
         </div>
-        <div class="fineprint" style="margin-top:8px">Swap these with your brand/press logos in SVG for crisp rendering.</div>
-      </article>
+        <p class="muted" style="max-width:560px">Identity aligned. Presence unmistakable. Conversion inevitable.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card" data-reveal>
+          <h3>Identity Signals</h3>
+          <p class="muted">Decision Makers. Category Leaders. Icons in their industries. Operate with precision. Command focus. Move markets.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Quiet Power. Loud Results.</h3>
+          <p class="muted"><strong>Undeniable Outcomes. Inevitable Recognition. Enduring Growth.</strong></p>
+          <p class="muted" style="margin-top:8px">Every engagement is engineered for unshakable positioning, omnipresent presence, and the pipeline that compounds authority into lasting revenue.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Framing</h3>
+          <p class="muted"><strong>Authority Scale™ doesn’t offer services.</strong> It delivers identity, visibility, and conversion — the levers of lasting market power.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- =============================
-       PRESENCE × PERFORMANCE VISUAL
-       ============================= -->
-  <section class="container" style="margin-top:26px">
-    <div class="card reveal" style="display:grid; gap:18px; align-items:center">
-      <div class="eyebrow">Presence × Performance</div>
-      <h2>Precision systems. Multiplicative output.</h2>
-      <p class="sub">Your voice and ideas — multiplied with a built‑in revenue intelligence layer. Not content for content’s sake: control the conversation and route it straight into your pipeline.</p>
-      <div style="height:14px"></div>
-      <div style="height:320px; border-radius:12px; border:1px solid var(--stroke); background:
-        linear-gradient(135deg, rgba(193,163,95,.12), rgba(255,255,255,.03)),
-        url('data:image/svg+xml;utf8,\
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">\
-            <rect width="1200" height="600" fill="%23000000"/>\
-            <g opacity="0.65">\
-              <path d="M120 420 C300 280, 520 520, 760 360 S 1080 280, 1140 340" stroke="%23C1A35F" stroke-width="3" fill="none"/>\
-              <circle cx="280" cy="220" r="90" fill="none" stroke="%23C1A35F" stroke-width="2"/>\
-              <rect x="860" y="160" width="200" height="120" fill="none" stroke="%23C1A35F" stroke-width="2" rx="10"/>\
-            </g>\
-            <text x="140" y="160" fill="%23ffffff" font-size="40" font-family="Helvetica, Arial" opacity="0.9">Authority Systems at Work</text>\
-          </svg>'); background-size:cover; background-position:center"></div>
-    </div>
-  </section>
-
-  <!-- =============================
-       BOOKING (Embedded calendar) + APPLY (Google Form)
-       ============================= -->
-  <section class="container" id="book" style="margin-top:26px">
-    <div class="grid cols-2">
-      <article class="card reveal">
-        <div class="eyebrow">Book a Consult</div>
-        <h2>Private market strategy session</h2>
-        <p class="sub">Choose a time below. We’ll map your path to presence that sells itself and reveal exactly where untapped demand is waiting for you.</p>
-        <!-- Calendly Inline Widget: Replace data-url with your event link
-             Example: https://calendly.com/your-handle/strategy-call?hide_event_type_details=1&primary_color=C1A35F
-             For post-booking redirect to Google Form, set it inside Calendly (Confirmation Page -> Redirect URL). -->
-        <div class="calendly-inline-widget" data-url="https://calendly.com/your-handle/strategy-call?hide_event_type_details=1&primary_color=C1A35F" style="min-width:320px;height:700px;"></div>
-      </article>
-      <article class="card reveal" id="apply">
-        <div class="eyebrow">Apply for Access</div>
-        <h2>Private client engagement</h2>
-        <p class="sub">We partner with a select group of operators ready for decisive growth and market command. Apply and we’ll review fit for Authority Scale.</p>
-        <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
-          <!-- Replace the href with your Google Form URL -->
-          <a class="btn primary" href="https://forms.gle/your-google-form-id" target="_blank" rel="noopener noreferrer">Open Application</a>
-          <a class="btn ghost" href="#">Download One‑Pager</a>
+  <!-- WHO WE SERVE -->
+  <section id="who">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Who</div>
+          <h2>Who We Move Into Power</h2>
         </div>
-        <p class="fineprint" style="margin-top:10px">Tip: keep answers concise and outcome‑focused.</p>
-      </article>
+        <p class="muted" style="max-width:560px">Built for leaders where authority shapes revenue — inclusive of any high‑impact category operating at premium stakes.</p>
+      </div>
+
+      <div class="grid-3" style="grid-template-columns:1fr 1fr; gap:16px">
+        <article class="card" data-reveal><h3>Visionary Founders & Growth‑Stage Leaders</h3></article>
+        <article class="card" data-reveal><h3>Established Firms Elevating Market Authority</h3></article>
+        <article class="card" data-reveal><h3>Advisors, Consultants & Strategic Operators</h3></article>
+        <article class="card" data-reveal><h3>Innovators Driving Industry Change</h3></article>
+        <article class="card" data-reveal><h3>High‑Impact Practices & Category Leaders</h3></article>
+        <article class="card" data-reveal><h3>Emerging Leaders Elevating Into Premium Markets</h3></article>
+      </div>
     </div>
   </section>
 
-  <!-- =============================
-       FOOTER
-       ============================= -->
+  <!-- OFFERS -->
+  <section id="offers">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Programs</div>
+          <h2>The Arsenal</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Select your arena of execution. Private advisory. Network leverage. Full‑scale deployment.</p>
+      </div>
+
+      <div class="offers">
+        <article class="card offer" data-reveal>
+          <div class="tone" aria-hidden="true"></div>
+          <h3>The Board — Private Advisory</h3>
+          <p>Discreet 1:1 counsel for founders and principal operators. Direct line. No friction.</p>
+          <ul>
+            <li>Category & narrative control</li>
+            <li>Offer architecture & pricing power</li>
+            <li>Executive presence & media posture</li>
+            <li>Custom authority engine build‑out</li>
+          </ul>
+          <div style="margin-top:14px"><a href="#access" class="btn">Request Access</a></div>
+        </article>
+
+        <article class="card offer" data-reveal>
+          <div class="tone" aria-hidden="true"></div>
+          <h3>The Network — Collective</h3>
+          <p>Closed‑door circle of operators. Shared intel. Shared leverage. Unshared standards.</p>
+          <ul>
+            <li>Quarterly briefings</li>
+            <li>Signal‑dense playbooks</li>
+            <li>Partner lanes & field ops</li>
+            <li>Private drops & asset vaults</li>
+          </ul>
+          <div style="margin-top:14px"><a href="#access" class="btn">Apply</a></div>
+        </article>
+
+        <article class="card offer" data-reveal>
+          <div class="tone" aria-hidden="true"></div>
+          <h3>The Platform — Elite Positioning™</h3>
+          <p>Never run dry on content that commands attention. Dominate feeds without lifting a finger. Every message builds weight, precision, and inevitability.</p>
+          <ul>
+            <li><strong>Your Presence</strong> — commanding every channel, impossible to ignore.</li>
+            <li><strong>Your Positioning</strong> — undeniable, elevated above the noise.</li>
+            <li><strong>Your Pipeline</strong> — consistently lined with decisive buyers and high‑value clients.</li>
+          </ul>
+          <div style="margin-top:14px"><a href="#access" class="btn">Commission</a></div>
+        </article>
+
+        <article class="card offer" data-reveal>
+          <div class="tone" aria-hidden="true"></div>
+          <h3>The Authority Playbook™ — Digital System</h3>
+          <p>Self‑paced positioning and signal‑content system. Build momentum fast, convert attention into demand, and step up when ready.</p>
+          <ul>
+            <li>Proven positioning templates</li>
+            <li>Signal content frameworks</li>
+            <li>Conversion paths that prime premium deals</li>
+          </ul>
+          <div style="margin-top:14px"><a href="#access" class="btn">Get The Playbook</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section id="outcomes">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Outcomes</div>
+          <h2>Designed for Measurable Advantage</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Authority is not aesthetic; it’s throughput. Expect tangible shifts in demand, pricing power, and deal velocity.</p>
+      </div>
+      <div class="stats" style="grid-template-columns:repeat(4,1fr)">
+        <div class="stat"><strong>3–5×</strong><span>Signal density across core channels</span></div>
+        <div class="stat"><strong>+20–40%</strong><span>Pricing power on flagship offers</span></div>
+        <div class="stat"><strong>2–4×</strong><span>Pipeline velocity & qualified demand</span></div>
+        <div class="stat"><strong>90 days</strong><span>From credible to inevitable positioning</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEQUENCE -->
+  <section id="sequence">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Sequence</div>
+          <h2>The Strategic Arc</h2>
+        </div>
+        <p class="muted" style="max-width:560px">From first signal to market command — a path that compounds positioning, presence, and pipeline at every step.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="beat" data-reveal>
+          <h4>Entry — The Signal</h4>
+          <p class="muted">Precision discovery. We surface asymmetries and define the authority thesis that separates you from the field.</p>
+        </div>
+        <div class="beat" data-reveal>
+          <h4>Blueprint — The Briefing</h4>
+          <p class="muted">Positioning lock, offer architecture, and channel map. Your strategy rendered as a decisive executive dossier.</p>
+        </div>
+        <div class="beat" data-reveal>
+          <h4>Deployment — The Move</h4>
+          <p class="muted">Publish authority assets. Establish cadence. Orchestrate placement. Signals compound and demand concentrates.</p>
+        </div>
+        <div class="beat" data-reveal>
+          <h4>Command — The Reveal</h4>
+          <p class="muted">Proof staged. Rooms open. From credible to inevitable — reinforced by pricing power and pipeline velocity.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:16px" data-reveal>
+        <a href="#access" class="btn primary">Run The Arc</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDICATORS -->
+  <!-- CASE STUDIES -->
+  <section id="cases">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Case Studies</div>
+          <h2>Authority In The Wild</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Selective snapshots of engineered positioning converting into measurable advantage.</p>
+      </div>
+      <div class="metrics">
+        <article class="metric" data-reveal>
+          <strong>+41% Pricing Power</strong>
+          <p class="muted">Flagship offer reframed; premium buyers stopped negotiating. Cycle time down 28%.</p>
+          <div class="ph" style="height:120px; margin-top:10px" aria-label="case visual">Case Visual</div>
+        </article>
+        <article class="metric" data-reveal>
+          <strong>3.6× Qualified Inbound</strong>
+          <p class="muted">Signal cadence and placement orchestration concentrated demand from the right rooms.</p>
+          <div class="ph" style="height:120px; margin-top:10px" aria-label="case visual">Case Visual</div>
+        </article>
+        <article class="metric" data-reveal>
+          <strong>2.4× Close Rate</strong>
+          <p class="muted">Authority assets reduced perceived risk; conversions lifted without discounting.</p>
+          <div class="ph" style="height:120px; margin-top:10px" aria-label="case visual">Case Visual</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="proofs">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Indicators</div>
+          <h2>Quiet Power. Loud Results.</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Recognition signals that follow engineered authority — not who you are, but where this takes you.</p>
+      </div>
+
+      <div class="logos" aria-label="recognition signals">
+        <div class="logo-tile" data-reveal>Tier‑1 Press</div>
+        <div class="logo-tile" data-reveal>Premium DTC</div>
+        <div class="logo-tile" data-reveal>Enterprise SaaS</div>
+        <div class="logo-tile" data-reveal>C‑Suite Advisory</div>
+        <div class="logo-tile" data-reveal>Capital Partners</div>
+        <div class="logo-tile" data-reveal>Elite E‑Com</div>
+      </div>
+
+      <div class="quotes">
+        <div class="quote" data-reveal><strong>Enterprise SaaS — CEO</strong><p class="muted">“Inbound tier‑1 doubled in eight weeks. We didn’t change the product. We changed the posture.”</p></div>
+        <div class="quote" data-reveal><strong>Plastic Surgery Group — Managing Partner</strong><p class="muted">“Booked out 60 days at premium rates. Press did the lifting without us asking.”</p></div>
+        <div class="quote" data-reveal><strong>Biotech Platform — Founder</strong><p class="muted">“From chasing capital to selecting it. The room treated us differently.”</p></div>
+        <div class="quote" data-reveal><strong>Consulting Firm — Principal</strong><p class="muted">“Positioning locked, pricing power up, and the right clients leaning in.”</p></div>
+      </div>
+
+      <div class="media-grid" aria-label="brand assets">
+        <div class="ph" aria-label="case study placeholder">Case Study Cover</div>
+        <div class="ph" aria-label="editorial feature placeholder">Editorial Feature</div>
+        <div class="ph" aria-label="speaking shot placeholder">Speaking Shot</div>
+      </div>
+
+      <div class="grid-3" style="margin-top:18px; grid-template-columns:repeat(3,1fr)">
+        <article class="card" data-reveal>
+          <h3>Recognition Outcomes</h3>
+          <p class="muted">Independent features and category commentary as a by‑product of authority. Orchestrated when strategic; never performative or pay‑to‑play.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Deal Velocity</h3>
+          <p class="muted">Cycles compress, close rates rise. Authority reduces perceived risk and anchors value.</p>
+        </article>
+        <article class="card" data-reveal>
+          <h3>Cultural Reach</h3>
+          <p class="muted">Name placement where it matters. Platforms that compound instead of reset.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESS -->
+  <section id="access">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Private Entry</div>
+          <h2>Request Access</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Discretion is policy. Share intent and context. If there’s alignment, we open the door.</p>
+      </div>
+
+      <div class="cta-panel">
+        <div class="card" aria-label="entry information" data-reveal>
+          <h3>Standard</h3>
+          <ul>
+            <li>1:1 or collective, by fit</li>
+            <li>Minimum term: 90 days</li>
+            <li>Confidential engagement</li>
+          </ul>
+          <div style="height:10px"></div>
+          <h3>Criteria</h3>
+          <ul>
+            <li>Category ambition & decisive operators</li>
+            <li>Signal‑to‑noise respect</li>
+            <li>Operational discipline</li>
+          </ul>
+        </div>
+        <form class="card" id="entryForm" aria-label="request form" data-reveal>
+          <label>
+            <span class="mini">Name</span>
+            <input required name="name" placeholder="Your name" />
+          </label>
+          <label>
+            <span class="mini">Email</span>
+            <input required type="email" name="email" placeholder="you@company.com" />
+          </label>
+          <label>
+            <span class="mini">Company / Brand</span>
+            <input name="company" placeholder="Company or brand" />
+          </label>
+          <label>
+            <span class="mini">Context</span>
+            <textarea name="context" placeholder="What are you building? Where do you intend to lead?" ></textarea>
+          </label>
+          <input type="text" name="website" class="hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
+          <input type="hidden" name="utm_source"/><input type="hidden" name="utm_medium"/><input type="hidden" name="utm_campaign"/>
+          <input type="hidden" name="utm_content"/><input type="hidden" name="utm_term"/>
+          <input type="hidden" name="page_path"/><input type="hidden" name="referrer"/><input type="hidden" name="timestamp"/>
+          <button class="btn primary" type="submit">Submit Request</button>
+          <div id="formStatus" class="mini muted" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <!-- BOOK PROMO -->
+  <section id="book">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Book</div>
+          <h2>Engineered Authority™</h2>
+        </div>
+        <p class="muted" style="max-width:560px">A definitive field guide to positioning, presence, and pipeline — how leaders become the inevitable choice.</p>
+      </div>
+      <div class="cta-panel">
+        <div class="card" data-reveal>
+          <div class="book-cover ph" aria-label="book cover placeholder">Book Cover</div>
+          <h3>Inside</h3>
+          <ul>
+            <li>The inevitability framework</li>
+            <li>Signal content that compounds</li>
+            <li>Conversion architecture for premium demand</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <p class="muted">Get the opening chapter now. Join the early list for launch, formats, and private editions.</p>
+          <form id="bookForm">
+            <label class="mini" for="bookEmail">Email</label>
+            <input id="bookEmail" type="email" name="email" placeholder="you@company.com" required />
+            <input type="hidden" name="source" value="book" />
+            <input type="text" name="website" class="hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
+            <input type="hidden" name="utm_source"/><input type="hidden" name="utm_medium"/><input type="hidden" name="utm_campaign"/>
+            <input type="hidden" name="utm_content"/><input type="hidden" name="utm_term"/>
+            <input type="hidden" name="page_path"/><input type="hidden" name="referrer"/><input type="hidden" name="timestamp"/>
+            <button class="btn primary" type="submit">Send Chapter One</button>
+            <div id="bookStatus" class="mini muted" role="status" aria-live="polite" style="margin-top:6px"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section id="founder">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">Founder</div>
+          <h2>Dixie Briseno</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Founder of Authority Scale™, Sovereign Scale™, and Revenue Haus™.</p>
+      </div>
+      <div class="cta-panel">
+        <div class="card" data-reveal>
+          <div class="founder-media ph" aria-label="founder portrait placeholder">Founder Portrait</div>
+          <h3>Founder Statement</h3>
+          <p class="muted">Authority isn’t inherited. It’s engineered. Authority Scale™ arms decision makers with positioning, presence, and the pipeline that creates market inevitability. Sovereign Scale™ speaks to the feminine power of authority. Revenue Haus™ extends the model for B2B brands, corporate, and capital markets. Different houses, same foundation: undeniable outcomes, inevitable recognition, enduring growth.</p>
+        </div>
+        <div class="card" data-reveal>
+          <h3>Private Access</h3>
+          <p class="muted">Founder‑led. Discreet by design. Reserved for leaders who move markets.</p>
+          <a href="#access" class="btn primary">Work With Dixie</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-title" data-reveal>
+        <div>
+          <div class="eyebrow">FAQ</div>
+          <h2>Clarity Without The Noise</h2>
+        </div>
+        <p class="muted" style="max-width:560px">Direct answers to how we work and what to expect.</p>
+      </div>
+
+      <div class="grid-3" style="grid-template-columns:1fr 1fr; gap:16px">
+        <details class="card" data-reveal><summary><strong>What changes in the first 30–90 days?</strong></summary><p class="muted">Positioning lock, channel cadence, authority assets in market, and first indicators: qualified inbound, press interest, partner lanes.</p></details>
+        <details class="card" data-reveal><summary><strong>Who is a fit?</strong></summary><p class="muted">Leaders with clear economics and conviction: tech/SaaS, sales orgs, consultants/coaches, C‑suite, law, plastics & medspa, biotech, premium services, and capital partners.</p></details>
+        <details class="card" data-reveal><summary><strong>How is engagement structured?</strong></summary><p class="muted">Three tracks: <em>The Board</em> (1:1 advisory), <em>The Network</em> (collective), <em>The Platform</em> (full deployment). Minimum term 90 days.</p></details>
+        <details class="card" data-reveal><summary><strong>Do you handle media & placement?</strong></summary><p class="muted">Yes. Editorial, platforms, and amplification are orchestrated as part of the authority engine.</p></details>
+        <details class="card" data-reveal><summary><strong>Is this confidential?</strong></summary><p class="muted">Always. Results are prioritized; relationships remain discreet.</p></details>
+        <details class="card" data-reveal><summary><strong>What does success look like?</strong></summary><p class="muted">You become the obvious choice. Demand concentrates, pricing holds, and rooms open that previously didn’t.</p></details>
+      </div>
+
+      <div style="text-align:center; margin-top:24px" data-reveal>
+        <a href="#access" class="btn primary">Request Private Access</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <div class="container foot">
-      <div class="brand">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="goldGrad2" x1="0" x2="1"><stop offset="0%" stop-color="#C1A35F"/><stop offset="100%" stop-color="#9b7f45"/></linearGradient></defs><rect x="0" y="0" width="48" height="48" rx="10" fill="url(#goldGrad2)"/><path d="M12 30 L24 12 L36 30" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/><path d="M18 28 L24 20 L30 28" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/></svg>
-        <strong>Authority&nbsp;Scale</strong>
+    <div class="wrap foot-grid">
+      <div>
+        <div class="brand"><span class="logo"><svg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Authority Scale logo'><circle cx='32' cy='32' r='23' fill='none' stroke='#FFD700' stroke-width='3'/><path d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='#FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg></span>Authority Scale™</div>
+        <p class="mini" style="margin-top:8px">We architect visibility systems for those who refuse to be unseen.</p>
       </div>
-      <p class="fineprint">© <span id="year"></span> Authority Scale. All rights reserved.</p>
-      <div class="fineprint"><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Contact</a></div>
+      <div>
+        <div class="mini">Programs</div>
+        <ul class="mini" style="list-style:none; padding:0; margin:8px 0 0">
+          <li><a href="#offers">The Board — Private Advisory</a></li>
+          <li><a href="#offers">The Network — Collective</a></li>
+          <li><a href="#offers">The Platform — Elite Positioning™</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mini">Contact</div>
+        <ul class="mini" style="list-style:none; padding:0; margin:8px 0 0">
+          <li><a href="#access">Request Access</a></li>
+          <li><a href="mailto:entry@authorityscale.com">entry@authorityscale.com</a></li>
+        </ul>
+      </div>
     </div>
+    <div class="wrap" style="margin-top:24px"><span class="mini">© <span id="year"></span> Authority Scale™. All rights reserved.</span></div>
   </footer>
 
-  <!-- =============================
-       JS — tiny, fast
-       ============================= -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script>
+    // --- Configurable form endpoint (optional). If empty, falls back to mailto.
+    const FORM_ENDPOINT = ""; // Set once. Both forms post here. // e.g. "https://formspree.io/f/xyz" or your API route
+
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } })
-    }, {threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    // Smooth scroll + active nav
+    const links = Array.from(document.querySelectorAll('a[href^="#"]'));
+    const sections = ['#pillars','#principles','#who','#offers','#outcomes','#sequence','#proofs','#faq','#access'].map(sel=>document.querySelector(sel)).filter(Boolean);
+    links.forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+    const navLinks = links.filter(a=>['#pillars','#principles','#who','#offers','#outcomes','#sequence','#proofs','#faq','#access'].includes(a.getAttribute('href')));
+    const observerSections = sections.map(el=>({el, top:0}));
+    const setActive = () => {
+      const y = window.scrollY + 120; // offset for fixed nav
+      let current = null;
+      observerSections.forEach(s=>{ s.top = s.el.getBoundingClientRect().top + window.scrollY; });
+      for(const s of observerSections){ if(y >= s.top) current = s.el.id; }
+      navLinks.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+    };
+    window.addEventListener('scroll', setActive, {passive:true});
+    window.addEventListener('resize', setActive);
+    setActive();
 
-    // Mobile drawer
-    const btn = document.getElementById('mobileMenu');
-    if(btn){
-      btn.addEventListener('click', () => {
-        const exists = document.getElementById('drawer');
-        if(exists){ exists.remove(); btn.setAttribute('aria-expanded','false'); return; }
-        const nav = document.createElement('div');
-        nav.id='drawer';
-        Object.assign(nav.style, {position:'fixed', inset:'70px 16px auto 16px', background:'rgba(0,0,0,.96)', border:'1px solid var(--stroke)', borderRadius:'14px', padding:'10px', boxShadow:'var(--shadow)', zIndex:60});
-        nav.innerHTML = `
-          <a href="#how" style="display:block; padding:12px 10px; border-radius:10px">Framework</a>
-          <a href="#industries" style="display:block; padding:12px 10px; border-radius:10px">Industries</a>
-          <a href="#proof" style="display:block; padding:12px 10px; border-radius:10px">Proof</a>
-          <a href="#book" style="display:block; padding:12px 10px; border-radius:10px">Book</a>
-        `;
-        document.body.appendChild(nav);
-        btn.setAttribute('aria-expanded','true');
+    // Ticker gating (must be true to show press names)
+    const SHOW_TICKER = false;
+    if(!SHOW_TICKER){ const t = document.querySelector('.ticker'); if(t) t.remove(); }
+
+    // UTM + context assigner
+    function assignTracking(targetForm){
+      if(!targetForm) return;
+      const params = new URLSearchParams(location.search);
+      const set = (n,v)=>{ const el = targetForm.querySelector(`[name="${n}"]`); if(el) el.value = v||''; };
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=> set(k, params.get(k)));
+      set('page_path', location.pathname + location.search);
+      set('referrer', document.referrer);
+      set('timestamp', new Date().toISOString());
+    }
+
+    // Reveal on scroll
+    const revealables = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold: 0.12});
+    revealables.forEach(el=> io.observe(el));
+
+    // Form handling — POST if endpoint exists; else mailto fallback
+    const form = document.getElementById('entryForm');
+    const status = document.getElementById('formStatus');
+    assignTracking(form);
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      status.textContent = 'Submitting…';
+      // Honeypot spam check
+      if(form.querySelector('[name="website"]')?.value){ status.textContent=''; return; }
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      // Analytics: attempt to fire before network
+      window.gtag && gtag('event','generate_lead',{form:'access'});
+      window.fbq && fbq('track','Lead',{content_name:'Access Request'});
+
+      if(FORM_ENDPOINT){
+        try{
+          const res = await fetch(FORM_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+          if(!res.ok) throw new Error('Request failed');
+          form.reset();
+          status.textContent = 'Request received. We will respond if aligned.';
+        }catch(err){
+          status.textContent = 'There was an issue. Please email entry@authorityscale.com.';
+        }
+      }else{
+        const subject = encodeURIComponent('Authority Scale — Access Request');
+        const body = encodeURIComponent(`Name: ${data.name}
+Email: ${data.email}
+Company: ${data.company||''}
+Context: ${data.context||''}`);
+        window.location.href = `mailto:entry@authorityscale.com?subject=${subject}&body=${body}`;
+        setTimeout(()=>{ status.textContent = 'Email client opened. If nothing happened, email entry@authorityscale.com.'; }, 600);
+      }
+    });
+
+    // Book form handling with source=book
+    const bookForm = document.getElementById('bookForm');
+    const bookStatus = document.getElementById('bookStatus');
+    if(bookForm){
+      assignTracking(bookForm);
+      bookForm.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        bookStatus.textContent = 'Sending…';
+        // Honeypot spam check
+        if(bookForm.querySelector('[name="website"]')?.value){ bookStatus.textContent=''; return; }
+        const payload = Object.fromEntries(new FormData(bookForm).entries());
+        payload.source = 'book';
+
+        window.gtag && gtag('event','select_content',{form:'book_chapter'});
+        window.fbq && fbq('track','Lead',{content_name:'Book Chapter Request'});
+
+        if(FORM_ENDPOINT){
+          try{
+            const res = await fetch(FORM_ENDPOINT,{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+            if(!res.ok) throw new Error('Request failed');
+            bookForm.reset();
+            bookStatus.textContent = 'Check your inbox for Chapter One.';
+          }catch(err){
+            bookStatus.textContent = 'There was an issue. Please email entry@authorityscale.com.';
+          }
+        }else{
+          const subject = encodeURIComponent('Engineered Authority — Chapter One');
+          const body = encodeURIComponent(`Email: ${payload.email}
+Source: book`);
+          window.location.href = `mailto:entry@authorityscale.com?subject=${subject}&body=${body}`;
+          setTimeout(()=>{ bookStatus.textContent = 'Email client opened. If nothing happened, email entry@authorityscale.com.'; }, 600);
+        }
       });
     }
   </script>
+  <a href="#access" class="btn primary cta-float" aria-label="Request Access">Request Access</a>
+  <script>
+    // Lazy-load future images by default
+    (function(){
+      const setLazy = img => { if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy'); if(!img.hasAttribute('decoding')) img.setAttribute('decoding','async'); };
+      document.querySelectorAll('img').forEach(setLazy);
+      new MutationObserver(mutations=>{
+        mutations.forEach(m=> m.addedNodes && m.addedNodes.forEach(n=>{
+          if(n.tagName==='IMG') setLazy(n);
+          if(n.querySelectorAll){ n.querySelectorAll('img').forEach(setLazy); }
+        }))
+      }).observe(document.documentElement,{childList:true,subtree:true});
+    })();
+  </script>
+  <!-- Google Analytics 4 (replace G-XXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config','G-XXXXXXX');
+  </script>
+
+  <!-- Meta Pixel (replace YOUR_PIXEL_ID) -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
 </body>
 </html>
-
