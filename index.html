@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
   <title>Authority Scale™ — Executive Authority & Market Command</title>
   <meta name="description" content="Authority Scale™ architects visibility systems for leaders operating where stakes are high and invisibility isn’t an option." />
   <meta name="theme-color" content="#0b0b0e" />
-  <!-- OpenGraph / Twitter for shareability -->
+
+  <!-- OpenGraph / Twitter -->
   <meta property="og:title" content="Authority Scale™ — Executive Authority & Strategic Influence"/>
   <meta property="og:description" content="Authority Scale™ architects visibility systems for leaders who operate at the highest tier—where perception drives power."/>
   <meta property="og:type" content="website"/>
@@ -14,24 +18,31 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="canonical" href="https://your-domain.example/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000000'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23FFD700' stroke-width='3'/%3E%3Cpath d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='%23FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <!-- Premium font stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Spectral:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+
   <style>
+    /* ---------- Design tokens ---------- */
     :root{
-      --bg: #0b0b0e;
-      --ink: #e8e8ea;
-      --muted: #9ea0a6;
-      --graphite: #1a1b1f;
-      --charcoal: #121317;
-      --emerald: #0e3b32;
-      --emerald-glow: #1f6f5d;
-      --brass: #FFD700;
-      --brass-deep: #B8860B;
-      --marble: #0f0f12;
+      --bg: #0b0b0e;             /* near-black */
+      --ink: #e8e8ea;            /* soft white */
+      --muted: #9ea0a6;          /* soft gray */
+      --graphite: #1a1b1f;       /* panels */
+      --charcoal: #121317;       /* base */
+      --emerald: #0e3b32;        /* deep green accent */
+      --brass: #FFD700;          /* gold */
       --maxw: 1200px;
       --radius: 18px;
       --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    /* ---------- Reset / base ---------- */
+    *,*::before,*::after{ box-sizing: border-box }
+    html,body{ height:100% }
+    html{ overflow-x:hidden }           /* prevent side-drag on iOS/Android */
     body{
       margin:0; color:var(--ink);
       background:
@@ -40,200 +51,164 @@
         linear-gradient(180deg, var(--charcoal), var(--bg));
       font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
       line-height:1.55; letter-spacing:.2px;
-
-      /* MOBILE FIX: kill horizontal scroll caused by overflowing nav/elements */
-      overflow-x:hidden;
+      overflow-x: clip;                 /* modern, avoids accidental scroll */
     }
-    h1,h2,h3{font-family:'Spectral', ui-serif, Georgia, serif; font-weight:700}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
-    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+    img,svg,video{ max-width:100%; height:auto }
+    h1,h2,h3{ font-family:'Spectral', ui-serif, Georgia, serif; font-weight:700 }
+    a{ color:inherit; text-decoration:none }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px }
 
-    /* Top Nav */
-    .nav{position:fixed; inset:0 0 auto 0; display:flex; justify-content:center; z-index:50;}
+    /* ---------- Nav ---------- */
+    .nav{ position:sticky; top:0; z-index:60; display:flex; justify-content:center; backdrop-filter:saturate(1.05); }
     .nav .bar{
-      display:flex; align-items:center; gap:28px;
+      display:flex; align-items:center; gap:24px;
       background:rgba(18,19,23,.6); backdrop-filter: blur(10px);
       border:1px solid rgba(212,175,55,.18); box-shadow:var(--shadow);
       margin:14px; padding:10px 16px; border-radius:14px;
-
-      /* MOBILE FIX: ensure bar never exceeds viewport width */
-      width:calc(100% - 28px);
-      max-width:var(--maxw);
     }
-    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.8px}
-    .brand .logo{width:32px; height:32px; border-radius:8px; display:grid; place-items:center; background:transparent; border:1px solid rgba(255,215,0,.35)}
-    .brand .logo svg{width:26px; height:26px}
-    .nav a{opacity:.9}
-    .nav a.active{opacity:1}
-    .cta{margin-left:auto;}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; background:linear-gradient(180deg, #1d1e24, #14151a); border:1px solid rgba(212,175,55,.28); box-shadow:var(--shadow); color:var(--ink); font-weight:600}
-    .btn.primary{background:linear-gradient(180deg, #2a2b31, #16171c); border-color:rgba(212,175,55,.45)}
-    .btn span.small{font-size:12px; opacity:.7}
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.8px }
+    .brand .logo{ width:32px; height:32px; border-radius:8px; display:grid; place-items:center; border:1px solid rgba(255,215,0,.35) }
+    .brand .logo svg{ width:26px; height:26px }
+    .links{ display:flex; align-items:center; gap:18px; flex-wrap:wrap }
+    .links a{ opacity:.9 }
+    .links a.active{ opacity:1 }
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; background:linear-gradient(180deg, #1d1e24, #14151a); border:1px solid rgba(212,175,55,.28); box-shadow:var(--shadow); color:var(--ink); font-weight:600 }
+    .btn.primary{ background:linear-gradient(180deg, #2a2b31, #16171c); border-color:rgba(212,175,55,.45) }
+    .btn:focus-visible{ outline:2px solid var(--brass); outline-offset:2px }
 
-    .accent{color:var(--brass)}
-    .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .tag-row .tag{border-color:rgba(212,175,55,.28)}
-
-    /* Media placeholders */
-    .ph{border:1px dashed rgba(212,175,55,.35); background:linear-gradient(180deg,#0f1015,#12131a); display:grid; place-items:center; color:var(--muted); border-radius:var(--radius); text-align:center}
-    .hero-media{height:260px; margin-bottom:16px}
-    .media-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-    .media-grid .ph{height:180px}
-    .book-cover{width:100%; height:260px; border-radius:12px; margin-bottom:12px}
-    .founder-media{width:100%; height:240px; border-radius:12px; margin-bottom:12px}
-    .btn:focus-visible{outline:2px solid var(--brass); outline-offset:2px}
-
-    /* Sticky CTA (mobile) */
-    .cta-float{position:fixed; inset:auto 16px 16px auto; z-index:60; display:none}
-    @media (max-width: 720px){ .cta-float{display:inline-flex;} }
-
-    /* Header */
-    .hero{position:relative; padding:160px 0 110px; overflow:hidden}
-    .hero::before{content:""; position:absolute; inset:-20% -20% auto -20%; height:120%; background:
-      radial-gradient(800px 400px at 70% 0%, rgba(31,111,93,.18), transparent 60%),
-      radial-gradient(700px 380px at 10% 20%, rgba(212,175,55,.12), transparent 55%),
-      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); pointer-events:none; filter:saturate(1.05)}
-    .hero-grid{display:grid; grid-template-columns: 1.25fr .75fr; gap:48px; align-items:center}
-    .kicker{color:var(--brass); text-transform:uppercase; font-size:12px; letter-spacing:2.2px; font-weight:700}
-    h1{font-size: clamp(36px, 5vw, 64px); line-height:1.02; margin:14px 0 18px; font-weight:800;
-
-      /* MOBILE FIX: prevent long words from pushing layout right */
-      overflow-wrap:anywhere;
+    /* Mobile menu */
+    .menu-toggle{ display:none; margin-left:auto }
+    .mobile-drawer{
+      position:fixed; left:12px; right:12px; top:72px; display:none;
+      background:rgba(18,19,23,.96); border:1px solid rgba(212,175,55,.25);
+      border-radius:14px; box-shadow:var(--shadow); padding:12px; z-index:70;
     }
-    .lead{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted)}
-    .hero-actions{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap}
+    .mobile-drawer.open{ display:block }
+    .mobile-drawer a{
+      display:block; padding:12px 10px; border-radius:10px; opacity:1;
+      border:1px solid rgba(212,175,55,.14); margin-bottom:8px;
+      background:linear-gradient(180deg,#1b1c21,#121318);
+    }
+    .mobile-drawer .cta-link{ background:linear-gradient(180deg,#2a2b31,#16171c); border-color:rgba(212,175,55,.45); font-weight:600 }
 
-    .hero-card{border-radius:20px; background:linear-gradient(145deg, #0e0f13, #17181f); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); padding:22px}
-    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
-    .stat{background:linear-gradient(180deg, #12131a, #0e0f13); border:1px solid rgba(212,175,55,.18); padding:16px; border-radius:14px}
-    .stat strong{font-size:22px}
-    .stat span{display:block; font-size:12px; color:var(--muted)}
+    /* ---------- Header / Hero ---------- */
+    .hero{ position:relative; padding:160px 0 110px; overflow:hidden }
+    .hero::before{
+      content:""; position:absolute; inset:-20% -20% auto -20%; height:120%;
+      background:
+        radial-gradient(800px 400px at 70% 0%, rgba(31,111,93,.18), transparent 60%),
+        radial-gradient(700px 380px at 10% 20%, rgba(212,175,55,.12), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+      pointer-events:none;
+    }
+    .hero-grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:48px; align-items:center; min-width:0 }
+    .kicker{ color:var(--brass); text-transform:uppercase; font-size:12px; letter-spacing:2.2px; font-weight:700 }
+    h1{
+      font-size: clamp(36px, 5vw, 64px);
+      line-height:1.03; margin:14px 0 18px; font-weight:800;
+      overflow-wrap:anywhere; word-break:normal;
+    }
+    .subhead{ font-size:clamp(18px,2.4vw,28px); font-weight:700; letter-spacing:1.2px; margin-top:8px; text-transform:uppercase; opacity:.9 }
+    .lead{ font-size: clamp(16px, 2.2vw, 20px); color:var(--muted) }
+    .hero-actions{ display:flex; gap:14px; margin-top:22px; flex-wrap:wrap }
+    .accent{ color:var(--brass) }
 
-    /* Pillars */
-    .pillars{padding:40px 0 0}
-    .pillars-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start}
-    .pillar{display:grid; place-items:center; width:clamp(140px,30vw,220px); height:clamp(140px,30vw,220px); margin:0 auto; border-radius:9999px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); text-align:center; padding:18px}
-    .pillar h3{margin:0 0 6px; font-size:18px}
-    .pillar p{margin:0; color:var(--muted); font-size:14px}
+    .hero-card{ border-radius:20px; background:linear-gradient(145deg, #0e0f13, #17181f); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); padding:22px }
+    .stats{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin-top:14px }
+    .stat{ background:linear-gradient(180deg, #12131a, #0e0f13); border:1px solid rgba(212,175,55,.18); padding:16px; border-radius:14px }
+    .stat strong{ font-size:20px }
+    .stat span{ display:block; font-size:12px; color:var(--muted) }
 
-    /* Sections */
-    section{padding:92px 0; position:relative}
-    .section-title{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px}
-    h2{font-size: clamp(28px, 3.6vw, 42px); line-height:1.06; margin:0}
-    .eyebrow{color:var(--brass); text-transform:uppercase; letter-spacing:1.8px; font-size:12px; font-weight:700}
-    .muted{color:var(--muted)}
+    .ph{ border:1px dashed rgba(212,175,55,.35); background:linear-gradient(180deg,#0f1015,#12131a); display:grid; place-items:center; color:var(--muted); border-radius:var(--radius); text-align:center }
+    .hero-media{ height:260px; margin-bottom:16px }
 
-    /* Cards & grids */
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    .card{background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.2); border-radius:18px; padding:22px; box-shadow:var(--shadow)}
-    .card h3{margin:0 0 10px}
-    .tag{display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); padding:4px 8px; border:1px solid rgba(212,175,55,.18); border-radius:999px}
+    /* ---------- Sections ---------- */
+    section{ padding:92px 0; position:relative }
+    .section-title{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:22px; flex-wrap:wrap }
+    h2{ font-size: clamp(28px, 3.6vw, 42px); line-height:1.06; margin:0 }
+    .eyebrow{ color:var(--brass); text-transform:uppercase; letter-spacing:1.8px; font-size:12px; font-weight:700 }
+    .muted{ color:var(--muted) }
 
-    /* Offers */
-    .offers{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
-    .offer{position:relative; overflow:hidden}
-    .offer .tone{position:absolute; inset:auto -40% -40% auto; width:80%; height:80%; background: radial-gradient(closest-side, rgba(212,175,55,.12), transparent 70%)}
-    .offer h3{font-size:22px}
-    .offer ul{margin:10px 0 0 18px}
+    /* ---------- Grids / cards ---------- */
+    .grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px }
+    .card{ background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.2); border-radius:18px; padding:22px; box-shadow:var(--shadow) }
+    .card h3{ margin:0 0 10px }
+    .tag{ display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--muted); padding:4px 8px; border:1px solid rgba(212,175,55,.18); border-radius:999px }
 
-    /* Sequence */
-    .timeline{border-left:1px solid rgba(212,175,55,.25); padding-left:18px; margin:14px 0}
-    .beat{margin:18px 0}
-    .beat h4{margin:0 0 6px; font-size:18px}
+    /* ---------- Pillars ---------- */
+    .pillars{ padding:40px 0 0 }
+    .pillars-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px; align-items:start }
+    .pillar{ display:grid; place-items:center; width:min(100%, 320px); aspect-ratio:1/1; margin:0 auto; border-radius:9999px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); text-align:center; padding:18px }
+    .pillar h3{ margin:0 0 6px; font-size:18px }
+    .pillar p{ margin:0; color:var(--muted); font-size:14px }
 
-    /* Indicators */
-    .logos{display:grid; grid-template-columns:repeat(6,1fr); gap:18px; opacity:.9}
-    .logo-tile{height:58px; border-radius:14px; border:1px dashed rgba(212,175,55,.22); display:grid; place-items:center; font-size:13px; color:var(--muted); background:linear-gradient(180deg,#0f1015,#12131a)}
-    .quotes{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:18px}
-    .quote{padding:20px; border-radius:16px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.18)}
+    /* ---------- Offers ---------- */
+    .offers{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:18px }
+    .offer{ position:relative; overflow:hidden }
+    .offer .tone{ position:absolute; inset:auto -40% -40% auto; width:80%; height:80%; background: radial-gradient(closest-side, rgba(212,175,55,.12), transparent 70%) }
+    .offer h3{ font-size:22px }
+    .offer ul{ margin:10px 0 0 18px }
 
-    /* CTA */
-    .cta-panel{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center}
-    form{display:grid; gap:12px}
-    input, textarea{background:#0e0f13; color:var(--ink); border:1px solid rgba(212,175,55,.25); border-radius:12px; padding:12px 14px; font:inherit}
-    textarea{min-height:120px}
+    /* ---------- Sequence ---------- */
+    .timeline{ border-left:1px solid rgba(212,175,55,.25); padding-left:18px; margin:14px 0 }
+    .beat{ margin:18px 0 }
+    .beat h4{ margin:0 0 6px; font-size:18px }
 
-    footer{padding:60px 0 80px; color:var(--muted); border-top:1px solid rgba(212,175,55,.18)}
-    .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:24px}
-    .mini{font-size:12px}
+    /* ---------- Indicators ---------- */
+    .logos{ display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:18px; opacity:.9 }
+    .logo-tile{ height:58px; border-radius:14px; border:1px dashed rgba(212,175,55,.22); display:grid; place-items:center; font-size:13px; color:var(--muted); background:linear-gradient(180deg,#0f1015,#12131a) }
+    .quotes{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px; margin-top:18px }
+    .quote{ padding:20px; border-radius:16px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.18) }
 
-    .hero .subhead{font-size:clamp(18px,2.4vw,28px); font-weight:700; letter-spacing:2px; margin-top:8px; opacity:0; text-transform:uppercase}
-    .animate{animation:fadeInUp 1.2s ease forwards; animation-delay:.8s}
-    @keyframes fadeInUp{0%{opacity:0; transform:translateY(18px)}100%{opacity:1; transform:translateY(0)}}
+    /* ---------- Forms / CTA ---------- */
+    .cta-panel{ display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center }
+    form{ display:grid; gap:12px }
+    input, textarea{ background:#0e0f13; color:var(--ink); border:1px solid rgba(212,175,55,.25); border-radius:12px; padding:12px 14px; font:inherit; width:100% }
+    textarea{ min-height:120px }
+    .mini{ font-size:12px }
 
-    /* Reveal animations */
-    [data-reveal]{opacity:0; transform:translateY(12px); transition: opacity .6s ease, transform .6s ease}
-    [data-reveal].in{opacity:1; transform:none}
+    /* ---------- Footer ---------- */
+    footer{ padding:60px 0 80px; color:var(--muted); border-top:1px solid rgba(212,175,55,.18) }
+    .foot-grid{ display:grid; grid-template-columns:2fr 1fr 1fr; gap:24px }
 
-    /* ------- Responsive ------- */
+    /* ---------- Ticker ---------- */
+    .ticker{ padding:18px 0; border-top:1px solid rgba(212,175,55,.12); border-bottom:1px solid rgba(212,175,55,.12); background:linear-gradient(180deg,#0e0f13,#0b0b0e) }
+    .ticker-track{ display:flex; gap:48px; white-space:nowrap; overflow:hidden; mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent); animation:marquee 66s linear infinite }
+    .ticker-track span{ display:inline-block; padding:6px 0; opacity:.75; letter-spacing:.8px }
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ---------- Reveal ---------- */
+    [data-reveal]{ opacity:0; transform:translateY(12px); transition: opacity .6s ease, transform .6s ease }
+    [data-reveal].in{ opacity:1; transform:none }
+
+    /* ---------- Responsive ---------- */
     @media (max-width: 1024px){
-      .hero-grid, .cta-panel{grid-template-columns:1fr}
-      .offers{grid-template-columns:1fr 1fr}
-      .logos{grid-template-columns:repeat(3,1fr)}
-      .quotes{grid-template-columns:1fr 1fr}
+      .hero-grid, .cta-panel{ grid-template-columns:1fr }
+      .offers{ grid-template-columns:1fr 1fr }
+      .logos{ grid-template-columns:repeat(3, minmax(0,1fr)) }
+      .quotes{ grid-template-columns:1fr 1fr }
     }
-
-    /* MOBILE FIXES (≤720px) — desktop remains unchanged */
+    @media (max-width: 840px){
+      .links{ display:none }
+      .menu-toggle{ display:inline-flex }
+    }
     @media (max-width: 720px){
-      .wrap{padding:0 16px} /* a hair tighter so nothing clips */
+      .wrap{ padding:0 16px }
+      .hero{ padding-top:140px }
+      .hero-grid{ grid-template-columns:1fr; gap:22px }
+      .hero-media{ height:210px }
 
-      /* NAV: collapse into toggle + drawer, no overflow */
-      .nav .bar{gap:12px; padding:10px 12px}
-      .menu-toggle{display:inline-flex; margin-left:auto}
-      .nav .links{display:none}
-      .mobile-drawer{
-        position:fixed; inset:64px 12px auto 12px;
-        background:rgba(18,19,23,.96); border:1px solid rgba(212,175,55,.25);
-        border-radius:14px; box-shadow:var(--shadow);
-        padding:12px; display:none; z-index:60;
-      }
-      .mobile-drawer.open{display:block}
-      .mobile-drawer a{
-        display:block; padding:12px 10px; border-radius:10px; opacity:1;
-        border:1px solid rgba(212,175,55,.14); margin-bottom:8px;
-        background:linear-gradient(180deg,#1b1c21,#121318);
-      }
-      .mobile-drawer .cta-link{background:linear-gradient(180deg,#2a2b31,#16171c); border-color:rgba(212,175,55,.45); font-weight:600}
+      .stats{ grid-template-columns:repeat(2, minmax(0,1fr)) }
+      #outcomes .stats{ grid-template-columns:repeat(2, minmax(0,1fr)) !important }
 
-      /* HERO: prevent “lean right” and clipping */
-      .hero{padding-top:140px}
-      .hero-grid{grid-template-columns:1fr; gap:22px}
-      h1{font-size: clamp(34px, 8vw, 44px)}
-      .hero-media{height:210px}
+      .pillars-grid{ grid-template-columns:1fr; gap:16px }
+      .pillar{ width:min(92%, 360px) }
 
-      /* PILLARS: ensure circles never cut off */
-      .pillars-grid{grid-template-columns:1fr; gap:14px}
-      .pillar{width:min(92%, 360px); height:min(92vw, 360px); padding:16px}
-
-      /* Generic card grids → single column to breathe */
-      .grid-3{grid-template-columns:1fr}
-      .offers{grid-template-columns:1fr}
-      .logos{grid-template-columns:repeat(2,1fr)}
-      .quotes{grid-template-columns:1fr}
-
-      /* Stats: 2 columns on mobile; also override inline 4-col in Outcomes */
-      .stats{grid-template-columns:repeat(2,1fr)}
-      #outcomes .stats{grid-template-columns:repeat(2,1fr) !important}
-
-      /* CTA panels to single column already handled via 1024 rule, tighten spacing */
-      .cta-panel{gap:14px}
-
-      /* Footer columns stack nicely */
-      .foot-grid{grid-template-columns:1fr; gap:14px}
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      [data-reveal]{transition:none}
-    }
-
-    /* Case Studies */
-    #cases .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    #cases .metric{padding:22px; border-radius:16px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.18)}
-    #cases .metric strong{font-size:28px}
-    @media (max-width:720px){
-      #cases .metrics{grid-template-columns:1fr; gap:14px}
+      .grid-3{ grid-template-columns:1fr }
+      .offers{ grid-template-columns:1fr }
+      .logos{ grid-template-columns:repeat(2, minmax(0,1fr)) }
+      .quotes{ grid-template-columns:1fr }
+      .foot-grid{ grid-template-columns:1fr; gap:16px }
     }
   </style>
 
@@ -257,19 +232,14 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {"@type":"Question","name":"What changes in the first 30–90 days?","acceptedAnswer":{"@type":"Answer","text":"Positioning lock, channel cadence, authority assets in market, and first indicators: qualified inbound, press interest, partner lanes."}},
-      {"@type":"Question","name":"Who is a fit?","acceptedAnswer":{"@type":"Answer","text":"Leaders with clear economics and conviction: tech/SaaS, sales orgs, consultants/coaches, C‑suite, law, plastics & medspa, biotech, premium services, and capital partners."}},
+      {"@type":"Question","name":"What changes in the first 30–90 days?","acceptedAnswer":{"@type":"Answer","text":"Positioning lock, channel cadence, authority assets in market, and visible indicators: qualified inbound, press interest, partner lanes."}},
+      {"@type":"Question","name":"Who is a fit?","acceptedAnswer":{"@type":"Answer","text":"Leaders with clear economics and conviction: tech/SaaS, services, consulting, C-suite, law, medspa, biotech, premium services, and capital partners."}},
       {"@type":"Question","name":"How is engagement structured?","acceptedAnswer":{"@type":"Answer","text":"Three tracks: The Board (1:1 advisory), The Network (collective), The Platform (full deployment). Minimum term 90 days."}},
       {"@type":"Question","name":"Do you handle media & placement?","acceptedAnswer":{"@type":"Answer","text":"Yes. Editorial, platforms, and amplification are orchestrated as part of the authority engine."}},
       {"@type":"Question","name":"Is this confidential?","acceptedAnswer":{"@type":"Answer","text":"Always. Results are prioritized; relationships remain discreet."}},
       {"@type":"Question","name":"What does success look like?","acceptedAnswer":{"@type":"Answer","text":"You become the obvious choice. Demand concentrates, pricing holds, and rooms open that previously didn’t."}}
     ]
   }</script>
-
-  <!-- Premium font stack -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Spectral:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- NAV -->
@@ -285,7 +255,6 @@
         <span>Authority Scale™</span>
       </a>
 
-      <!-- Desktop links -->
       <div class="links" role="navigation" aria-label="Primary links">
         <a href="#principles">Principles</a>
         <a href="#offers">Programs</a>
@@ -294,16 +263,14 @@
         <a href="#sequence">Sequence</a>
         <a href="#proofs">Indicators</a>
         <a href="#faq">FAQ</a>
-        <a href="#access" class="btn primary cta">Request Access</a>
+        <a href="#access" class="btn primary">Request Access</a>
       </div>
 
-      <!-- MOBILE FIX: menu toggle button (hidden on desktop via CSS) -->
-      <button class="btn menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu" style="display:none">
-        Menu
-      </button>
+      <!-- mobile menu button -->
+      <button class="btn menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">Menu</button>
     </div>
 
-    <!-- MOBILE FIX: drawer menu -->
+    <!-- mobile drawer -->
     <div id="mobileMenu" class="mobile-drawer" role="menu" aria-label="Mobile menu">
       <a role="menuitem" href="#principles">Principles</a>
       <a role="menuitem" href="#offers">Programs</a>
@@ -321,76 +288,60 @@
     <div class="wrap hero-grid">
       <div data-reveal>
         <div class="kicker">Executive Authority & Strategic Influence</div>
-        <h1>Authority isn’t given. It’s <span class="accent">Engineered</span>.</h1>
-        <h2 class="subhead animate">Authority. Positioning. Power.</h2>
-        <p class="lead">Step into the room as the inevitable choice. Command attention. Own your positioning. Keep your pipeline full.</p>
+        <h1>Authority isn’t given. It’s <span class="accent">forged</span>.</h1>
+        <div class="subhead">Category leadership through positioning, presence & pipeline</div>
+        <p class="lead">We help CEOs and founders become the <em>obvious choice</em>—reducing perceived risk, commanding premium pricing, and concentrating demand in the right rooms.</p>
         <div class="hero-actions">
           <a href="#access" class="btn primary">Request Private Entry</a>
           <a href="#outcomes" class="btn" aria-label="See outcomes">See Outcomes</a>
         </div>
       </div>
+
       <aside data-reveal>
         <figure class="hero-media ph" aria-label="hero media placeholder">Hero Image / Video Placeholder</figure>
-        <div class="hero-card" aria-label="identity">
-          <div class="tag">Decision Maker • Category Leader</div>
+        <div class="hero-card" aria-label="Outcomes at a glance">
+          <div class="tag">Outcomes Snapshot</div>
           <div class="stats">
-            <div class="stat"><strong>Identity</strong><span>Precision • Command</span></div>
-            <div class="stat"><strong>Focus</strong><span>Authority • Reach • Revenue</span></div>
-            <div class="stat"><strong>Standard</strong><span>Category‑Defining Delivery</span></div>
+            <div class="stat"><strong>Get Seen</strong><span>Signal density & editorial reach</span></div>
+            <div class="stat"><strong>Get Chosen</strong><span>Category clarity & proof assets</span></div>
+            <div class="stat"><strong>Get Paid</strong><span>Pricing power & deal velocity</span></div>
           </div>
         </div>
       </aside>
     </div>
   </header>
 
-  <!-- AS SEEN IN TICKER (removed by JS unless toggled) -->
+  <!-- OPTIONAL: AS SEEN IN (hidden by default via JS gate) -->
   <section class="ticker" aria-label="as seen in">
     <div class="wrap">
       <div class="ticker-track">
-        <span>As seen in</span>
-        <span>Forbes</span>
-        <span>Rolling Stone</span>
-        <span>The Guardian</span>
-        <span>Harvard Business Review</span>
-        <span>USA Today</span>
-        <span>Bloomberg</span>
-        <span>TechCrunch</span>
-        <span>WSJ</span>
-        <span>Fast Company</span>
-        <span>As seen in</span>
-        <span>Forbes</span>
-        <span>Rolling Stone</span>
-        <span>The Guardian</span>
-        <span>Harvard Business Review</span>
-        <span>USA Today</span>
-        <span>Bloomberg</span>
-        <span>TechCrunch</span>
-        <span>WSJ</span>
-        <span>Fast Company</span>
+        <span>As seen in</span><span>Forbes</span><span>Rolling Stone</span><span>The Guardian</span><span>Harvard Business Review</span><span>USA Today</span><span>Bloomberg</span><span>TechCrunch</span><span>WSJ</span><span>Fast Company</span>
+        <span>As seen in</span><span>Forbes</span><span>Rolling Stone</span><span>The Guardian</span><span>Harvard Business Review</span><span>USA Today</span><span>Bloomberg</span><span>TechCrunch</span><span>WSJ</span><span>Fast Company</span>
+      </div>
       <p class="mini muted" style="margin-top:6px">*Features shown reflect actual client placements; publications do not endorse this program.*</p>
     </div>
   </section>
 
-  <!-- PILLARS -->
+  <!-- PILLARS: Presence • Positioning • Pipeline (benefit-led) -->
   <section id="pillars" class="pillars">
     <div class="wrap">
       <div class="pillars-grid">
         <div class="pillar" data-reveal>
           <div>
-            <h3>Presence</h3>
-            <p>Omnipresent in the feeds that matter.</p>
+            <h3>Presence — Get Seen</h3>
+            <p>Omnipresent where buyers look: executive content, earned media, stages.</p>
           </div>
         </div>
         <div class="pillar" data-reveal>
           <div>
-            <h3>Positioning</h3>
-            <p>The inevitable choice in your market.</p>
+            <h3>Positioning — Get Chosen</h3>
+            <p>Category clarity, proof, and POV that make selection inevitable.</p>
           </div>
         </div>
         <div class="pillar" data-reveal>
           <div>
-            <h3>Pipeline</h3>
-            <p>Qualified clients flowing—ready to buy or book.</p>
+            <h3>Pipeline — Get Paid</h3>
+            <p>Authority assets that reduce risk, speed decisions, and lift price.</p>
           </div>
         </div>
       </div>
@@ -416,7 +367,7 @@
         </article>
         <article class="card" data-reveal>
           <h3>Omnipresence Publishing Protocol™</h3>
-          <p>Signal‑dense systems that dominate mindshare across channels. Disciplined. Compounding. Unmistakable.</p>
+          <p>Signal-dense systems that dominate mindshare across channels. Disciplined. Compounding. Unmistakable.</p>
           <div class="tag">Signals • Scale</div>
         </article>
         <article class="card" data-reveal>
@@ -442,16 +393,16 @@
       <div class="grid-3">
         <article class="card" data-reveal>
           <h3>Identity Signals</h3>
-          <p class="muted">Decision Makers. Category Leaders. Icons in their industries. Operate with precision. Command focus. Move markets.</p>
+          <p class="muted">Executive identity that travels: what you say, where you show up, how you’re referenced. Designed to reduce buyer risk.</p>
         </article>
         <article class="card" data-reveal>
           <h3>Quiet Power. Loud Results.</h3>
           <p class="muted"><strong>Undeniable Outcomes. Inevitable Recognition. Enduring Growth.</strong></p>
-          <p class="muted" style="margin-top:8px">Every engagement is engineered for unshakable positioning, omnipresent presence, and the pipeline that compounds authority into lasting revenue.</p>
+          <p class="muted" style="margin-top:8px">We engineer unshakable positioning, omnipresent presence, and the pipeline that compounds authority into revenue.</p>
         </article>
         <article class="card" data-reveal>
           <h3>Framing</h3>
-          <p class="muted"><strong>Authority Scale™ doesn’t offer services.</strong> It delivers identity, visibility, and conversion — the levers of lasting market power.</p>
+          <p class="muted"><strong>We don’t sell services.</strong> We deliver executive credibility, market presence, and conversion assets—the levers of lasting power.</p>
         </article>
       </div>
     </div>
@@ -465,16 +416,16 @@
           <div class="eyebrow">Who</div>
           <h2>Who We Move Into Power</h2>
         </div>
-        <p class="muted" style="max-width:560px">Built for leaders where authority shapes revenue — inclusive of any high‑impact category operating at premium stakes.</p>
+        <p class="muted" style="max-width:560px">Built for leaders where authority shapes revenue—high-impact categories operating at premium stakes.</p>
       </div>
 
       <div class="grid-3" style="grid-template-columns:1fr 1fr; gap:16px">
-        <article class="card" data-reveal><h3>Visionary Founders & Growth‑Stage Leaders</h3></article>
+        <article class="card" data-reveal><h3>Visionary Founders & Growth-Stage Leaders</h3></article>
         <article class="card" data-reveal><h3>Established Firms Elevating Market Authority</h3></article>
         <article class="card" data-reveal><h3>Advisors, Consultants & Strategic Operators</h3></article>
         <article class="card" data-reveal><h3>Innovators Driving Industry Change</h3></article>
-        <article class="card" data-reveal><h3>High‑Impact Practices & Category Leaders</h3></article>
-        <article class="card" data-reveal><h3>Emerging Leaders Elevating Into Premium Markets</h3></article>
+        <article class="card" data-reveal><h3>Premium Services & Category Leaders</h3></article>
+        <article class="card" data-reveal><h3>Capital-Facing & Enterprise Brands</h3></article>
       </div>
     </div>
   </section>
@@ -487,19 +438,19 @@
           <div class="eyebrow">Programs</div>
           <h2>The Arsenal</h2>
         </div>
-        <p class="muted" style="max-width:560px">Select your arena of execution. Private advisory. Network leverage. Full‑scale deployment.</p>
+        <p class="muted" style="max-width:560px">Select your arena: private advisory, network leverage, or a full-scale authority engine.</p>
       </div>
 
       <div class="offers">
         <article class="card offer" data-reveal>
           <div class="tone" aria-hidden="true"></div>
           <h3>The Board — Private Advisory</h3>
-          <p>Discreet 1:1 counsel for founders and principal operators. Direct line. No friction.</p>
+          <p>Founder/CEO counsel. Strategy, posture, and decisions—on call.</p>
           <ul>
             <li>Category & narrative control</li>
             <li>Offer architecture & pricing power</li>
             <li>Executive presence & media posture</li>
-            <li>Custom authority engine build‑out</li>
+            <li>Custom authority engine build-out</li>
           </ul>
           <div style="margin-top:14px"><a href="#access" class="btn">Request Access</a></div>
         </article>
@@ -507,10 +458,10 @@
         <article class="card offer" data-reveal>
           <div class="tone" aria-hidden="true"></div>
           <h3>The Network — Collective</h3>
-          <p>Closed‑door circle of operators. Shared intel. Shared leverage. Unshared standards.</p>
+          <p>Closed-door operators. Shared intel. Shared leverage.</p>
           <ul>
             <li>Quarterly briefings</li>
-            <li>Signal‑dense playbooks</li>
+            <li>Signal-dense playbooks</li>
             <li>Partner lanes & field ops</li>
             <li>Private drops & asset vaults</li>
           </ul>
@@ -520,19 +471,19 @@
         <article class="card offer" data-reveal>
           <div class="tone" aria-hidden="true"></div>
           <h3>The Platform — Elite Positioning™</h3>
-          <p>Never run dry on content that commands attention. Dominate feeds without lifting a finger. Every message builds weight, precision, and inevitability.</p>
+          <p>Never run dry on signal content. Dominate feeds without lifting a finger.</p>
           <ul>
-            <li><strong>Your Presence</strong> — commanding every channel, impossible to ignore.</li>
-            <li><strong>Your Positioning</strong> — undeniable, elevated above the noise.</li>
-            <li><strong>Your Pipeline</strong> — consistently lined with decisive buyers and high‑value clients.</li>
+            <li><strong>Presence</strong> — commanding every channel, impossible to ignore</li>
+            <li><strong>Positioning</strong> — differentiated, de-risked, and chosen</li>
+            <li><strong>Pipeline</strong> — decisive buyers, predictable velocity</li>
           </ul>
           <div style="margin-top:14px"><a href="#access" class="btn">Commission</a></div>
         </article>
 
         <article class="card offer" data-reveal>
           <div class="tone" aria-hidden="true"></div>
-          <h3>The Authority Playbook™ — Digital System</h3>
-          <p>Self‑paced positioning and signal‑content system. Build momentum fast, convert attention into demand, and step up when ready.</p>
+          <h3>The Authority Playbook™ — Digital</h3>
+          <p>Self-paced system to build momentum fast and convert attention into demand.</p>
           <ul>
             <li>Proven positioning templates</li>
             <li>Signal content frameworks</li>
@@ -554,7 +505,7 @@
         </div>
         <p class="muted" style="max-width:560px">Authority is not aesthetic; it’s throughput. Expect tangible shifts in demand, pricing power, and deal velocity.</p>
       </div>
-      <div class="stats" style="grid-template-columns:repeat(4,1fr)">
+      <div class="stats">
         <div class="stat"><strong>3–5×</strong><span>Signal density across core channels</span></div>
         <div class="stat"><strong>+20–40%</strong><span>Pricing power on flagship offers</span></div>
         <div class="stat"><strong>2–4×</strong><span>Pipeline velocity & qualified demand</span></div>
@@ -571,25 +522,25 @@
           <div class="eyebrow">Sequence</div>
           <h2>The Strategic Arc</h2>
         </div>
-        <p class="muted" style="max-width:560px">From first signal to market command — a path that compounds positioning, presence, and pipeline at every step.</p>
+        <p class="muted" style="max-width:560px">From first signal to market command—compounding positioning, presence, and pipeline at every step.</p>
       </div>
 
       <div class="timeline">
         <div class="beat" data-reveal>
           <h4>Entry — The Signal</h4>
-          <p class="muted">Precision discovery. We surface asymmetries and define the authority thesis that separates you from the field.</p>
+          <p class="muted">Precision discovery. We define the authority thesis that separates you from the field.</p>
         </div>
         <div class="beat" data-reveal>
           <h4>Blueprint — The Briefing</h4>
-          <p class="muted">Positioning lock, offer architecture, and channel map. Your strategy rendered as a decisive executive dossier.</p>
+          <p class="muted">Positioning lock, offer architecture, and channel map—rendered as an executive dossier.</p>
         </div>
         <div class="beat" data-reveal>
           <h4>Deployment — The Move</h4>
-          <p class="muted">Publish authority assets. Establish cadence. Orchestrate placement. Signals compound and demand concentrates.</p>
+          <p class="muted">Publish authority assets. Establish cadence. Orchestrate placement. Demand concentrates.</p>
         </div>
         <div class="beat" data-reveal>
           <h4>Command — The Reveal</h4>
-          <p class="muted">Proof staged. Rooms open. From credible to inevitable — reinforced by pricing power and pipeline velocity.</p>
+          <p class="muted">Proof staged. Rooms open. From credible to inevitable—reinforced by pricing power.</p>
         </div>
       </div>
 
@@ -609,18 +560,18 @@
         </div>
         <p class="muted" style="max-width:560px">Selective snapshots of engineered positioning converting into measurable advantage.</p>
       </div>
-      <div class="metrics">
-        <article class="metric" data-reveal>
+      <div class="grid-3">
+        <article class="card" data-reveal>
           <strong>+41% Pricing Power</strong>
-          <p class="muted">Flagship offer reframed; premium buyers stopped negotiating. Cycle time down 28%.</p>
+          <p class="muted">Flagship reframed; premium buyers stopped negotiating. Cycle time down 28%.</p>
           <div class="ph" style="height:120px; margin-top:10px" aria-label="case visual">Case Visual</div>
         </article>
-        <article class="metric" data-reveal>
+        <article class="card" data-reveal>
           <strong>3.6× Qualified Inbound</strong>
           <p class="muted">Signal cadence and placement orchestration concentrated demand from the right rooms.</p>
           <div class="ph" style="height:120px; margin-top:10px" aria-label="case visual">Case Visual</div>
         </article>
-        <article class="metric" data-reveal>
+        <article class="card" data-reveal>
           <strong>2.4× Close Rate</strong>
           <p class="muted">Authority assets reduced perceived risk; conversions lifted without discounting.</p>
           <div class="ph" style="height:120px; margin-top:10px" aria-label="case visual">Case Visual</div>
@@ -629,6 +580,7 @@
     </div>
   </section>
 
+  <!-- INDICATORS -->
   <section id="proofs">
     <div class="wrap">
       <div class="section-title" data-reveal>
@@ -636,44 +588,23 @@
           <div class="eyebrow">Indicators</div>
           <h2>Quiet Power. Loud Results.</h2>
         </div>
-        <p class="muted" style="max-width:560px">Recognition signals that follow engineered authority — not who you are, but where this takes you.</p>
+        <p class="muted" style="max-width:560px">Recognition signals that follow engineered authority—where this takes you.</p>
       </div>
 
       <div class="logos" aria-label="recognition signals">
-        <div class="logo-tile" data-reveal>Tier‑1 Press</div>
+        <div class="logo-tile" data-reveal>Tier-1 Press</div>
         <div class="logo-tile" data-reveal>Premium DTC</div>
         <div class="logo-tile" data-reveal>Enterprise SaaS</div>
-        <div class="logo-tile" data-reveal>C‑Suite Advisory</div>
+        <div class="logo-tile" data-reveal>C-Suite Advisory</div>
         <div class="logo-tile" data-reveal>Capital Partners</div>
-        <div class="logo-tile" data-reveal>Elite E‑Com</div>
+        <div class="logo-tile" data-reveal>Elite E-Com</div>
       </div>
 
       <div class="quotes">
-        <div class="quote" data-reveal><strong>Enterprise SaaS — CEO</strong><p class="muted">“Inbound tier‑1 doubled in eight weeks. We didn’t change the product. We changed the posture.”</p></div>
+        <div class="quote" data-reveal><strong>Enterprise SaaS — CEO</strong><p class="muted">“Inbound tier-1 doubled in eight weeks. We didn’t change the product. We changed the posture.”</p></div>
         <div class="quote" data-reveal><strong>Plastic Surgery Group — Managing Partner</strong><p class="muted">“Booked out 60 days at premium rates. Press did the lifting without us asking.”</p></div>
         <div class="quote" data-reveal><strong>Biotech Platform — Founder</strong><p class="muted">“From chasing capital to selecting it. The room treated us differently.”</p></div>
         <div class="quote" data-reveal><strong>Consulting Firm — Principal</strong><p class="muted">“Positioning locked, pricing power up, and the right clients leaning in.”</p></div>
-      </div>
-
-      <div class="media-grid" aria-label="brand assets">
-        <div class="ph" aria-label="case study placeholder">Case Study Cover</div>
-        <div class="ph" aria-label="editorial feature placeholder">Editorial Feature</div>
-        <div class="ph" aria-label="speaking shot placeholder">Speaking Shot</div>
-      </div>
-
-      <div class="grid-3" style="margin-top:18px; grid-template-columns:repeat(3,1fr)">
-        <article class="card" data-reveal>
-          <h3>Recognition Outcomes</h3>
-          <p class="muted">Independent features and category commentary as a by‑product of authority. Orchestrated when strategic; never performative or pay‑to‑play.</p>
-        </article>
-        <article class="card" data-reveal>
-          <h3>Deal Velocity</h3>
-          <p class="muted">Cycles compress, close rates rise. Authority reduces perceived risk and anchors value.</p>
-        </article>
-        <article class="card" data-reveal>
-          <h3>Cultural Reach</h3>
-          <p class="muted">Name placement where it matters. Platforms that compound instead of reset.</p>
-        </article>
       </div>
     </div>
   </section>
@@ -701,7 +632,7 @@
           <h3>Criteria</h3>
           <ul>
             <li>Category ambition & decisive operators</li>
-            <li>Signal‑to‑noise respect</li>
+            <li>Signal-to-noise respect</li>
             <li>Operational discipline</li>
           </ul>
         </div>
@@ -720,7 +651,7 @@
           </label>
           <label>
             <span class="mini">Context</span>
-            <textarea name="context" placeholder="What are you building? Where do you intend to lead?" ></textarea>
+            <textarea name="context" placeholder="What are you building? Where do you intend to lead?"></textarea>
           </label>
           <input type="text" name="website" class="hp" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0" />
           <input type="hidden" name="utm_source"/><input type="hidden" name="utm_medium"/><input type="hidden" name="utm_campaign"/>
@@ -741,11 +672,11 @@
           <div class="eyebrow">Book</div>
           <h2>Engineered Authority™</h2>
         </div>
-        <p class="muted" style="max-width:560px">A definitive field guide to positioning, presence, and pipeline — how leaders become the inevitable choice.</p>
+        <p class="muted" style="max-width:560px">A definitive field guide to positioning, presence, and pipeline—how leaders become the inevitable choice.</p>
       </div>
       <div class="cta-panel">
         <div class="card" data-reveal>
-          <div class="book-cover ph" aria-label="book cover placeholder">Book Cover</div>
+          <div class="book-cover ph" aria-label="book cover placeholder" style="height:260px; border-radius:12px; margin-bottom:12px">Book Cover</div>
           <h3>Inside</h3>
           <ul>
             <li>The inevitability framework</li>
@@ -783,19 +714,20 @@
       </div>
       <div class="cta-panel">
         <div class="card" data-reveal>
-          <div class="founder-media ph" aria-label="founder portrait placeholder">Founder Portrait</div>
+          <div class="ph" aria-label="founder portrait placeholder" style="height:240px; border-radius:12px; margin-bottom:12px">Founder Portrait</div>
           <h3>Founder Statement</h3>
           <p class="muted">Authority isn’t inherited. It’s engineered. Authority Scale™ arms decision makers with positioning, presence, and the pipeline that creates market inevitability. Sovereign Scale™ speaks to the feminine power of authority. Revenue Haus™ extends the model for B2B brands, corporate, and capital markets. Different houses, same foundation: undeniable outcomes, inevitable recognition, enduring growth.</p>
         </div>
         <div class="card" data-reveal>
           <h3>Private Access</h3>
-          <p class="muted">Founder‑led. Discreet by design. Reserved for leaders who move markets.</p>
+          <p class="muted">Founder-led. Discreet by design. Reserved for leaders who move markets.</p>
           <a href="#access" class="btn primary">Work With Dixie</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
       <div class="section-title" data-reveal>
@@ -808,7 +740,7 @@
 
       <div class="grid-3" style="grid-template-columns:1fr 1fr; gap:16px">
         <details class="card" data-reveal><summary><strong>What changes in the first 30–90 days?</strong></summary><p class="muted">Positioning lock, channel cadence, authority assets in market, and first indicators: qualified inbound, press interest, partner lanes.</p></details>
-        <details class="card" data-reveal><summary><strong>Who is a fit?</strong></summary><p class="muted">Leaders with clear economics and conviction: tech/SaaS, sales orgs, consultants/coaches, C‑suite, law, plastics & medspa, biotech, premium services, and capital partners.</p></details>
+        <details class="card" data-reveal><summary><strong>Who is a fit?</strong></summary><p class="muted">Leaders with clear economics and conviction: tech/SaaS, sales orgs, consultants/coaches, C-suite, law, medspa, biotech, premium services, and capital partners.</p></details>
         <details class="card" data-reveal><summary><strong>How is engagement structured?</strong></summary><p class="muted">Three tracks: <em>The Board</em> (1:1 advisory), <em>The Network</em> (collective), <em>The Platform</em> (full deployment). Minimum term 90 days.</p></details>
         <details class="card" data-reveal><summary><strong>Do you handle media & placement?</strong></summary><p class="muted">Yes. Editorial, platforms, and amplification are orchestrated as part of the authority engine.</p></details>
         <details class="card" data-reveal><summary><strong>Is this confidential?</strong></summary><p class="muted">Always. Results are prioritized; relationships remain discreet.</p></details>
@@ -824,7 +756,15 @@
   <footer>
     <div class="wrap foot-grid">
       <div>
-        <div class="brand"><span class="logo"><svg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Authority Scale logo'><circle cx='32' cy='32' r='23' fill='none' stroke='#FFD700' stroke-width='3'/><path d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='#FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg></span>Authority Scale™</div>
+        <div class="brand">
+          <span class="logo">
+            <svg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Authority Scale logo'>
+              <circle cx='32' cy='32' r='23' fill='none' stroke='#FFD700' stroke-width='3'/>
+              <path d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='#FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/>
+            </svg>
+          </span>
+          Authority Scale™
+        </div>
         <p class="mini" style="margin-top:8px">We architect visibility systems for those who refuse to be unseen.</p>
       </div>
       <div>
@@ -847,8 +787,8 @@
   </footer>
 
   <script>
-    // --- Configurable form endpoint (optional). If empty, falls back to mailto.
-    const FORM_ENDPOINT = ""; // Set once. Both forms post here.
+    // ---- Configurable form endpoint (optional). If empty, falls back to mailto.
+    const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/xyz" or your API route
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -866,7 +806,7 @@
     const navLinks = links.filter(a=>['#pillars','#principles','#who','#offers','#outcomes','#sequence','#proofs','#faq','#access'].includes(a.getAttribute('href')));
     const observerSections = sections.map(el=>({el, top:0}));
     const setActive = () => {
-      const y = window.scrollY + 120; // offset for fixed nav
+      const y = window.scrollY + 120; // offset for nav
       let current = null;
       observerSections.forEach(s=>{ s.top = s.el.getBoundingClientRect().top + window.scrollY; });
       for(const s of observerSections){ if(y >= s.top) current = s.el.id; }
@@ -900,7 +840,7 @@
     }, {threshold: 0.12});
     revealables.forEach(el=> io.observe(el));
 
-    // Form handling — POST if endpoint exists; else mailto fallback
+    // Forms — POST if endpoint exists; else mailto fallback
     const form = document.getElementById('entryForm');
     const status = document.getElementById('formStatus');
     assignTracking(form);
@@ -933,7 +873,6 @@ Context: ${data.context||''}`);
       }
     });
 
-    // Book form handling with source=book
     const bookForm = document.getElementById('bookForm');
     const bookStatus = document.getElementById('bookStatus');
     if(bookForm){
@@ -967,30 +906,28 @@ Source: book`);
       });
     }
 
-    // MOBILE MENU: toggle/dismiss
+    // Mobile Menu toggle/dismiss
     const toggleBtn = document.querySelector('.menu-toggle');
     const drawer = document.getElementById('mobileMenu');
     function openDrawer(){
       drawer.classList.add('open');
       toggleBtn.setAttribute('aria-expanded','true');
-      document.body.style.overflow='hidden'; // prevent page scroll under drawer
+      document.body.style.overflow='hidden';
     }
     function closeDrawer(){
       drawer.classList.remove('open');
       toggleBtn.setAttribute('aria-expanded','false');
-      document.body.style.overflow=''; 
+      document.body.style.overflow='';
     }
     if(toggleBtn){
       toggleBtn.addEventListener('click', ()=>{
         drawer.classList.contains('open') ? closeDrawer() : openDrawer();
       });
-      // close drawer when clicking outside
       document.addEventListener('click', (e)=>{
         if(!drawer.classList.contains('open')) return;
         const inside = drawer.contains(e.target) || toggleBtn.contains(e.target);
         if(!inside) closeDrawer();
       });
-      // close on Esc
       document.addEventListener('keydown', (e)=>{
         if(e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
       });
@@ -1007,38 +944,34 @@ Source: book`);
         }))
       }).observe(document.documentElement,{childList:true,subtree:true});
     })();
-  </script>
 
-   <!-- Google Analytics 4 (replace G-XXXXXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config','G-XXXXXXX');
-  </script>
+    // --- Analytics placeholders (replace IDs) ---
+    // Google Analytics 4
+    (function(){
+      const id = 'G-XXXXXXX'; // TODO: replace
+      if(!id) return;
+      const s = document.createElement('script'); s.async = true; s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date()); gtag('config', id);
+    })();
 
-  <!-- Meta Pixel (replace YOUR_PIXEL_ID) -->
-  <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
-      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'YOUR_PIXEL_ID');
-    fbq('track', 'PageView');
+    // Meta Pixel
+    (function(){
+      const PIXEL_ID = 'YOUR_PIXEL_ID'; // TODO: replace
+      if(!PIXEL_ID) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL_ID); fbq('track', 'PageView');
+    })();
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
-  </noscript>
-
-  <!-- Floating CTA (mobile) -->
-  <a href="#access" class="btn primary cta-float" aria-label="Request Access">Request Access</a>
 </body>
 </html>
+
 
 
 
