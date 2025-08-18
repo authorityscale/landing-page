@@ -10,21 +10,25 @@
   <meta property="og:title" content="Authority Scale™ — Category Leadership" />
   <meta property="og:description" content="Authority isn’t given. It’s forged. Become the obvious and only choice in your category." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" href="/favicon.ico">
+  <meta property="og:image" content="og.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
 
-  <!-- Organization -->
+  <!-- Schema: Organization + Founder + Services -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Authority Scale™","url":"https://authorityscale.github.io/landing-page/","brand":"Authority Scale™","founder":{"@type":"Person","name":"Dixie Briseno","jobTitle":"Founder"}}
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Authority Scale™",
+    "url": "https://authorityscale.github.io/landing-page/",
+    "brand": "Authority Scale™",
+    "founder": { "@type": "Person", "name": "Dixie Briseno", "jobTitle": "Founder" }
+  }
   </script>
-  <!-- Founder -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Dixie Briseno","jobTitle":"Founder","affiliation":{"@type":"Organization","name":"Authority Scale™"},"sameAs":["https://www.linkedin.com/in/dixiebriseno/"]}
   </script>
-  <!-- Services -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ItemList","itemListElement":[
     {"@type":"Service","name":"The Board™ — Private Advisory","provider":{"@type":"Organization","name":"Authority Scale™"}},
@@ -33,168 +37,179 @@
     {"@type":"Service","name":"The Category Code™ — Digital","provider":{"@type":"Organization","name":"Authority Scale™"}}
   ]}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"The Board™ — Private Advisory","provider":{"@type":"Organization","name":"Authority Scale™"},"serviceType":"Strategic advisory for CEOs and founders","areaServed":"Global","audience":{"@type":"BusinessAudience","audienceType":"CEOs and Founders"},"brand":{"@type":"Brand","name":"Authority Scale™"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"The Commission™ — Elite Positioning™","provider":{"@type":"Organization","name":"Authority Scale™"},"serviceType":"Operated signal engine for presence, positioning, and pipeline","areaServed":"Global","audience":{"@type":"BusinessAudience","audienceType":"Growth-stage leadership"},"brand":{"@type":"Brand","name":"Authority Scale™"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"The Network™ — Collective","provider":{"@type":"Organization","name":"Authority Scale™"},"serviceType":"Private operator collective and briefings","areaServed":"Global","audience":{"@type":"BusinessAudience","audienceType":"Operators and founders"},"brand":{"@type":"Brand","name":"Authority Scale™"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"The Category Code™ — Digital","provider":{"@type":"Organization","name":"Authority Scale™"},"serviceType":"Digital system for authority momentum","areaServed":"Global","audience":{"@type":"BusinessAudience","audienceType":"Founders and executives"},"brand":{"@type":"Brand","name":"Authority Scale™"}}
+  </script>
 
   <style>
     /* ===== Brand Tokens ===== */
-    :root{
-      --gold:#d4af37;             /* metallic gold */
-      --green:#3cb371;            /* MediumSeaGreen */
-      --bg-1:#0b0b0e;             /* deep darks */
-      --bg-2:#121317;
-      --bg-3:#1d1e24;
-      --text:#ffffff;
-      --text-soft:#cccccc;
-      --text-dim:#999999;
-      --ring:rgba(212,175,55,.42);
-      --maxw:1200px;
-      --radius:16px;
-      --shadow:0 8px 30px rgba(0,0,0,.35);
+    :root {
+      --gold: #d4af37;             /* metallic gold accent */
+      --green: #3cb371;            /* MediumSeaGreen accent */
+      --bg-1: #0b0b0e;             /* dark backgrounds */
+      --bg-2: #121317;
+      --bg-3: #1d1e24;
+      --text: #ffffff;             /* text colors */
+      --text-soft: #cccccc;
+      --text-dim: #999999;
+      --ring: rgba(212, 175, 55, 0.42);
+      --maxw: 1200px;
+      --radius: 16px;
+      --shadow: 0 8px 30px rgba(0,0,0,.35);
     }
 
     /* ===== Resets ===== */
-    *,*:before,*:after{box-sizing:border-box}
-    html,body{max-width:100%;overflow-x:hidden}
-    body{
-      margin:0;
-      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      /* Emerald field + charcoal stack (multiple radials like your current site) */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      /* Multi-emerald background like your current site (stronger, layered) */
       background:
         radial-gradient(1600px 1000px at 85% -15%, rgba(60,179,113,.33), transparent 62%),
         radial-gradient(1100px 800px at 12% 12%, rgba(60,179,113,.18), transparent 60%),
         radial-gradient(1200px 850px at 50% 115%, rgba(60,179,113,.16), transparent 64%),
         linear-gradient(180deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3));
-      color:var(--text);
-      line-height:1.5;
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
-    img,video{max-width:100%;height:auto;display:block}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin-inline:auto;padding-inline:1rem}
+    img, video { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--maxw); margin-inline: auto; padding-inline: 1rem; }
 
     /* ===== Navigation ===== */
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:rgba(18,19,23,.6);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.3px}
-    .brand-mark{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--gold),#b38c1f);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .nav-links a:not(.btn){color:var(--text-soft);font-weight:500;padding:.5rem .75rem;border-radius:10px}
-    .nav-links a:not(.btn):hover,.nav-links a:not(.btn).active{background:rgba(255,255,255,.06);color:var(--text)}
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: rgba(18,19,23,.6); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: .3px; }
+    .brand-mark { width: 24px; height: 24px; border-radius: 6px; background: linear-gradient(135deg, var(--gold), #b38c1f); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
 
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.1rem;border-radius:999px;font-weight:600;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);transition:transform .08s ease, box-shadow .2s ease}
-    .btn-primary{background:linear-gradient(180deg,var(--gold),#b38c1f);color:#1a1a1a;border-color:rgba(0,0,0,.4);box-shadow:0 6px 18px rgba(212,175,55,.25)}
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(212,175,55,.32)}
-    .btn-ghost{color:var(--text);background:rgba(255,255,255,.06)}
-    .btn-ghost:hover{background:rgba(255,255,255,.12)}
-    .nav-cta{padding:.8rem 1.1rem;box-shadow:0 6px 18px rgba(212,175,55,.25);border-color:rgba(0,0,0,.4)}
-    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(212,175,55,.32)}
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .nav-links a:not(.btn) { color: var(--text-soft); font-weight: 500; padding: .5rem .75rem; border-radius: 10px; }
+    .nav-links a:not(.btn):hover, .nav-links a:not(.btn).active { background: rgba(255,255,255,.06); color: var(--text); }
 
-    .burger{display:none;background:transparent;border:0;color:var(--text);width:40px;height:40px;border-radius:10px}
-    .burger:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
-    @media (max-width:720px){
-      .burger{display:inline-flex;align-items:center;justify-content:center}
-      .nav-links{position:fixed;inset:60px 0 auto 0;display:none;flex-direction:column;align-items:stretch;gap:.5rem;background:rgba(18,19,23,.95);padding:.75rem;border-bottom:1px solid rgba(255,255,255,.08)}
-      .nav-links.open{display:flex}
-      .nav-links a,.nav-links .btn{width:100%;text-align:center}
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .8rem 1.1rem; border-radius: 999px; font-weight: 600; border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(4px); transition: transform .08s ease, box-shadow .2s ease; }
+    .btn-primary { background: linear-gradient(180deg, var(--gold), #b38c1f); color: #1a1a1a; border-color: rgba(0,0,0,.4); box-shadow: 0 6px 18px rgba(212,175,55,.25); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(212,175,55,.32); }
+    .btn-ghost { color: var(--text); background: rgba(255,255,255,.06); }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+    .burger { display: none; background: transparent; border: 0; color: var(--text); width: 40px; height: 40px; border-radius: 10px; }
+    .burger:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+    @media (max-width: 720px) {
+      .burger { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-links { position: fixed; inset: 60px 0 auto 0; display: none; flex-direction: column; align-items: stretch; gap: .5rem; background: rgba(18,19,23,.95); padding: .75rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .nav-links.open { display: flex; }
+      .nav-links a, .nav-links .btn { width: 100%; text-align: center; }
     }
 
     /* ===== Hero ===== */
-    .hero{position:relative;overflow:hidden;padding:6rem 0 4rem}
+    .hero { padding: 6rem 0 4rem; position:relative; overflow:hidden; }
     .hero::after{content:"";position:absolute;inset:-15% -10% auto auto;width:900px;height:680px;background:radial-gradient(800px 560px at 90% -20%, rgba(60,179,113,.22), transparent 60%);pointer-events:none}
-    .eyebrow{color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}
-    .h1{font-size:clamp(2rem,6vw,4rem);line-height:1.05;font-weight:800;margin:.6rem 0 1rem}
-    .h1 .accent{background:linear-gradient(180deg,var(--gold),#f9e39a);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .strap{color:var(--text);opacity:.92;font-weight:600;font-size:clamp(1rem,1.6vw,1.125rem);margin:.15rem 0 .5rem}
-    .hero p.lead{color:var(--text-soft);font-size:clamp(1rem,1.8vw,1.125rem);max-width:60ch}
-    .hero-cta{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+    .eyebrow { color: var(--gold); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
+    .h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.05; font-weight: 800; margin: .6rem 0 1rem; }
+    .h1 .accent { background: linear-gradient(180deg, var(--gold), #f9e39a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p.lead { color: var(--text-soft); font-size: clamp(1rem, 1.8vw, 1.125rem); max-width: 60ch; }
+    .strap { color: var(--text); opacity:.92; font-weight: 600; font-size: clamp(1rem, 1.6vw, 1.125rem); margin: .15rem 0 .5rem; }
+    .hero-cta { display: flex; gap: .75rem; margin-top: 1.25rem; flex-wrap: wrap; }
 
     /* ===== Sections & Cards ===== */
-    section{padding:3rem 0}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
-    .section-title{font-size:clamp(1.35rem,2.4vw,2rem);font-weight:700}
-    .grid{display:grid;gap:1rem}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
-    @media (max-width:1280px){.grid-4{grid-template-columns:repeat(3,minmax(0,1fr))}}
-    @media (max-width:1024px){.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:720px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+    section { padding: 3rem 0; }
+    .section-emerald{position:relative;overflow:hidden}
+    .section-emerald::before{content:"";position:absolute;inset:-10% auto auto -15%;width:720px;height:520px;background:radial-gradient(700px 520px at 0% 20%, rgba(60,179,113,.10), transparent 62%);pointer-events:none}
+    .section-emerald::after{content:"";position:absolute;inset:auto -10% -10% auto;width:620px;height:420px;background:radial-gradient(600px 420px at 110% 120%, rgba(60,179,113,.08), transparent 65%);pointer-events:none}
 
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
-    .card h3{margin:.25rem 0 .25rem;font-size:1.1rem}
-    .kicker{color:var(--text-dim);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem}
-    .card p{color:var(--text-soft);margin:.4rem 0 .6rem}
-    .bullet{display:flex;align-items:start;gap:.6rem;color:var(--text-soft)}
-    .tick{width:18px;height:18px;border-radius:6px;background:rgba(60,179,113,.15);display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(60,179,113,.4);font-size:.8rem}
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 700; }
 
-    /* ===== Ticker & Media placeholders ===== */
-    .ticker{overflow:hidden;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,#0f1015,#12131a)}
+    .grid { display: grid; gap: 1rem; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    @media (max-width: 1280px) { .grid-4 { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 720px)  { .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow); }
+    .card h3 { margin: .25rem 0 .25rem; font-size: 1.1rem; }
+    .kicker { color: var(--text-dim); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: .72rem; }
+    .card p { color: var(--text-soft); margin: .4rem 0 .6rem; }
+    .bullet { display: flex; align-items: start; gap: .6rem; color: var(--text-soft); }
+    .bullet .tick { width: 18px; height: 18px; border-radius: 6px; background: rgba(60,179,113,.15); display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(60,179,113,.4); font-size: .8rem; }
+
+    /* Featured program emphasis */
+    .card.featured{border-color:rgba(212,175,55,.45); box-shadow:0 12px 40px rgba(212,175,55,.10), var(--shadow); position:relative;}
+    .badge{position:absolute; top:10px; right:10px; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; background:rgba(212,175,55,.15); border:1px solid rgba(212,175,55,.35); padding:.25rem .5rem; border-radius:999px; color:#f2e7b9}
+
+    /* ===== Ticker & Placeholders ===== */
+    .ticker{overflow:hidden; border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg,#0f1015,#12131a)}
     .ticker .wrap{white-space:nowrap}
-    .ticker-track{display:inline-block;padding:10px 0;animation:ticker 28s linear infinite}
-    .ticker-track:hover{animation-play-state:paused}
-    .ticker-track span{display:inline-block;padding:0 22px;color:var(--text-dim);font-weight:600;letter-spacing:.04em}
+    .ticker-track{display:inline-block; padding:10px 0; animation:ticker 28s linear infinite; animation-play-state: running}
+    .ticker-track:hover{animation-play-state: paused}
+    .ticker-track span{display:inline-block; padding:0 22px; color:var(--text-dim); font-weight:600; letter-spacing:.04em}
     @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .ph{border:1px dashed rgba(212,175,55,.35);background:linear-gradient(180deg,#0f1015,#12131a);display:grid;place-items:center;color:var(--text-dim);border-radius:12px;text-align:center}
-    .hero-media{height:260px;margin-bottom:16px}
-    .media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .ph{border:1px dashed rgba(212,175,55,.35); background:linear-gradient(180deg,#0f1015,#12131a); display:grid; place-items:center; color:var(--text-dim); border-radius:12px; text-align:center}
+    .hero-media{height:260px; margin-bottom:16px}
+    .media-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
     .media-grid .ph{height:180px}
-    .book-cover{width:100%;height:260px;border-radius:12px;margin-bottom:12px}
-    .founder-media{width:100%;height:240px;border-radius:12px;margin-bottom:12px}
+    .book-cover{width:100%; height:260px; border-radius:12px; margin-bottom:12px}
+    .founder-media{width:100%; height:240px; border-radius:12px; margin-bottom:12px}
 
     /* ===== Process ===== */
-    .step{display:flex;gap:.9rem}
-    .step .num{width:36px;height:36px;border-radius:10px;background:linear-gradient(180deg,var(--gold),#b38c1f);color:#1a1a1a;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+    .step { display: flex; gap: .9rem; }
+    .step .num { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(180deg, var(--gold), #b38c1f); color: #1a1a1a; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
 
     /* ===== Offer/Deliverables ===== */
-    .deliv{display:grid;grid-template-columns:1.6fr 1fr;gap:1rem}
-    @media (max-width:1024px){.deliv{grid-template-columns:1fr}}
+    .deliv { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1rem; }
+    @media (max-width: 1024px) { .deliv { grid-template-columns: 1fr; } }
 
-    /* ===== CTA / Forms ===== */
-    .cta{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(212,175,55,.08),rgba(212,175,55,.02));border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+    /* ===== CTA / Form ===== */
+    .cta { background: linear-gradient(180deg, rgba(212,175,55,.08), rgba(212,175,55,.02)); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); position:relative; overflow:hidden; }
     .cta::before{content:"";position:absolute;inset:auto auto -20% -15%;width:820px;height:600px;background:radial-gradient(700px 520px at 0% 120%, rgba(60,179,113,.12), transparent 62%);pointer-events:none}
-    form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin-top:1rem}
-    @media (max-width:720px){form{grid-template-columns:1fr}}
-    label{font-size:.9rem;color:var(--text-dim)}
-    input,select,textarea{width:100%;margin-top:.35rem;background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.12);padding:.85rem .9rem;border-radius:12px}
-    input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px var(--ring)}
-    textarea{min-height:120px;resize:vertical}
-    .form-actions{grid-column:1/-1;display:flex;gap:.75rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    form { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .9rem; margin-top: 1rem; }
+    @media (max-width: 720px) { form { grid-template-columns: 1fr; } }
+    label { font-size: .9rem; color: var(--text-dim); }
+    input, select, textarea { width: 100%; margin-top: .35rem; background: rgba(255,255,255,.06); color: var(--text); border: 1px solid rgba(255,255,255,.12); padding: .85rem .9rem; border-radius: 12px; }
+    input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+    textarea { min-height: 120px; resize: vertical; }
+    .form-actions { grid-column: 1 / -1; display: flex; gap: .75rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
     .hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
     .success{margin-top:.6rem;color:var(--text)}
 
-    /* ===== Emerald overlays on sections for luxe depth ===== */
-    .section-emerald{position:relative;overflow:hidden}
-    .section-emerald::before{content:"";position:absolute;inset:-10% auto auto -15%;width:720px;height:520px;background:radial-gradient(700px 520px at 0% 20%, rgba(60,179,113,.12), transparent 65%);pointer-events:none}
-    .section-emerald::after{content:"";position:absolute;inset:auto -15% -15% auto;width:680px;height:500px;background:radial-gradient(660px 480px at 100% 100%, rgba(60,179,113,.10), transparent 65%);pointer-events:none}
+    /* ===== Footer ===== */
+    footer { padding: 2rem 0; color: var(--text-dim); font-size: .9rem; position:relative; overflow:hidden; }
+    footer::before{content:"";position:absolute;inset:auto -10% -30% auto;width:760px;height:540px;background:radial-gradient(680px 500px at 110% 110%, rgba(60,179,113,.10), transparent 62%);pointer-events:none}
+    .foot-grid { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; }
+    @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr; text-align: center; } }
 
-    /* ===== Industries microband ===== */
+    .legal-fine{font-size:.75rem;color:var(--text-dim);opacity:.6;margin-top:.3rem}
+
+    /* Industries band chips */
     .band.industries{padding:1rem 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
     .band .band-inner{display:flex;justify-content:center}
     .chips{display:flex;flex-wrap:wrap;gap:.45rem .75rem;list-style:none;margin:0;padding:0;align-items:center}
     .chips li{color:var(--text-dim);font-weight:600;letter-spacing:.02em;padding:.25rem .7rem;border:1px solid rgba(255,255,255,.08);border-radius:999px;background:rgba(255,255,255,.04)}
     @media(max-width:720px){.chips{justify-content:center;gap:.35rem .5rem}}
 
-    /* ===== Footer ===== */
-    footer{position:relative;overflow:hidden;padding:2rem 0;color:var(--text-dim);font-size:.9rem}
-    footer::before{content:"";position:absolute;inset:auto -10% -30% auto;width:760px;height:540px;background:radial-gradient(680px 500px at 110% 110%, rgba(60,179,113,.10), transparent 62%);pointer-events:none}
-    .foot-grid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
-    @media (max-width:720px){.foot-grid{grid-template-columns:1fr;text-align:center}}
-    .legal-fine{font-size:.75rem;color:var(--text-dim);opacity:.6;margin-top:.3rem}
-
-    /* Sticky microbar CTA */
-    .microbar{position:fixed;left:12px;right:12px;bottom:12px;display:flex;justify-content:center;gap:.6rem;padding:.65rem .8rem;background:rgba(18,19,23,.85);border:1px solid rgba(255,255,255,.08);border-radius:14px;backdrop-filter:blur(8px);z-index:60;transform:translateY(120%);transition:transform .25s ease}
-    .microbar.show{transform:translateY(0)}
-    .microbar .btn{padding:.6rem .95rem}
-
-    /* Motion prefs */
-    @media (prefers-reduced-motion:reduce){
-      .btn,.btn-primary,.btn-ghost{transition:none}
-      .ticker-track{animation:none!important}
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .btn, .btn-primary, .btn-ghost { transition: none; }
+      .ticker-track { animation: none !important; }
     }
   </style>
 </head>
 <body>
   <a href="#top" class="hp">Skip to content</a>
-
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="#top" aria-label="Authority Scale™ Home">
@@ -204,7 +219,7 @@
 
       <nav>
         <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Toggle navigation">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
         <div id="menu" class="nav-links">
           <a href="#outcomes">Outcomes</a>
@@ -212,7 +227,7 @@
           <a href="#process">The Strategic Arc™</a>
           <a href="#offer">What You Get</a>
           <a href="#faq">FAQ</a>
-          <a class="btn btn-primary nav-cta cta-swap" href="#request-access">Request Access</a>
+          <a class="btn btn-primary cta-swap" href="#request-access">Request Access</a>
         </div>
       </nav>
     </div>
@@ -233,16 +248,20 @@
       </div>
     </section>
 
-    <!-- Publications Ticker (names only) -->
+    <!-- Publications Ticker (names only, by request) -->
     <section class="ticker" aria-label="media publications">
       <div class="container wrap">
         <div class="ticker-track">
-          <span>Forbes</span><span>WSJ</span><span>Bloomberg</span><span>Harvard Business Review</span>
-          <span>TechCrunch</span><span>Fast Company</span><span>Financial Times</span>
-          <span>Rolling Stone</span><span>The Guardian</span><span>USA Today</span><span>Vogue</span>
-          <span>Forbes</span><span>WSJ</span><span>Bloomberg</span><span>Harvard Business Review</span>
-          <span>TechCrunch</span><span>Fast Company</span><span>Financial Times</span>
-          <span>Rolling Stone</span><span>The Guardian</span><span>USA Today</span><span>Vogue</span>
+          <span>Forbes</span><span>WSJ</span><span>Bloomberg</span>
+          <span>Harvard Business Review</span><span>TechCrunch</span>
+          <span>Fast Company</span><span>Financial Times</span>
+          <span>Rolling Stone</span><span>The Guardian</span>
+          <span>USA Today</span><span>Vogue</span>
+          <span>Forbes</span><span>WSJ</span><span>Bloomberg</span>
+          <span>Harvard Business Review</span><span>TechCrunch</span>
+          <span>Fast Company</span><span>Financial Times</span>
+          <span>Rolling Stone</span><span>The Guardian</span>
+          <span>USA Today</span><span>Vogue</span>
         </div>
       </div>
     </section>
@@ -252,7 +271,7 @@
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">The Outcomes</h2>
-          <p style="color:var(--text-dim);max-width:60ch">Four levers that compound. We install the narrative, systems, and proof stack that make your company the <em>default</em> choice.</p>
+          <p style="color:var(--text-dim); max-width:60ch">Four levers that compound. We install the narrative, systems, and proof stack that make your company the <em>default</em> choice.</p>
         </div>
 
         <div class="grid grid-4">
@@ -279,59 +298,58 @@
 
           <article class="card">
             <div class="kicker">Get Paid</div>
-            <h3>Defend premium pricing with authority.</h3>
+            <h3>Defend pricing power with authority.</h3>
             <div class="bullet"><span class="tick">✓</span><span>Higher ACVs, fewer discounts</span></div>
             <div class="bullet"><span class="tick">✓</span><span>More inbound from right-fit accounts</span></div>
           </article>
         </div>
       </div>
     </section>
-
-    <!-- The Arsenal™ / Programs -->
+    <!-- The Arsenal / Programs -->
     <section id="arsenal" class="section-emerald">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">The Arsenal™</h2>
-          <p style="color:var(--text-dim);max-width:60ch">Select your arena: private advisory, network leverage, or a full-scale authority engine.</p>
+          <p style="color:var(--text-dim); max-width:60ch">Select your arena: private advisory, network leverage, or a full-scale authority engine.</p>
         </div>
-
         <div class="grid grid-4">
           <article class="card">
             <div class="kicker">The Board™ — Private Advisory</div>
             <h3>Strategic counsel on call</h3>
-            <ul style="margin:.4rem 0 0 1.1rem;color:var(--text-soft)">
+            <ul style="margin:.4rem 0 0 1.1rem; color:var(--text-soft)">
               <li>Category &amp; narrative control</li>
-              <li>Offer architecture &amp; pricing power</li>
+              <li>Offer architecture &amp; price integrity</li>
               <li>Executive presence &amp; posture</li>
               <li>Custom authority engine build-out</li>
             </ul>
-            <a class="btn btn-primary cta-swap" href="#request-access" style="margin-top:.7rem">Request Access</a>
+            <a class="btn btn-ghost cta-swap" href="#request-access" style="margin-top:.7rem">Request Access</a>
           </article>
 
           <article class="card">
             <div class="kicker">The Network™ — Collective</div>
             <h3>Closed-door leverage</h3>
-            <ul style="margin:.4rem 0 0 1.1rem;color:var(--text-soft)">
+            <ul style="margin:.4rem 0 0 1.1rem; color:var(--text-soft)">
               <li>Quarterly briefings</li>
-              <li>Operator Dossiers™</li>
-              <li>Partner lanes &amp; field ops</li>
+              <li>Signal frameworks &amp; field ops</li>
+              <li>Partner lanes</li>
               <li>Private drops &amp; asset vault</li>
             </ul>
             <a class="btn btn-ghost" href="#request-access" style="margin-top:.7rem">Apply</a>
           </article>
 
-          <article class="card">
+          <article class="card featured">
+            <div class="badge">Most Selected</div>
             <div class="kicker">The Commission™ — Elite Positioning™</div>
             <h3>Operated Signal Engine</h3>
             <p>End-to-end production and distribution that keeps you present, differentiated, and chosen.</p>
-            <a class="btn btn-ghost cta-swap" href="#request-access">Request Access</a>
+            <a class="btn btn-primary cta-swap" href="#request-access">Request Access</a>
           </article>
 
           <article class="card">
             <div class="kicker">The Category Code™ — Digital</div>
             <h3>Systems for momentum</h3>
             <p>Templates, signal frameworks, and conversion paths to prime premium deals.</p>
-            <a class="btn btn-ghost" href="#request-access">Get The Category Code™</a>
+            <a class="btn btn-ghost" href="#request-access">Get The Category Code</a>
           </article>
         </div>
       </div>
@@ -339,20 +357,13 @@
 
     <!-- Industries Microband -->
     <section class="band industries" aria-label="industries">
-      <div class="container">
-        <div class="band-inner">
-          <ul class="chips">
-            <li>SaaS</li>
-            <li>Tech</li>
-            <li>E-commerce</li>
-            <li>Advisory</li>
-            <li>Professional Services (Law, Surgery)</li>
-            <li>Capital-facing</li>
-            <li>Wealth &amp; Family Offices</li>
-            <li>Private Equity</li>
-          </ul>
-        </div>
-      </div>
+      <div class="container"><div class="band-inner"><ul class="chips">
+        <li>SaaS</li><li>Enterprise Tech</li><li>E-commerce &amp; DTC</li>
+        <li>Advisory &amp; Consulting</li><li>Legal (Boutique &amp; Firms)</li>
+        <li>Specialist Healthcare (Aesthetic &amp; Surgical)</li>
+        <li>Wealth &amp; Family Offices</li><li>Private Equity</li>
+        <li>Capital Markets</li><li>Capital-facing</li>
+      </ul></div></div>
     </section>
 
     <!-- Proof / Evidence -->
@@ -360,24 +371,24 @@
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">Proof That Travels</h2>
-          <p style="color:var(--text-dim);max-width:60ch">Signals the market believes: traction, recognition, and momentum that compound.</p>
+          <p style="color:var(--text-dim); max-width:60ch">Signals the market believes: traction, recognition, and momentum that compound.</p>
         </div>
 
         <div class="grid grid-3">
           <article class="card">
             <div class="kicker">Professional Services</div>
             <h3>Pricing power, defended</h3>
-            <p>Law practice lifts average engagement value <strong>+34%</strong> in 7 months while reducing discounting.</p>
+            <p>Law firm practice grew average engagement value <strong>+34%</strong> in 7 months while reducing discounting.</p>
           </article>
           <article class="card">
             <div class="kicker">E-commerce</div>
             <h3>Velocity over volume</h3>
-            <p>Premium DTC brand cuts sales cycles from <strong>90 → 45 days</strong> with authority-led demand.</p>
+            <p>Premium DTC brand cut sales cycles from <strong>90 → 45 days</strong> with authority-led demand.</p>
           </article>
           <article class="card">
             <div class="kicker">B2B SaaS</div>
             <h3>The obvious choice</h3>
-            <p>Category narrative shift lifts win-rates <strong>+19%</strong> and right-fit inbound <strong>+52% QoQ</strong>.</p>
+            <p>Category narrative shift lifted win-rates <strong>+19%</strong> and inbound from right-fit accounts <strong>+52% QoQ</strong>.</p>
           </article>
         </div>
       </div>
@@ -395,20 +406,20 @@
           </div>
           <div>
             <p style="color:var(--text-soft)">Dixie Briseno engineers authority systems that compress years of momentum into months.</p>
-            <p style="color:var(--text-soft)">Sought after by board-level operators, she architects frameworks that elevate leaders from contenders to category kings—exchanging visibility for inevitability.</p>
-            <p style="color:var(--text-soft)">Her strategy work underpins teams responsible for $700M+ in revenue—seen in defended pricing, accelerated cycles, and concentrated demand.</p>
-            <p style="color:var(--text-soft)">Through Authority Scale™, Sovereign Scale™, and Revenue Haus™, she builds engines of narrative control and market power—so clients are recognized as the obvious and only choice.</p>
+            <p style="color:var(--text-soft)">Sought by market-shaping executives, she architects frameworks that elevate leaders into kings of their category — trading visibility for inevitability.</p>
+            <p style="color:var(--text-soft)">Her strategy work underpins teams responsible for <strong>$700M+</strong> in revenue — seen in defended pricing, accelerated cycles, and concentrated demand.</p>
+            <p style="color:var(--text-soft)">Through <strong>Authority Scale™</strong>, <strong>Sovereign Scale™</strong>, and <strong>Revenue Haus™</strong>, she builds engines of narrative control and market power — so clients are recognized as the <strong>obvious and only choice</strong>.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Book Opt-in -->
-    <section id="book">
+    <section id="book" class="section-emerald">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">Complimentary Chapter — The Category Code™</h2>
-          <p style="color:var(--text-dim);max-width:60ch">Becoming the obvious choice in your market. Read a chapter and step into the work.</p>
+          <h2 class="section-title">Complimentary Chapter — The Authority Advantage™</h2>
+          <p style="color:var(--text-dim); max-width:60ch">Become the obvious choice in any market. Read a chapter and step into the work.</p>
         </div>
         <div class="grid grid-2">
           <div>
@@ -417,7 +428,6 @@
           <div>
             <form action="#" method="post" novalidate>
               <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off">
-              <input type="hidden" name="ab_variant" value="">
               <div>
                 <label for="lead-name">Full name
                   <input id="lead-name" name="lead-name" type="text" placeholder="John Appleseed" required>
@@ -442,7 +452,10 @@
                 <label for="revenue">Annual revenue
                   <select id="revenue" name="revenue">
                     <option value="">Select…</option>
-                    <option>&lt; $1M</option><option>$1–5M</option><option>$5–20M</option><option>$20M+</option>
+                    <option>&lt; $1M</option>
+                    <option>$1–5M</option>
+                    <option>$5–20M</option>
+                    <option>$20M+</option>
                   </select>
                 </label>
               </div>
@@ -450,13 +463,16 @@
                 <label for="goal">Primary goal
                   <select id="goal" name="goal">
                     <option value="">Select…</option>
-                    <option>Pricing power</option><option>Deal flow</option><option>Category presence</option><option>Market narrative control</option>
+                    <option>Pricing power</option>
+                    <option>Deal flow</option>
+                    <option>Category presence</option>
+                    <option>Market narrative control</option>
                   </select>
                 </label>
               </div>
               <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Get Complimentary Chapter</button>
-                <span style="color:var(--text-dim);font-size:.9rem;">Delivered by email.</span>
+                <span style="color:var(--text-dim); font-size:.9rem;">Complimentary English chapter via email.</span>
               </div>
             </form>
           </div>
@@ -464,27 +480,51 @@
       </div>
     </section>
     <!-- Process -->
-    <section id="process">
+    <section id="process" class="section-emerald">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">The Strategic Arc™</h2>
-          <p style="color:var(--text-dim);max-width:60ch">A disciplined sequence designed to make leadership inevitable.</p>
+          <p style="color:var(--text-dim); max-width:60ch">A sequence designed to make leadership inevitable.</p>
         </div>
         <div class="grid grid-4">
-          <article class="card step"><div class="num">I</div><div><h3>Entry</h3><p>Set posture and define the standard. Decide where you will be seen—and on what terms.</p></div></article>
-          <article class="card step"><div class="num">II</div><div><h3>Blueprint</h3><p>Architect the narrative, proof stack, and distribution. Precision positioning that de-risks the choice.</p></div></article>
-          <article class="card step"><div class="num">III</div><div><h3>Deployment</h3><p>Ship executive signals with rhythm. Presence compounds; demand concentrates.</p></div></article>
-          <article class="card step"><div class="num">IV</div><div><h3>Command</h3><p>Protect pricing integrity and shorten cycles. You become the obvious—and only—choice.</p></div></article>
+          <article class="card step">
+            <div class="num">I</div>
+            <div>
+              <h3>Entry</h3>
+              <p>Set posture and define the standard. Decide where you will be seen—and on what terms.</p>
+            </div>
+          </article>
+          <article class="card step">
+            <div class="num">II</div>
+            <div>
+              <h3>Blueprint</h3>
+              <p>Architect the narrative, proof stack, and distribution. Precision positioning that de-risks the choice.</p>
+            </div>
+          </article>
+          <article class="card step">
+            <div class="num">III</div>
+            <div>
+              <h3>Deployment</h3>
+              <p>Ship executive content and signals with rhythm. Presence compounds; demand concentrates.</p>
+            </div>
+          </article>
+          <article class="card step">
+            <div class="num">IV</div>
+            <div>
+              <h3>Command</h3>
+              <p>Protect pricing power and shorten cycles. You become the obvious and only choice.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Offer / Deliverables -->
-    <section id="offer">
+    <section id="offer" class="section-emerald">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">Your Authority System</h2>
-          <p style="color:var(--text-dim);max-width:60ch">A focused engagement engineered for commercial outcomes—nothing ornamental.</p>
+          <p style="color:var(--text-dim); max-width:60ch">A focused engagement engineered for commercial outcomes—nothing ornamental.</p>
         </div>
         <div class="deliv">
           <article class="card">
@@ -498,12 +538,12 @@
               <li>Distribution Matrix™ (rooms, media, partnerships)</li>
               <li>Price Integrity Kit™</li>
             </ul>
+            <div class="legal-fine">Delivered inside <strong>The Commission™</strong>; available in <strong>The Board™</strong> by selection.</div>
           </article>
           <article class="card">
             <div class="kicker">Engagement</div>
             <h3>Executive cadence</h3>
             <p style="color:var(--text-soft)">Weekly strategy sessions. Monthly leadership reviews. A disciplined shipping rhythm measured against win-rate, cycle time, and price integrity.</p>
-            <div class="legal-fine">Delivered inside The Board™ engagement.</div>
             <a class="btn btn-primary cta-swap" href="#request-access" style="margin-top:.6rem">Request Access</a>
           </article>
         </div>
@@ -511,11 +551,11 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
+    <section id="faq" class="section-emerald">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">FAQs</h2>
-          <p style="color:var(--text-dim);max-width:60ch">Straight answers for leaders.</p>
+          <p style="color:var(--text-dim); max-width:60ch">Straight answers for leaders.</p>
         </div>
         <div class="grid grid-2">
           <article class="card">
@@ -528,7 +568,7 @@
           </article>
           <article class="card">
             <h3>Who qualifies?</h3>
-            <p>Founder/CEO-led teams with the intent and capacity to lead—often plateaued at a threshold or poised to consolidate a category.</p>
+            <p>Founder/CEO-led teams intent on leading a category—often plateaued at a threshold or poised to consolidate a market.</p>
           </article>
           <article class="card">
             <h3>Why access by selection?</h3>
@@ -543,7 +583,7 @@
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">Request Access</h2>
-          <p style="color:var(--text-dim);max-width:60ch">Tell us where you’re aiming. We’ll confirm fit and next steps.</p>
+          <p style="color:var(--text-dim); max-width:60ch">Tell us where you’re aiming. We’ll confirm fit and next steps.</p>
         </div>
         <form action="#" method="post" novalidate>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off">
@@ -575,7 +615,7 @@
           </div>
           <div class="form-actions">
             <button class="btn btn-primary cta-swap" type="submit">Request Access</button>
-            <span style="color:var(--text-dim);font-size:.9rem;">Openings released quarterly.</span>
+            <span style="color:var(--text-dim); font-size:.9rem;">Applications are reviewed monthly. Openings are released quarterly.</span>
           </div>
         </form>
       </div>
@@ -592,75 +632,83 @@
           <a href="#arsenal">The Commission™</a>
           <a href="#arsenal">The Category Code™</a>
         </nav>
-        <div class="legal-fine">Brand and publication names are the property of their respective owners. Mentions are illustrative only. See <a href="#terms">Terms</a>.</div>
       </div>
       <div style="text-align:right">
         <a class="btn btn-ghost cta-swap" href="#request-access">Request Access</a><br/>
         <a href="mailto:entry@authorityscale.com">entry@authorityscale.com</a><br/>
-        © <span id="year"></span> Authority Scale™ • <a href="#privacy">Privacy</a> • <a href="#terms">Terms</a>
+        © <span id="year"></span> Authority Scale™ • <a href="#">Privacy</a> • <a href="#">Terms</a>
       </div>
     </div>
   </footer>
 
-  <!-- Lightweight JS: menu, AB, microbar, scrollspy -->
+  <!-- Scripts: menu, year, A/B CTA, simple form success -->
   <script>
-    // Mobile menu
-    (function(){
-      const b=document.getElementById('burger'),m=document.getElementById('menu');
-      if(!b||!m) return;
-      const t=()=>{const o=m.classList.toggle('open');b.setAttribute('aria-expanded',String(o))};
-      b.addEventListener('click',t);
-      document.addEventListener('click',e=>{if(!m.classList.contains('open'))return; if(!(m.contains(e.target)||b.contains(e.target))) t();});
-    })();
-
-    // Year
-    document.getElementById('year').textContent=new Date().getFullYear();
-
-    // CTA A/B + UTM capture (GitHub Pages friendly)
-    (function(){
-      const labels=["Request Access","Enter the Sequence"];
-      let v=new URLSearchParams(location.search).get('v');
-      if(v!=='0'&&v!=='1'){ v=localStorage.getItem('ctaVariant'); if(v===null){ v=String(Math.random()<.5?0:1); localStorage.setItem('ctaVariant',v);} }
-      if(v!=='0'&&v!=='1') v='0';
-      const label=labels[Number(v)];
-      window.__ctaLabel=label;
-      document.querySelectorAll('.cta-swap').forEach(el=>el.textContent=label);
-
-      const params=new URLSearchParams(location.search);
-      const fields={ab_variant:v,ref:document.referrer||'',utm_source:params.get('utm_source')||'',utm_medium:params.get('utm_medium')||'',utm_campaign:params.get('utm_campaign')||'',utm_term:params.get('utm_term')||'',utm_content:params.get('utm_content')||'',path:location.pathname};
-      document.querySelectorAll('form').forEach(f=>{Object.entries(fields).forEach(([n,val])=>{let i=f.querySelector('input[name="'+n+'"]'); if(!i){i=document.createElement('input');i.type='hidden';i.name=n;f.prepend(i);} i.value=val;});});
-    })();
-
-    // Sticky microbar (shows after scroll, hides near Request Access)
-    (function(){
-      const bar=document.createElement('div'); bar.className='microbar';
-      bar.innerHTML='<a class="btn btn-primary cta-swap" href="#request-access">'+(window.__ctaLabel||'Request Access')+'</a>';
-      document.body.appendChild(bar);
-      const req=document.getElementById('request-access');
-      function show(){
-        const r=req.getBoundingClientRect(); const inView=r.top<innerHeight && r.bottom>0;
-        if(scrollY>400 && !inView) bar.classList.add('show'); else bar.classList.remove('show');
+    // Mobile menu toggle
+    (function() {
+      const burger = document.getElementById('burger');
+      const menu = document.getElementById('menu');
+      if (!burger || !menu) return;
+      function toggle() {
+        const open = menu.classList.toggle('open');
+        burger.setAttribute('aria-expanded', String(open));
       }
-      addEventListener('scroll',show,{passive:true}); addEventListener('resize',show); show();
+      burger.addEventListener('click', toggle);
+      document.addEventListener('click', (e) => {
+        if (!menu.classList.contains('open')) return;
+        const within = menu.contains(e.target) || burger.contains(e.target);
+        if (!within) toggle();
+      });
     })();
 
-    // ScrollSpy simple
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightweight A/B for CTA label (GitHub Pages friendly)
     (function(){
-      const ids=['outcomes','proof','process','offer','faq'];
-      const links=new Map(ids.map(id=>[id,document.querySelector('.nav-links a[href="#'+id+'"]')]));
-      const obs=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-          const a=links.get(e.target.id); if(!a) return;
-          if(e.isIntersecting){ links.forEach(l=>l&&l.classList.remove('active')); a.classList.add('active'); }
-        });
-      },{rootMargin:"-40% 0px -50% 0px",threshold:.01});
-      ids.forEach(id=>{const el=document.getElementById(id); if(el) obs.observe(el);});
-    })();
-  </script>
+      const labels = ["Request Access","Enter the Sequence"]; // A/B variants
+      let v = new URLSearchParams(location.search).get('v');
+      if (v !== '0' && v !== '1') {
+        v = localStorage.getItem('ctaVariant');
+        if (v === null) { v = String(Math.random() < 0.5 ? 0 : 1); localStorage.setItem('ctaVariant', v); }
+      }
+      if (v !== '0' && v !== '1') v = '0';
+      const label = labels[Number(v)];
+      document.querySelectorAll('.cta-swap').forEach(el => { el.textContent = label; });
 
-  <!-- Optional hidden Terms anchor for your legal page -->
-  <section id="terms" class="hp" aria-hidden="true">
-    Brand and publication names belong to their owners. Mentions do not imply endorsement or affiliation.
-  </section>
+      // Push variant + basic attribution into all forms (for CRM capture later)
+      const params = new URLSearchParams(location.search);
+      const enrich = {
+        ab_variant: v,
+        ref: document.referrer || '',
+        utm_source: params.get('utm_source')||'',
+        utm_medium: params.get('utm_medium')||'',
+        utm_campaign: params.get('utm_campaign')||'',
+        utm_term: params.get('utm_term')||'',
+        utm_content: params.get('utm_content')||'',
+        path: location.pathname
+      };
+      document.querySelectorAll('form').forEach(form => {
+        Object.entries(enrich).forEach(([name,val]) => {
+          let input = form.querySelector('input[name="'+name+'"]');
+          if(!input){ input = document.createElement('input'); input.type='hidden'; input.name=name; form.prepend(input); }
+          input.value = val;
+        });
+      });
+    })();
+
+    // Minimal success handler (swap with Masterminds CRM post when ready)
+    document.querySelectorAll('form').forEach(form=>{
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var hp = form.querySelector('input[name="website"]');
+        if (hp && hp.value) return; // honeypot
+        // TODO: replace with POST to Masterminds CRM endpoint
+        const success = document.createElement('div');
+        success.className = 'success';
+        success.textContent = "Thank you — we'll follow up with next steps.";
+        form.replaceWith(success);
+      });
+    });
+  </script>
 </body>
 </html>
