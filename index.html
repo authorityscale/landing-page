@@ -16,16 +16,16 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000000'/%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23FFD700' stroke-width='3'/%3E%3Cpath d='M18 46L32 14l14 32m-6-14H24' fill='none' stroke='%23FFD700' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <style>
     :root{
-      --bg: #0b0b0e;             /* near-black */
-      --ink: #e8e8ea;            /* soft white */
-      --muted: #9ea0a6;          /* soft gray */
-      --graphite: #1a1b1f;       /* panels */
-      --charcoal: #121317;       /* base */
-      --emerald: #0e3b32;        /* deep green accent */
-      --emerald-glow: #1f6f5d;   /* subtle glow */
-      --brass: #FFD700;          /* gold */
-      --brass-deep: #B8860B;     /* dark gold */     /* deeper gold */
-      --marble: #0f0f12;         /* subtle texture base */
+      --bg: #0b0b0e;
+      --ink: #e8e8ea;
+      --muted: #9ea0a6;
+      --graphite: #1a1b1f;
+      --charcoal: #121317;
+      --emerald: #0e3b32;
+      --emerald-glow: #1f6f5d;
+      --brass: #FFD700;
+      --brass-deep: #B8860B;
+      --marble: #0f0f12;
       --maxw: 1200px;
       --radius: 18px;
       --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
@@ -40,6 +40,9 @@
         linear-gradient(180deg, var(--charcoal), var(--bg));
       font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
       line-height:1.55; letter-spacing:.2px;
+
+      /* MOBILE FIX: kill horizontal scroll caused by overflowing nav/elements */
+      overflow-x:hidden;
     }
     h1,h2,h3{font-family:'Spectral', ui-serif, Georgia, serif; font-weight:700}
     a{color:inherit; text-decoration:none}
@@ -48,8 +51,16 @@
 
     /* Top Nav */
     .nav{position:fixed; inset:0 0 auto 0; display:flex; justify-content:center; z-index:50;}
-    .nav .bar{display:flex; align-items:center; gap:28px; background:rgba(18,19,23,.6); backdrop-filter: blur(10px); border:1px solid rgba(212,175,55,.18); box-shadow:var(--shadow);
-      margin:14px; padding:10px 16px; border-radius:14px}
+    .nav .bar{
+      display:flex; align-items:center; gap:28px;
+      background:rgba(18,19,23,.6); backdrop-filter: blur(10px);
+      border:1px solid rgba(212,175,55,.18); box-shadow:var(--shadow);
+      margin:14px; padding:10px 16px; border-radius:14px;
+
+      /* MOBILE FIX: ensure bar never exceeds viewport width */
+      width:calc(100% - 28px);
+      max-width:var(--maxw);
+    }
     .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.8px}
     .brand .logo{width:32px; height:32px; border-radius:8px; display:grid; place-items:center; background:transparent; border:1px solid rgba(255,215,0,.35)}
     .brand .logo svg{width:26px; height:26px}
@@ -85,9 +96,13 @@
       linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); pointer-events:none; filter:saturate(1.05)}
     .hero-grid{display:grid; grid-template-columns: 1.25fr .75fr; gap:48px; align-items:center}
     .kicker{color:var(--brass); text-transform:uppercase; font-size:12px; letter-spacing:2.2px; font-weight:700}
-    h1{font-size: clamp(36px, 5vw, 64px); line-height:1.02; margin:14px 0 18px; font-weight:800}
+    h1{font-size: clamp(36px, 5vw, 64px); line-height:1.02; margin:14px 0 18px; font-weight:800;
+
+      /* MOBILE FIX: prevent long words from pushing layout right */
+      overflow-wrap:anywhere;
+    }
     .lead{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted)}
-    .hero-actions{display:flex; gap:14px; margin-top:22px}
+    .hero-actions{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap}
 
     .hero-card{border-radius:20px; background:linear-gradient(145deg, #0e0f13, #17181f); border:1px solid rgba(212,175,55,.25); box-shadow:var(--shadow); padding:22px}
     .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
@@ -151,38 +166,77 @@
     [data-reveal]{opacity:0; transform:translateY(12px); transition: opacity .6s ease, transform .6s ease}
     [data-reveal].in{opacity:1; transform:none}
 
-    /* Responsive */
+    /* ------- Responsive ------- */
     @media (max-width: 1024px){
       .hero-grid, .cta-panel{grid-template-columns:1fr}
       .offers{grid-template-columns:1fr 1fr}
       .logos{grid-template-columns:repeat(3,1fr)}
       .quotes{grid-template-columns:1fr 1fr}
     }
+
+    /* MOBILE FIXES (≤720px) — desktop remains unchanged */
     @media (max-width: 720px){
-      .offers, .grid-3{grid-template-columns:1fr}
-      .nav .bar{gap:16px}
+      .wrap{padding:0 16px} /* a hair tighter so nothing clips */
+
+      /* NAV: collapse into toggle + drawer, no overflow */
+      .nav .bar{gap:12px; padding:10px 12px}
+      .menu-toggle{display:inline-flex; margin-left:auto}
+      .nav .links{display:none}
+      .mobile-drawer{
+        position:fixed; inset:64px 12px auto 12px;
+        background:rgba(18,19,23,.96); border:1px solid rgba(212,175,55,.25);
+        border-radius:14px; box-shadow:var(--shadow);
+        padding:12px; display:none; z-index:60;
+      }
+      .mobile-drawer.open{display:block}
+      .mobile-drawer a{
+        display:block; padding:12px 10px; border-radius:10px; opacity:1;
+        border:1px solid rgba(212,175,55,.14); margin-bottom:8px;
+        background:linear-gradient(180deg,#1b1c21,#121318);
+      }
+      .mobile-drawer .cta-link{background:linear-gradient(180deg,#2a2b31,#16171c); border-color:rgba(212,175,55,.45); font-weight:600}
+
+      /* HERO: prevent “lean right” and clipping */
       .hero{padding-top:140px}
+      .hero-grid{grid-template-columns:1fr; gap:22px}
+      h1{font-size: clamp(34px, 8vw, 44px)}
+      .hero-media{height:210px}
+
+      /* PILLARS: ensure circles never cut off */
+      .pillars-grid{grid-template-columns:1fr; gap:14px}
+      .pillar{width:min(92%, 360px); height:min(92vw, 360px); padding:16px}
+
+      /* Generic card grids → single column to breathe */
+      .grid-3{grid-template-columns:1fr}
+      .offers{grid-template-columns:1fr}
+      .logos{grid-template-columns:repeat(2,1fr)}
       .quotes{grid-template-columns:1fr}
+
+      /* Stats: 2 columns on mobile; also override inline 4-col in Outcomes */
+      .stats{grid-template-columns:repeat(2,1fr)}
+      #outcomes .stats{grid-template-columns:repeat(2,1fr) !important}
+
+      /* CTA panels to single column already handled via 1024 rule, tighten spacing */
+      .cta-panel{gap:14px}
+
+      /* Footer columns stack nicely */
+      .foot-grid{grid-template-columns:1fr; gap:14px}
     }
 
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       [data-reveal]{transition:none}
     }
-  .ticker{padding:18px 0; border-top:1px solid rgba(212,175,55,.12); border-bottom:1px solid rgba(212,175,55,.12); background:linear-gradient(180deg,#0e0f13,#0b0b0e)}
-    .ticker-track{display:flex; gap:48px; white-space:nowrap; overflow:hidden; mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);}
-    .ticker-track span{display:inline-block; padding:6px 0; opacity:.75; letter-spacing:.8px}
-    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
-    .ticker-track{animation:marquee 66s linear infinite}
-    @media (max-width: 720px){ .ticker-track{animation-duration: 90s} }
-    @media (min-width: 1025px){ .ticker-track{animation-duration: 66s} }
 
     /* Case Studies */
     #cases .metrics{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
     #cases .metric{padding:22px; border-radius:16px; background:linear-gradient(145deg,#0e0f12,#171820); border:1px solid rgba(212,175,55,.18)}
     #cases .metric strong{font-size:28px}
-
+    @media (max-width:720px){
+      #cases .metrics{grid-template-columns:1fr; gap:14px}
+    }
   </style>
+
   <!-- Structured Data -->
   <script type="application/ld+json">{
     "@context":"https://schema.org",
@@ -199,10 +253,6 @@
     "jobTitle":"Founder",
     "worksFor":{"@type":"Organization","name":"Authority Scale"}
   }</script>
-  <!-- Premium font stack -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Spectral:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
   <script type="application/ld+json">{
     "@context":"https://schema.org",
     "@type":"FAQPage",
@@ -215,6 +265,11 @@
       {"@type":"Question","name":"What does success look like?","acceptedAnswer":{"@type":"Answer","text":"You become the obvious choice. Demand concentrates, pricing holds, and rooms open that previously didn’t."}}
     ]
   }</script>
+
+  <!-- Premium font stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Spectral:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- NAV -->
@@ -229,14 +284,35 @@
         </span>
         <span>Authority Scale™</span>
       </a>
-      <a href="#principles">Principles</a>
-      <a href="#offers">Programs</a>
-      <a href="#who">Who</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#sequence">Sequence</a>
-      <a href="#proofs">Indicators</a>
-      <a href="#faq">FAQ</a>
-      <a href="#access" class="btn primary cta">Request Access</a>
+
+      <!-- Desktop links -->
+      <div class="links" role="navigation" aria-label="Primary links">
+        <a href="#principles">Principles</a>
+        <a href="#offers">Programs</a>
+        <a href="#who">Who</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#sequence">Sequence</a>
+        <a href="#proofs">Indicators</a>
+        <a href="#faq">FAQ</a>
+        <a href="#access" class="btn primary cta">Request Access</a>
+      </div>
+
+      <!-- MOBILE FIX: menu toggle button (hidden on desktop via CSS) -->
+      <button class="btn menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu" style="display:none">
+        Menu
+      </button>
+    </div>
+
+    <!-- MOBILE FIX: drawer menu -->
+    <div id="mobileMenu" class="mobile-drawer" role="menu" aria-label="Mobile menu">
+      <a role="menuitem" href="#principles">Principles</a>
+      <a role="menuitem" href="#offers">Programs</a>
+      <a role="menuitem" href="#who">Who</a>
+      <a role="menuitem" href="#outcomes">Outcomes</a>
+      <a role="menuitem" href="#sequence">Sequence</a>
+      <a role="menuitem" href="#proofs">Indicators</a>
+      <a role="menuitem" href="#faq">FAQ</a>
+      <a role="menuitem" href="#access" class="cta-link">Request Access</a>
     </div>
   </nav>
 
@@ -267,7 +343,7 @@
     </div>
   </header>
 
-  <!-- AS SEEN IN TICKER -->
+  <!-- AS SEEN IN TICKER (removed by JS unless toggled) -->
   <section class="ticker" aria-label="as seen in">
     <div class="wrap">
       <div class="ticker-track">
@@ -295,7 +371,7 @@
     </div>
   </section>
 
-  <!-- PILLARS: Presence • Positioning • Pipeline -->
+  <!-- PILLARS -->
   <section id="pillars" class="pillars">
     <div class="wrap">
       <div class="pillars-grid">
@@ -352,7 +428,7 @@
     </div>
   </section>
 
-  <!-- AUTHORITY DELIVERY / POSITIONING -->
+  <!-- AUTHORITY DELIVERY -->
   <section id="authority">
     <div class="wrap">
       <div class="section-title" data-reveal>
@@ -523,7 +599,6 @@
     </div>
   </section>
 
-  <!-- INDICATORS -->
   <!-- CASE STUDIES -->
   <section id="cases">
     <div class="wrap">
@@ -658,7 +733,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <!-- BOOK PROMO -->
   <section id="book">
     <div class="wrap">
@@ -774,7 +848,7 @@
 
   <script>
     // --- Configurable form endpoint (optional). If empty, falls back to mailto.
-    const FORM_ENDPOINT = ""; // Set once. Both forms post here. // e.g. "https://formspree.io/f/xyz" or your API route
+    const FORM_ENDPOINT = ""; // Set once. Both forms post here.
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -786,7 +860,7 @@
       a.addEventListener('click', e=>{
         const id = a.getAttribute('href');
         const el = document.querySelector(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); closeDrawer(); }
       });
     });
     const navLinks = links.filter(a=>['#pillars','#principles','#who','#offers','#outcomes','#sequence','#proofs','#faq','#access'].includes(a.getAttribute('href')));
@@ -833,11 +907,9 @@
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       status.textContent = 'Submitting…';
-      // Honeypot spam check
       if(form.querySelector('[name="website"]')?.value){ status.textContent=''; return; }
       const data = Object.fromEntries(new FormData(form).entries());
 
-      // Analytics: attempt to fire before network
       window.gtag && gtag('event','generate_lead',{form:'access'});
       window.fbq && fbq('track','Lead',{content_name:'Access Request'});
 
@@ -869,7 +941,6 @@ Context: ${data.context||''}`);
       bookForm.addEventListener('submit', async (e)=>{
         e.preventDefault();
         bookStatus.textContent = 'Sending…';
-        // Honeypot spam check
         if(bookForm.querySelector('[name="website"]')?.value){ bookStatus.textContent=''; return; }
         const payload = Object.fromEntries(new FormData(bookForm).entries());
         payload.source = 'book';
@@ -895,9 +966,36 @@ Source: book`);
         }
       });
     }
-  </script>
-  <a href="#access" class="btn primary cta-float" aria-label="Request Access">Request Access</a>
-  <script>
+
+    // MOBILE MENU: toggle/dismiss
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const drawer = document.getElementById('mobileMenu');
+    function openDrawer(){
+      drawer.classList.add('open');
+      toggleBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow='hidden'; // prevent page scroll under drawer
+    }
+    function closeDrawer(){
+      drawer.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow=''; 
+    }
+    if(toggleBtn){
+      toggleBtn.addEventListener('click', ()=>{
+        drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+      });
+      // close drawer when clicking outside
+      document.addEventListener('click', (e)=>{
+        if(!drawer.classList.contains('open')) return;
+        const inside = drawer.contains(e.target) || toggleBtn.contains(e.target);
+        if(!inside) closeDrawer();
+      });
+      // close on Esc
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+      });
+    }
+
     // Lazy-load future images by default
     (function(){
       const setLazy = img => { if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy'); if(!img.hasAttribute('decoding')) img.setAttribute('decoding','async'); };
@@ -910,27 +1008,38 @@ Source: book`);
       }).observe(document.documentElement,{childList:true,subtree:true});
     })();
   </script>
-  <!-- Google Analytics 4 (replace G-XXXXXXX) -->
+
+   <!-- Google Analytics 4 (replace G-XXXXXXX) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
     gtag('config','G-XXXXXXX');
   </script>
 
   <!-- Meta Pixel (replace YOUR_PIXEL_ID) -->
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', 'YOUR_PIXEL_ID');
     fbq('track', 'PageView');
   </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+  </noscript>
 
+  <!-- Floating CTA (mobile) -->
+  <a href="#access" class="btn primary cta-float" aria-label="Request Access">Request Access</a>
 </body>
 </html>
+
+
 
 
